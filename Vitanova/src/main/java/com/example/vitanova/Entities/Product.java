@@ -19,5 +19,5 @@ public class Product {
     private String nameProd;
     private int priceProd;
     private String imageProd;
-    private Categorie categorie;
+    private String categorie;
 }
