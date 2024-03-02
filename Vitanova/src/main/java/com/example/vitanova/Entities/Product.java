@@ -1,4 +1,5 @@
-package com.example.vitanova.Entities;
+
+ package com.example.vitanova.Entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
