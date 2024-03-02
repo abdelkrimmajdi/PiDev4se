@@ -21,6 +21,6 @@ public class Delivery {
     @OneToOne
     private Cart cart;
     @OneToMany(cascade = CascadeType.ALL, mappedBy="delivery")
-    private Set<ArticleDelivery> ArticleDeliverys;
+    private Set<Article> Article;
 
 }
