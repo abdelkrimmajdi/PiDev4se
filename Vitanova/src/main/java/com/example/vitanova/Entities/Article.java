@@ -11,17 +11,16 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class ArticleCart {
+public class Article {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long IdArticle;
-    private int quantity;
+    private int quantityArt;
     @ManyToOne(cascade = CascadeType.ALL)
     Cart cart;
+    @ManyToOne
+    Delivery delivery;
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Product> Products;
-
-
-
-
 }
