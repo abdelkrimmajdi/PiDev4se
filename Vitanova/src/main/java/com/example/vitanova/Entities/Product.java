@@ -1,5 +1,4 @@
-
- package com.example.vitanova.Entities;
+package com.example.vitanova.Entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,5 +19,5 @@ public class Product {
     private String nameProd;
     private int priceProd;
     private String imageProd;
-    private String categorie;
+    private Categorie categorie;
 }

@@ -12,10 +12,6 @@ import { AllTemplateFrontComponent } from './FrontOffice/all-template-front/all-
 import { FooterFrontComponent } from './FrontOffice/footer-front/footer-front.component';
 import { HeaderFrontComponent } from './FrontOffice/header-front/header-front.component';
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
-import { LoginComponent } from './login/login.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -28,16 +24,11 @@ import { RegisterComponent } from './register/register.component';
     AllTemplateFrontComponent,
     FooterFrontComponent,
     HeaderFrontComponent,
-    HomeFrontComponent,
-    LoginComponent,
-    RegisterComponent
+    HomeFrontComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

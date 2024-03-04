@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class UserController {
     @GetMapping
     public ResponseEntity<String> sayHello(){

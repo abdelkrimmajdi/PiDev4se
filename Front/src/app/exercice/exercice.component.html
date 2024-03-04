@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        h1 {
+            margin-left: 270px; /* Add an empty space on the left side of the title */
+        }
+
+        .table-container {
+            padding-left: 270px; /* Add an empty space on the left side of the table */
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center; /* Center the content of the table */
+        }
+
+        .table th {
+            text-align: center; /* Center the content of the table header */
+        }
+
+        .table th, .table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<h1 class="card-title fw-semibold" style="text-align: center;">Exercices</h1>
+<div class="table-container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>idExer</th>
+                <th>nameExer</th>
+                <th>descriptionExe</th>
+                <th>durationExer</th>
+                <th>intensity</th>
+                <th>muscle</th>
+                <th>picture</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of exercices">
+                <td>{{e.idExer}}</td>
+                <td>{{e.nameExer}}</td>
+                <td>{{e.descriptionExe}}</td>
+                <td>{{e.durationExer}}</td>
+                <td>{{e.intensity}}</td>
+                <td>{{e.muscle}}</td>
+                <td>{{e.picture}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

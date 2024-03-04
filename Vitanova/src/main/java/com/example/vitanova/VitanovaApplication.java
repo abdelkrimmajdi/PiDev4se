@@ -16,7 +16,7 @@ public class VitanovaApplication /*implements CommandLineRunner*/ {
 	public static void main(String[] args) {
 		SpringApplication.run(VitanovaApplication.class, args);
 	}
-	/*public void run(String... args){
+/*	public void run(String... args){
 		User adminAccount = userRepository.findByRole(Role.ADMIN);
 		User user =new User();
 		user.setEmail("admin@gmail.com");
