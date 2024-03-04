@@ -16,6 +16,8 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
+import { UsergetallComponent } from './features/admin/usergetall/usergetall.component';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { RegisterComponent } from './register/register.component';
     HeaderFrontComponent,
     HomeFrontComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UsergetallComponent,
+ 
   ],
   imports: [
     BrowserModule,
@@ -42,4 +46,6 @@ import { RegisterComponent } from './register/register.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+ }

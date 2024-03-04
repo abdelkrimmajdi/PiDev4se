@@ -30,7 +30,8 @@
           </ul>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item cta-btn">
-              <a class="nav-link" routerLink="/login">Become a member</a>
+              <a class="nav-link" *ngIf="authService" (click)="Logout" routerLink="/login">Login</a>
+              <a class="nav-link" *ngIf="!authService" routerLink="/login">Logout</a>
             </li>
           </ul>
         </div>

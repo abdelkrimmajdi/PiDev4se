@@ -6,6 +6,7 @@ import { AllTemplateFrontComponent } from './FrontOffice/all-template-front/all-
 import { LoginComponent } from './login/login.component';
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
 import { RegisterComponent } from './register/register.component';
+import { UsergetallComponent } from './features/admin/usergetall/usergetall.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: "acceuil",
+    path: "",
     component: AllTemplateFrontComponent,
     children: [
       {
@@ -37,7 +38,12 @@ const routes: Routes = [
     path: "register",
     component: RegisterComponent
     
+  },{
+    path: "getall",
+    component: UsergetallComponent
+    
   }
+
 
 
 ];
