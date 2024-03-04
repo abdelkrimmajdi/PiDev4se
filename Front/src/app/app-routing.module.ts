@@ -6,6 +6,7 @@ import { AllTemplateFrontComponent } from './FrontOffice/all-template-front/all-
 import { LoginComponent } from './login/login.component';
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
 import { RegisterComponent } from './register/register.component';
+import { MarketComponent } from './market/market.component';
 
 const routes: Routes = [
   {
@@ -37,8 +38,12 @@ const routes: Routes = [
     path: "register",
     component: RegisterComponent
     
-  }
-
+  },
+  {
+    path: "market",
+    component:MarketComponent
+    
+  },
 
 ];
 
