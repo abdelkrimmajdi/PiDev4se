@@ -6,18 +6,22 @@ import com.example.vitanova.Dto.SignUpRequest;
 import com.example.vitanova.Dto.SigninRequest;
 import com.example.vitanova.Entities.User;
 import com.example.vitanova.Service.AuthenticationService;
+import com.example.vitanova.Service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
+    @Autowired
+    private UserServiceImpl userService;
     @PostMapping("/signup")
     public ResponseEntity<User> signup(@RequestBody SignUpRequest signUpRequest){
 
@@ -34,4 +38,6 @@ public class AuthenticationController {
     public ResponseEntity<JwtAuthenticationResponse>referesh(@RequestBody RefreshTokenRequest refreshTokenRequest) {
         return ResponseEntity.ok(authenticationService.refreshToken(refreshTokenRequest));
     }
+
+
 }
