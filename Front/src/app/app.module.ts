@@ -17,6 +17,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
 import { UsergetallComponent } from './features/admin/usergetall/usergetall.component';
+import { EditProfileComponent } from './features/user/edit-profile/edit-profile.component';
+import { EditprofileComponent } from './features/admin/editprofile/editprofile.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { VerifEmailComponent } from './verif-email/verif-email.component';
+
 
 
 @NgModule({
@@ -34,6 +40,12 @@ import { UsergetallComponent } from './features/admin/usergetall/usergetall.comp
     LoginComponent,
     RegisterComponent,
     UsergetallComponent,
+    EditProfileComponent,
+    EditprofileComponent,
+    ForgotpasswordComponent,
+    ResetpasswordComponent,
+    VerifEmailComponent
+  
  
   ],
   imports: [

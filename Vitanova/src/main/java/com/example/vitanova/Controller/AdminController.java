@@ -1,6 +1,7 @@
 package com.example.vitanova.Controller;
 
 import com.example.vitanova.Entities.MentorProgram;
+import com.example.vitanova.Entities.Role;
 import com.example.vitanova.Entities.User;
 import com.example.vitanova.Service.AuthenticationService;
 import com.example.vitanova.Service.UserServiceImpl;
@@ -30,6 +31,18 @@ public class AdminController {
     @DeleteMapping("/delete/{iduser}")
     public void deleteuser(@PathVariable Long iduser) {
         userService.deleteUser(iduser);
+    }
+    @PutMapping("/updatePassword/{idUser}/{password}")
+    public User updatePassword(@PathVariable Long idUser, @PathVariable String  password) {
+        return userService.updatePassword(idUser, password);
+    }
+    @GetMapping("/{idUser}")
+    public User getUserById(@PathVariable Long idUser) {
+        return userService.getUserById(idUser);
+    }
+    @PutMapping("/{userId}")
+    public User updateUserRole(@PathVariable Long userId, @RequestParam Role newRole) {
+        return userService.updateUserRole(userId, newRole);
     }
 
 }

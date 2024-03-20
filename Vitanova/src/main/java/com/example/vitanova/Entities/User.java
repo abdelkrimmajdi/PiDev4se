@@ -20,13 +20,13 @@ public class User implements UserDetails {
     private Long Id;
     private String firstName;
     private String lastName;
+    @Column(unique=true)
     private String email;
     private String password;
-
+    private boolean enabled;
     @Enumerated(EnumType.STRING)
-
     private Role role;
-
+    String passwordResetToken;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -55,7 +55,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return enabled;
     }
 
 

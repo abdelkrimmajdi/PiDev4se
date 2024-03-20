@@ -1,0 +1,69 @@
+<div class="container-xl px-4 mt-4">
+    <div class="row">
+        <div class="col-lg-4">
+            <!-- Sidebar START -->
+            <app-sidebar></app-sidebar>
+            <!-- Sidebar END -->
+        </div>
+        <div class="col-lg-8">
+            <!-- Edit profile START -->
+            <div class="card bg-transparent border rounded-3">
+                <!-- Card header -->
+                <div class="card-header bg-transparent border-bottom">
+                    <h3 class="card-header-title mb-0">Edit Profile</h3>
+                </div>
+                <!-- Card body START -->
+                <div class="card-body">
+                    <!-- Form -->
+                    <form class="row g-4" [formGroup]="updateForm" (ngSubmit)="updateUser()">
+                        <!-- Full name -->
+                        <div class="col-md-6">
+                            <label class="form-label">First Name</label>
+                            <input class="form-control" type="text" formControlName="firstName">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Last Name</label>
+                            <input class="form-control" type="text" formControlName="lastName" >
+                        </div>
+                        <!-- Email id -->
+                        <div class="col-md-6">
+                            <label class="form-label">Email Address</label>
+                            <input class="form-control" type="email" formControlName="email" >
+                        </div>
+                        <!-- Save button -->
+                        <div class="col-12">
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Card body END -->
+            </div>
+            <!-- Edit profile END -->
+
+            <!-- Password change START -->
+            <div class="card border bg-transparent rounded-3 mt-4">
+                <!-- Card header -->
+                <div class="card-header bg-transparent border-bottom">
+                    <h5 class="card-header-title mb-0">Change Password</h5>
+                </div>
+                <!-- Card body START -->
+                <form class="card-body" [formGroup]="updateForm" (ngSubmit)="updatePassword()">
+                    <!-- New password -->
+                    <div class="mb-3">
+                        <label class="form-label" for="inputPassword5">New Password</label>
+                        <div class="input-group">
+                            <input class="form-control" type="password" placeholder="*********" id="inputPassword5" formControlName="password">
+                            <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility()">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Button -->
+                    <div class="d-flex justify-content-end mt-4">
+                        <button type="submit" class="btn btn-primary">Change Password</button>
+                    </div>
+                </form>
+                <!-- Card body END -->
+        

@@ -1,0 +1,23 @@
+
+  <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login Here!</title>
+    <link rel="stylesheet" >
+  </head>
+  <body>
+
+<form class="box" action="index.html" method="post">
+    <label>veuillez entrer le code envoyé par mail</label>
+
+
+  <input type="text" name="code" [(ngModel)]="code" class="fromcontrol"
+placeholder="code de confirmation">
+<button type="button" class="btn btn-success mt-3" (click)="onValidateEmail()" routerLink="/login">S'insicrire</button>
+
+</form>
+
+
+  </body>
+</html>

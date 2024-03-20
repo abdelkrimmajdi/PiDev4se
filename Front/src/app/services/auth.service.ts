@@ -18,6 +18,7 @@ export class AuthService {
   public isloggedIn: Boolean = false;
   public roles!: string[];
   public token!: string;
+
   login(user: LoginPayload) {
     return this.http.post(`http://localhost:8081/api/v1/auth/signin`, user);
   }
@@ -34,5 +35,38 @@ export class AuthService {
   loggedInt() {
     return !!localStorage.getItem('token')
   }
+  forgetPassword(email: string) {
+    return this.http.post(`http://localhost:8081/api/v1/auth/forgetpassword?email=${email}`,{});
+  }
+  resetPassword(passwordResetToken: string, newPassword: string) {
+    return this.http.post(`http://localhost:8081/api/v1/auth/resetPassword/${passwordResetToken}?newPassword=${newPassword}`, {});
+  }
+  public registredUser: User = new User();
+  SetRegistredUser(user: User) {
+    this.registredUser =user;
+  }
+  getRegistredUser() {
+    return this.registredUser;
+  }
+  validateEmail(code: string) {
+    return this.http.get<User>(`http://localhost:8081/api/v1/auth/verifyEmail/` + code);
+  }
+  isLoggedIn(): boolean {
+    // Implement your logic to check if the user is logged in
+    // For example, you can check if there is a valid token in local storage
+    const token = localStorage.getItem('token');
+    if (token) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
+  logout(): void {
+    // Implement your logic to log out the user
+    // For example, you can remove the token from local storage
+    localStorage.removeItem('token');
+    this.isloggedIn = false;
+  }
 }
+
