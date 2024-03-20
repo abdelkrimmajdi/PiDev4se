@@ -7,6 +7,11 @@ import { LoginComponent } from './login/login.component';
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
 import { RegisterComponent } from './register/register.component';
 import { UsergetallComponent } from './features/admin/usergetall/usergetall.component';
+import { EditProfileComponent } from './features/user/edit-profile/edit-profile.component';
+import { EditprofileComponent } from './features/admin/editprofile/editprofile.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { VerifEmailComponent } from './verif-email/verif-email.component';
 
 const routes: Routes = [
   {
@@ -17,6 +22,7 @@ const routes: Routes = [
         path: "",
         component: HomeComponent
       }
+     
     ]
   },
   {
@@ -35,12 +41,35 @@ const routes: Routes = [
     
   },
   {
+    path: "edit",
+    component: EditProfileComponent
+    
+  },
+  {
     path: "register",
     component: RegisterComponent
     
   },{
     path: "getall",
     component: UsergetallComponent
+    
+  },
+  {
+    path: "edite-profile",
+    component:EditprofileComponent
+  },
+  {
+    path: "forgotpassword",
+    component:ForgotpasswordComponent
+  },
+  {
+    path: "resetpassword",
+    component: ResetpasswordComponent
+  
+  },
+  {
+    path: "verifemail",
+    component: VerifEmailComponent
     
   }
 

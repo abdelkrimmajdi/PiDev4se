@@ -8,4 +8,6 @@ import java.util.List;
 public interface UserService {
     UserDetailsService userDetailsService();
     List<User> getAllUser();
+    public User updatePassword (Long idUser, String password);
+    public User updateUser(User user);
 }

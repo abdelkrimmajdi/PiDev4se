@@ -11,6 +11,7 @@ import { User } from '../model/user.model';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
+  user: User = new User()
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {}
 
@@ -25,14 +26,17 @@ export class RegisterComponent {
     const formData = this.registerForm.value;
     this.authService.register(formData).subscribe({
       next: (response: any) => {
+        this.authService.SetRegistredUser(this.user);
         Swal.fire({
           icon: 'success',
-          title: 'Inscription réussie',
-          text: 'Vous pouvez maintenant vous connecter',
+          title: 'Veuillez confirmer votre email',
+          text: 'Veuillez confirmer votre email',
           showConfirmButton: false,
           timer: 1500
+        }).then(() => {
+          // Redirection vers la page de vérification de l'e-mail après le message de succès
+          this.router.navigate(['/verifEmail']);
         });
-        this.router.navigate(['/login']);
       },
       error: (error: any) => {
         Swal.fire({
@@ -43,5 +47,19 @@ export class RegisterComponent {
         });
       }
     });
+  }
+  
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
+
+  // Méthode pour naviguer vers la page d'inscription
+  goToRegister() {
+    this.router.navigate(['/register']);
+  }
+
+  // Méthode pour vérifier si la page est celle de l'inscription
+  isRegisterPage() {
+    return this.router.url === '/register';
   }
 }
