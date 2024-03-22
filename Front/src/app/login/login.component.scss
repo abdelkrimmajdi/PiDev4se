@@ -181,3 +181,27 @@ display: none;
   color: #f83474;
   box-shadow: 0 8px 24px 0 rgba(3, 3, 4, 0.2);
 }
+.form-style.select {
+  padding: 13px 20px;
+  height: 48px;
+  width: 100%;
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+  outline: none;
+  color: black;
+  background-color:  #c4c3ca;
+  border: none;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+  box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+}
+
+.form-style.select:focus,
+.form-style.select:active {
+  border: none;
+  outline: none;
+  box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+}

@@ -65,6 +65,17 @@
                           <input type="password" class="form-style" placeholder="Password" formControlName="password">
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
+                        <div class="form-group mt-2">
+                    
+                          <select id="role" class="form-style select" formControlName="role">
+                            <option value="" disabled selected><i class="input-icon uil uil-user"></i>Choose Role:</option>
+                            <option value="USER"><i class="input-icon uil uil-user"></i> User</option>
+                            <option value="NUTRITIONISTE"><i class="input-icon uil uil-leaf"></i> Nutritioniste</option>
+                            <option value="COACH"><i class="input-icon uil uil-dumbbell"></i> Coach</option>
+                            <option value="MENTOR"><i class="input-icon uil uil-graduation-cap"></i> Mentor</option>
+                        </select>
+                        
+                      </div>
                         <button type="submit" class="btn mt-4">Register</button>
                       </form>
                     </div>
