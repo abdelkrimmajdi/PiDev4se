@@ -25,6 +25,7 @@ const routes: Routes = [
      
     ]
   },
+  { path: 'resetpassword/:passwordResetToken',component:ResetpasswordComponent },
   {
     path: "",
     component: AllTemplateFrontComponent,
