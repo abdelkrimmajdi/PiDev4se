@@ -3,13 +3,16 @@ package com.example.vitanova.Controller;
 import com.example.vitanova.Entities.Message;
 import com.example.vitanova.Entities.Room;
 import com.example.vitanova.Service.RoomService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
 @RestController
-
+@CrossOrigin("*")
+@AllArgsConstructor
+@RequestMapping("/Room")
 public class RoomControlleur {
 
     @Autowired

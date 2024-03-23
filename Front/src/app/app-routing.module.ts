@@ -7,6 +7,9 @@ import { LoginComponent } from './login/login.component';
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
 import { RegisterComponent } from './register/register.component';
 import { MarketComponent } from './market/market.component';
+import { UsergetallComponent } from './features/admin/usergetall/usergetall.component';
+import { AddproductComponent } from './addproduct/addproduct.component';
+import { ProductComponent } from './product/product.component';
 
 const routes: Routes = [
   {
@@ -16,7 +19,18 @@ const routes: Routes = [
       {
         path: "",
         component: HomeComponent
-      }
+      },
+      {
+        path: "addproduct",
+        component:AddproductComponent
+        
+      },
+      {
+        path: "product",
+        component:ProductComponent
+        
+      },
+
     ]
   },
   {
@@ -44,6 +58,12 @@ const routes: Routes = [
     component:MarketComponent
     
   },
+  {
+    path: "getall",
+    component:UsergetallComponent
+    
+  },
+ 
 
 ];
 

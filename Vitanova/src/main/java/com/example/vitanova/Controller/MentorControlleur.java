@@ -3,6 +3,7 @@ package com.example.vitanova.Controller;
 import com.example.vitanova.Entities.MentorExercice;
 import com.example.vitanova.Entities.MentorProgram;
 import com.example.vitanova.Service.MentorService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,9 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
+@CrossOrigin("*")
+@AllArgsConstructor
+@RequestMapping("/Mentor")
 public class MentorControlleur {
 
     @Autowired

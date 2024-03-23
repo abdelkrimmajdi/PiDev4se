@@ -1,0 +1,55 @@
+<p>addproduct works!</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            margin: 0 auto; /* Center the form */
+            max-width: 400px; /* Limit the form width for better aesthetics */
+        }
+
+
+
+        
+    </style>
+</head>
+
+<body>
+    <h2 class="card-title fw-semibold" routerLink="/getall">Add Product</h2>
+    <form [formGroup]="productForm" (ngSubmit)="save()">
+        <div class="form-group">
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" formControlName="nameProd" class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" id="price" formControlName="priceProd" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="category">Category:</label>
+            <input type="text" id="category" formControlName="categorie" class="form-control">
+        </div>
+        <!-- Add other form fields based on your Product model -->
+        <div>
+            <input type="file" (change)="onFileSelected($event)" style="display: none;" #fileInput />
+            <button (click)="fileInput.click()" >Choisir une image</button>
+          </div>
+          <div *ngIf="selectedImage">
+            <img [src]="selectedImage" alt="Selected Image">
+          </div>
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success" (click)="save" >Add</button>
+            <button type="button" (click)="reset()" class="btn btn-secondary">Cancel</button>
+        </div>
+    </form>
+</body>
+
+</html>

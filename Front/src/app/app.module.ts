@@ -17,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
 import { MarketComponent } from './market/market.component';
+import { AddproductComponent } from './addproduct/addproduct.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { MarketComponent } from './market/market.component';
     HomeFrontComponent,
     LoginComponent,
     RegisterComponent,
-    MarketComponent
+    MarketComponent,
+    AddproductComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

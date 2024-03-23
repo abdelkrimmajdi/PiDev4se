@@ -5,6 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './market.component.html',
   styleUrls: ['./market.component.scss']
 })
-export class MarketComponent {
-
+export class MarketComponent{
 }

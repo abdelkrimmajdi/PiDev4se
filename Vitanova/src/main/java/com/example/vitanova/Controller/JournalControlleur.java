@@ -3,12 +3,16 @@ package com.example.vitanova.Controller;
 import com.example.vitanova.Entities.Journal;
 import com.example.vitanova.Entities.PersonalObjectif;
 import com.example.vitanova.Service.JournalService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
 @RestController
+@CrossOrigin("*")
+@AllArgsConstructor
+@RequestMapping("/Journal")
 public class JournalControlleur {
 
     @Autowired
