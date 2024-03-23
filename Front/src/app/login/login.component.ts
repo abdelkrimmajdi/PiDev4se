@@ -33,59 +33,66 @@ export class LoginComponent {
   }
 
 
-login() {
-  const payload: LoginPayload = {
-    email: this.loginForm.value.email || '',
-    password: this.loginForm.value.password || ''
-  };
-
-  this.authService.login(payload).subscribe((res: any) => {
-    console.log(res);
-
-    if (res && res.userDetails) {
-      if (res.userDetails.enabled) {
-        // L'utilisateur est activé, procédez normalement
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 1000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
+  login() {
+    const payload: LoginPayload = {
+      email: this.loginForm.value.email || '',
+      password: this.loginForm.value.password || ''
+    };
+  
+    this.authService.login(payload).subscribe((res: any) => {
+      console.log(res);
+  
+      if (res && res.userDetails) {
+        if (res.userDetails.enabled) {
+          // L'utilisateur est activé, procédez normalement
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          });
+          if (res.userDetails.role === Role.USER) {
+            this.router.navigateByUrl('');
+          } else if (res.userDetails.role === Role.COACH) {
+            this.router.navigateByUrl('/admin');
+          } else if (res.userDetails.role === Role.NUTRITIONISTE) {
+            this.router.navigateByUrl('/admin');
+          } else if (res.userDetails.role === Role.MENTOR) {
+            this.router.navigateByUrl('/admin');
+          } else {
+            // Rôle non reconnu, naviguer vers une page par défaut
+            this.router.navigateByUrl('/admin');
           }
-        });
-
-        Toast.fire({
-          icon: 'success',
-          title: 'Connexion réussie'
-        });
-
-        localStorage.setItem('userconnect', JSON.stringify(res.userDetails));
-        localStorage.setItem('accessToken', res.accessToken);
-        localStorage.setItem('refreshToken', res.refreshToken);
-        localStorage.setItem("state", "0");
-
-       
-      } else {
-        // Le compte n'est pas activé, affichez un message d'erreur
-        if (res.userDetails.role === Role.ADMIN) {
-          this.router.navigateByUrl('/admin');
+  
+          Toast.fire({
+            icon: 'success',
+            title: 'Connexion réussie'
+          });
         } else {
-          this.router.navigateByUrl('');
+          // Le compte n'est pas activé, affichez un message d'erreur
+          localStorage.setItem('userconnect', JSON.stringify(res.userDetails));
+          localStorage.setItem('accessToken', res.accessToken);
+          localStorage.setItem('refreshToken', res.refreshToken);
+          localStorage.setItem("state", "0");
+  
+        
+         
         }
       }
-    }
-  }, err => {
-    Swal.fire({
-      icon: 'error',
-      title: 'Erreur',
-      text: 'Login failed. Please check your credentials.',
-      showConfirmButton: true
+    }, err => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Erreur',
+        text: 'Login failed. Please check your credentials.',
+        showConfirmButton: true
+      });
     });
-  });
-}
+  }
 
 
 
@@ -93,7 +100,8 @@ login() {
     firstName: ['', [Validators.required, Validators.minLength(3)]],
     lastName: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]]
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    role: ['', [Validators.required]]
   });
 
   register(): void {
