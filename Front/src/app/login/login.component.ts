@@ -80,7 +80,34 @@ export class LoginComponent {
           localStorage.setItem('refreshToken', res.refreshToken);
           localStorage.setItem("state", "0");
   
-        
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          });
+          if (res.userDetails.role === Role.USER) {
+            this.router.navigateByUrl('');
+          } else if (res.userDetails.role === Role.COACH) {
+            this.router.navigateByUrl('/admin');
+          } else if (res.userDetails.role === Role.NUTRITIONISTE) {
+            this.router.navigateByUrl('/admin');
+          } else if (res.userDetails.role === Role.MENTOR) {
+            this.router.navigateByUrl('/admin');
+          } else {
+            // Rôle non reconnu, naviguer vers une page par défaut
+            this.router.navigateByUrl('/admin');
+          }
+  
+          Toast.fire({
+            icon: 'success',
+            title: 'Connexion réussie'
+          });
          
         }
       }
