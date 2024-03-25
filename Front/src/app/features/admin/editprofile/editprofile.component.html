@@ -1,69 +1,131 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
 <div class="container-xl px-4 mt-4">
     <div class="row">
-        <div class="col-lg-4">
-            <!-- Sidebar START -->
-            <app-sidebar></app-sidebar>
-            <!-- Sidebar END -->
-        </div>
-        <div class="col-lg-8">
-            <!-- Edit profile START -->
-            <div class="card bg-transparent border rounded-3">
-                <!-- Card header -->
-                <div class="card-header bg-transparent border-bottom">
-                    <h3 class="card-header-title mb-0">Edit Profile</h3>
+        <div class="col-lg-4 offset-lg-2"> <!-- Ajout de la classe offset-lg-2 -->
+            <!-- Profile Card START -->
+            <div class="profile-card-4 z-depth-3">
+                <div class="card">
+                    <div class="card-body text-center bg-primary rounded-top">
+                        <div class="user-box">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user avatar">
+                        </div>
+                        <h5 class="mb-1 text-white">{{ userconnect.firstName }} {{ userconnect.lastName }}</h5>
+                        <h6 class="text-light">UI/UX Engineer</h6>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group shadow-none">
+                            <li class="list-group-item">
+                                <div class="list-icon">
+                                    <i class="fa fa-phone-square"></i>
+                                </div>
+                                <div class="list-details">
+                                    <span>29373712</span>
+                                    <small>Mobile Number</small>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="list-icon">
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                                <div class="list-details">
+                                    <span>{{ userconnect.email }}</span>
+                                    <small>Email Address</small>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="list-icon">
+                                    <i class="fa fa-globe"></i>
+                                </div>
+                               
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="javascript:void()" class="btn-social btn-facebook waves-effect waves-light m-1"><i class="fa fa-facebook"></i></a>
+                        <a href="javascript:void()" class="btn-social btn-google-plus waves-effect waves-light m-1"><i class="fa fa-google-plus"></i></a>
+                        <a href="javascript:void()" class="list-inline-item btn-social btn-behance waves-effect waves-light"><i class="fa fa-behance"></i></a>
+                        <a href="javascript:void()" class="list-inline-item btn-social btn-dribbble waves-effect waves-light"><i class="fa fa-dribbble"></i></a>
+                    </div>
                 </div>
-                <!-- Card body START -->
-                <div class="card-body">
-                    <!-- Form -->
-                    <form class="row g-4" [formGroup]="updateForm" (ngSubmit)="updateUser()">
-                        <!-- Full name -->
-                        <div class="col-md-6">
-                            <label class="form-label">First Name</label>
-                            <input class="form-control" type="text" formControlName="firstName">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Last Name</label>
-                            <input class="form-control" type="text" formControlName="lastName" >
-                        </div>
-                        <!-- Email id -->
-                        <div class="col-md-6">
-                            <label class="form-label">Email Address</label>
-                            <input class="form-control" type="email" formControlName="email" >
-                        </div>
-                        <!-- Save button -->
-                        <div class="col-12">
-                            <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <!-- Card body END -->
             </div>
-            <!-- Edit profile END -->
-
-            <!-- Password change START -->
-            <div class="card border bg-transparent rounded-3 mt-4">
-                <!-- Card header -->
-                <div class="card-header bg-transparent border-bottom">
-                    <h5 class="card-header-title mb-0">Change Password</h5>
-                </div>
-                <!-- Card body START -->
-                <form class="card-body" [formGroup]="updateForm" (ngSubmit)="updatePassword()">
-                    <!-- New password -->
-                    <div class="mb-3">
-                        <label class="form-label" for="inputPassword5">New Password</label>
-                        <div class="input-group">
-                            <input class="form-control" type="password" placeholder="*********" id="inputPassword5" formControlName="password">
-                            <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility()">
-                                <i class="far fa-eye"></i>
-                            </button>
+            <!-- Profile Card END -->
+        </div>
+        <div class="col-lg-6">
+            <!-- Edit Profile START -->
+            <div class="card z-depth-3">
+                <div class="card-body">
+                    <ul class="nav nav-pills nav-pills-primary nav-justified">
+                        <li class="nav-item">
+                            <a href="#edit-profile" data-target="#edit-profile" data-toggle="pill" class="nav-link active show"><i class="icon-user"></i> <span class="hidden-xs">Edit Profile</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#edit" data-target="#edit" data-toggle="pill" class="nav-link"><i class="icon-note"></i> <span class="hidden-xs">Edit Password</span></a>
+                        </li>
+                    </ul>
+                    <div class="tab-content p-3">
+                        <!-- Formulaire pour l'édition du profil -->
+                        <div class="tab-pane active show" id="edit-profile">
+                            <form [formGroup]="updateForm" (ngSubmit)="updateUser()">
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">First name</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" formControlName="firstName">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Last name</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" formControlName="lastName">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="email" formControlName="email">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label"></label>
+                                    <div class="col-lg-9">
+                                        <input type="reset" class="btn btn-secondary" value="Cancel">
+                                        <input type="submit" class="btn btn-primary" value="Save Changes">
+                                    </div>
+                                </div>
+                            </form>
                         </div>
+                        <!-- Formulaire pour l'édition du mot de passe -->
+                       <!-- Formulaire pour l'édition du mot de passe -->
+                       <div class="tab-pane" id="edit">
+                        <form [formGroup]="updatePasswordForm" (ngSubmit)="updatePassword()">
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">New Password</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control" type="password" formControlName="password">
+                                </div>
+                            </div>
+                            <!-- Ajout du deuxième champ de mot de passe pour confirmation -->
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Confirm New Password</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control" type="password" formControlName="confirmPassword">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label"></label>
+                                <div class="col-lg-9">
+                                    <input type="reset" class="btn btn-secondary" value="Cancel">
+                                    <input type="submit" class="btn btn-primary" value="Save Changes">
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <!-- Button -->
-                    <div class="d-flex justify-content-end mt-4">
-                        <button type="submit" class="btn btn-primary">Change Password</button>
+                    
+
                     </div>
-                </form>
-                <!-- Card body END -->
-        
+                </div>
+            </div>
+            <!-- Edit Profile END -->
+        </div>
+    </div>
+</div>

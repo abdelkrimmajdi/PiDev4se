@@ -14,6 +14,7 @@ export class EditprofileComponent implements OnInit {
   userconnect: User = JSON.parse(localStorage.getItem("userconnect")!);
   user!: User;
   updateForm!: FormGroup;
+  updatePasswordForm!: FormGroup;
 
   constructor(private userService: UserService, private formBuilder: FormBuilder) {}
 
@@ -23,9 +24,28 @@ export class EditprofileComponent implements OnInit {
       firstName: [this.userconnect.firstName, [Validators.required, Validators.minLength(3)]],
       lastName: [this.userconnect.lastName, Validators.required],
       email: [this.userconnect.email, Validators.required],
-      password: [, Validators.required]
+      password: []
     });
+    this.updatePasswordForm = this.formBuilder.group({
+      id: [this.userconnect.id], 
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required]
+  }, { validator: this.passwordMatchValidator }); // Appel de la fonction de validation personnalisée
+}
+
+
+// Fonction de validation personnalisée pour vérifier que les deux mots de passe correspondent
+passwordMatchValidator(formGroup: FormGroup) {
+  const password = formGroup.get('password')?.value;
+  const confirmPassword = formGroup.get('confirmPassword')?.value;
+
+  if (password !== confirmPassword) {
+      formGroup.get('confirmPassword')?.setErrors({ mismatch: true });
+  } else {
+      formGroup.get('confirmPassword')?.setErrors(null);
   }
+}
+
  
 
   updateUser() {
@@ -45,7 +65,7 @@ export class EditprofileComponent implements OnInit {
         });
         localStorage.setItem('userconnect', JSON.stringify(res));
         setTimeout(() => {
-          window.location.href = "http://localhost:4200/login";
+          window.location.href = "/admin";
         }, 3000);
       }, (err: any) => {
         Swal.fire({
@@ -64,33 +84,52 @@ export class EditprofileComponent implements OnInit {
   }
 
   updatePassword() {
-    this.userService.updatePassword(this.userconnect.id, this.updateForm.value.password).subscribe((res: any) => {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 1000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer);
-          toast.addEventListener('mouseleave', Swal.resumeTimer);
+    if (this.updatePasswordForm.valid) {
+        // Vérification supplémentaire pour s'assurer que les mots de passe correspondent
+        if (this.updatePasswordForm.hasError('mismatch')) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: 'Les mots de passe ne correspondent pas'
+            });
+            return;
         }
-      });
 
-      Toast.fire({
-        icon: 'success',
-        title: 'Mot de passe modifié avec succès'
-      });
-      localStorage.setItem('userconnect', JSON.stringify(res));
-      setTimeout(() => {
-        window.location.href = "http://localhost:4200/admin";
-      }, 1000);
-    }, (err: any) => {
-      Swal.fire({
-        icon: 'error',
-        title: 'Erreur',
-        text: 'Erreur lors de la modification du mot de passe'
-      });
-    });
-  }
+        this.userService.updatePassword(this.userconnect.id, this.updatePasswordForm.value.password).subscribe((res: any) => {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 1000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer);
+                    toast.addEventListener('mouseleave', Swal.resumeTimer);
+                }
+            });
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Mot de passe modifié avec succès'
+            });
+            localStorage.setItem('userconnect', JSON.stringify(res));
+            setTimeout(() => {
+                window.location.href = "http://localhost:4200/admin";
+            }, 1000);
+        }, (err: any) => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: 'Erreur lors de la modification du mot de passe'
+            });
+        });
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Erreur',
+            text: 'Veuillez vérifier le formulaire pour les erreurs'
+        });
+    }
+}
+
 }
