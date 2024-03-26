@@ -23,8 +23,8 @@ export class EditprofileComponent implements OnInit {
       id: [this.userconnect.id], 
       firstName: [this.userconnect.firstName, [Validators.required, Validators.minLength(3)]],
       lastName: [this.userconnect.lastName, Validators.required],
-      email: [this.userconnect.email, Validators.required],
-      password: []
+      email: [this.userconnect.email, Validators.required]
+    
     });
     this.updatePasswordForm = this.formBuilder.group({
       id: [this.userconnect.id], 

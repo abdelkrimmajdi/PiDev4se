@@ -7,6 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { LoginPayload } from '../model/login-payload';
 import { FormBuilder } from '@angular/forms';
+import { HeaderFrontComponent } from '../FrontOffice/header-front/header-front.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,17 +21,8 @@ export class LoginComponent {
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
 
-  constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder) { }
-  logout() {
-    // Effacez les données d'authentification stockées localement
-    localStorage.removeItem('userconnect');
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
-    localStorage.removeItem('state');
-    
-    // Redirigez l'utilisateur vers la page de connexion (ou toute autre page appropriée)
-    this.router.navigateByUrl('/login');
-  }
+  constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder,) { }
+  
 
 
   login() {
@@ -38,13 +30,16 @@ export class LoginComponent {
       email: this.loginForm.value.email || '',
       password: this.loginForm.value.password || ''
     };
-  
+
+
     this.authService.login(payload).subscribe((res: any) => {
       console.log(res);
   
       if (res && res.userDetails) {
+     
         if (res.userDetails.enabled) {
           // L'utilisateur est activé, procédez normalement
+         
           const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -74,6 +69,7 @@ export class LoginComponent {
             title: 'Connexion réussie'
           });
         } else {
+        
           // Le compte n'est pas activé, affichez un message d'erreur
           localStorage.setItem('userconnect', JSON.stringify(res.userDetails));
           localStorage.setItem('accessToken', res.accessToken);

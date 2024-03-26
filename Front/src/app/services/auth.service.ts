@@ -15,7 +15,7 @@ export class AuthService {
   constructor(private http: HttpClient,private router: Router) { }
   apiUrl : string = `http://localhost:8081/api/v1/auth`
   public loggedUser!: string;
-  public isloggedIn: Boolean = false;
+  public isLoggedIn!: Boolean;
   public roles!: string[];
   public token!: string;
 
@@ -28,13 +28,8 @@ export class AuthService {
   getToken() {
   return localStorage.getItem('token')
 } 
-  logoutUser() {
-    localStorage.removeItem('token')
-    this.router.navigateByUrl('/acceuil');
-  }
-  loggedInt() {
-    return !!localStorage.getItem('token')
-  }
+
+ 
   forgetPassword(email: string) {
     return this.http.post(`http://localhost:8081/api/v1/auth/forgetpassword?email=${email}`,{});
   }
@@ -51,22 +46,20 @@ export class AuthService {
   validateEmail(code: string) {
     return this.http.get<User>(`http://localhost:8081/api/v1/auth/verifyEmail/` + code);
   }
-  isLoggedIn(): boolean {
-    // Implement your logic to check if the user is logged in
-    // For example, you can check if there is a valid token in local storage
-    const token = localStorage.getItem('token');
-    if (token) {
-      return true;
-    } else {
-      return false;
-    }
+ 
+
+  logout() {
+  
+    this.isLoggedIn = false;
+  
+    localStorage.removeItem('userconnect');
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('state');
+    this.isLoggedIn = false; // Update isLoggedIn state after logout
+    this.router.navigateByUrl('/login');
   }
 
-  logout(): void {
-    // Implement your logic to log out the user
-    // For example, you can remove the token from local storage
-    localStorage.removeItem('token');
-    this.isloggedIn = false;
-  }
+  
 }
 
