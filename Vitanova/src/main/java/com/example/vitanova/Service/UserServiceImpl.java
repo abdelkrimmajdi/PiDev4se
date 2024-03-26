@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService{
     public void deleteUser(Long idUser) {
         Optional<User> userOptional = userRepository.findById(idUser);
 
-        
+
             User user = userOptional.get();
 
             // Trouver les tokens de vérification liés à cet utilisateur
