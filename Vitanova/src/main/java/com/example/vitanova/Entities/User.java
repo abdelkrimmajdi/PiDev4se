@@ -26,6 +26,7 @@ public class User implements UserDetails {
     private boolean enabled;
     @Enumerated(EnumType.STRING)
     private Role role;
+    private String phonenumber;
     String passwordResetToken;
 
     @Override
