@@ -42,21 +42,21 @@ public class UserServiceImpl implements UserService{
 
     public User updateUser(User user) {
         if (user.getId() != null) {
-            User existingEtudiant = userRepository.findById(user.getId()).orElse(null);
-            if (existingEtudiant != null) {
+            User existinguser = userRepository.findById(user.getId()).orElse(null);
+            if (existinguser != null) {
                 if (user.getFirstName()!= null) {
-                    existingEtudiant.setFirstName(user.getFirstName());
+                    existinguser.setFirstName(user.getFirstName());
                 }
                 if (user.getLastName() != null) {
-                    existingEtudiant.setLastName(user.getLastName());
+                    existinguser.setLastName(user.getLastName());
                 }
 
                 if (user.getEmail() != null) {
-                    existingEtudiant.setEmail(user.getEmail());
+                    existinguser.setEmail(user.getEmail());
                 }
 
 
-                return userRepository.save(existingEtudiant);
+                return userRepository.save(existinguser);
             }
         }
         return null;

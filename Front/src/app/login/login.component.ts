@@ -135,8 +135,8 @@ export class LoginComponent {
         this.authService.SetRegistredUser(this.user);
         Swal.fire({
           icon: 'success',
-          title: 'Veuillez confirmer votre email',
-          text: 'Veuillez confirmer votre email',
+          title: 'Veuillez confirmer votre Compte',
+          text: 'Veuillez confirmer votre Compte',
           showConfirmButton: false,
           timer: 1500
          

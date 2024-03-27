@@ -3,6 +3,7 @@ package com.example.vitanova.Service;
 
 import com.example.vitanova.Configuration.EmailSender;
 import com.example.vitanova.Configuration.EmailService;
+import com.example.vitanova.Configuration.SmsRequest;
 import com.example.vitanova.Dto.JwtAuthenticationResponse;
 import com.example.vitanova.Dto.RefreshTokenRequest;
 import com.example.vitanova.Dto.SignUpRequest;
@@ -21,7 +22,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import javax.naming.AuthenticationException;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Random;
@@ -41,6 +41,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     VerificationTokenRepository VerificationTokenRepo;
     @Autowired
     EmailSender emailSender;
+    @Autowired
+    Servicess service;
     public User signup(SignUpRequest signUpRequest){
         User user = new User();
         user.setEmail(signUpRequest.getEmail());
@@ -55,8 +57,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         String code =this.generateCode();
         VerificationToken token = new  VerificationToken(code,user);
         VerificationTokenRepo.save(token);
-        //envoyer le code par email
-        sendEmailUser(user,token.getToken());
+        SmsRequest smsRequest = new SmsRequest(user.getPhonenumber(), token.getToken());
+
+// Appelez la méthode sendSms avec cet objet SmsRequest
+        this.service.sendSms(smsRequest);
+
         return user;
     }
     public String generateCode(){
