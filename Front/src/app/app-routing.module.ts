@@ -21,6 +21,9 @@ const routes: Routes = [
       {
         path: "",
         component: HomeComponent
+      },{
+        path: "edite-profile",
+        component:EditprofileComponent
       }
      
     ]
@@ -55,10 +58,7 @@ const routes: Routes = [
     component: UsergetallComponent
     
   },
-  {
-    path: "edite-profile",
-    component:EditprofileComponent
-  },
+  
   {
     path: "forgotpassword",
     component:ForgotpasswordComponent

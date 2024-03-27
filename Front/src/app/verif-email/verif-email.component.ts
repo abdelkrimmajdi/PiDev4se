@@ -22,11 +22,11 @@ export class VerifEmailComponent {
   onValidateEmail() {
     this.authService.validateEmail(this.code).subscribe({
       next: (res) => {
-        alert("Email verified successfully");
+        alert("Compte verified successfully");
         // Vous pouvez effectuer d'autres actions après la validation de l'e-mail ici
       },
       error: (err) => {
-        console.error("Error verifying email:", err);
+        console.error("Compte verifying email:", err);
         // Gérez l'erreur ici
       }
     });
