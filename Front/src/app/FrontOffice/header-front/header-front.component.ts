@@ -19,6 +19,11 @@ export class HeaderFrontComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout;
+    localStorage.removeItem('userconnect');
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('state');
+  
+    this.router.navigateByUrl('/login');
   }
 }

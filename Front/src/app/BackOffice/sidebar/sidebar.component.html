@@ -29,8 +29,8 @@
             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
             <span class="hide-menu">UI COMPONENTS</span>
           </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" routerLink="/getall" aria-expanded="false">
+          <li class="sidebar-item" *ngIf="userconnect && userconnect.role === 'ADMIN'">
+            <a class="sidebar-link" routerLink="/admin/getall" aria-expanded="false">
               <span>
                 <i class="ti ti-article"></i>
               </span>

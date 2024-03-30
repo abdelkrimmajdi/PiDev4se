@@ -57,7 +57,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         String code =this.generateCode();
         VerificationToken token = new  VerificationToken(code,user);
         VerificationTokenRepo.save(token);
-        SmsRequest smsRequest = new SmsRequest(user.getPhonenumber(), token.getToken());
+        SmsRequest smsRequest = new SmsRequest(user.getPhonenumber(),"your verification code to VitaVibes Application"+ token.getToken());
 
 // Appelez la méthode sendSms avec cet objet SmsRequest
         this.service.sendSms(smsRequest);

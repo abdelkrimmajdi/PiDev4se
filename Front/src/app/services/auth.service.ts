@@ -50,14 +50,9 @@ export class AuthService {
 
   logout() {
   
-    this.isLoggedIn = false;
   
-    localStorage.removeItem('userconnect');
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
-    localStorage.removeItem('state');
-    this.isLoggedIn = false; // Update isLoggedIn state after logout
-    this.router.navigateByUrl('/login');
+  
+    
   }
 
   

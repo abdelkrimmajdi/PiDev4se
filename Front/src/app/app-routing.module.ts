@@ -12,30 +12,50 @@ import { EditprofileComponent } from './features/admin/editprofile/editprofile.c
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { VerifEmailComponent } from './verif-email/verif-email.component';
+import { Error404ComponentComponent } from './error404-component/error404-component.component';
+import { AuthAdminService } from './guards/admin/auth-admin.service';
+import { AuthUserService } from './guards/user/auth-user.service';
+import { AuthNutririonisteService } from './guards/Nutritioniste/auth-nutririoniste.service';
 
-const routes: Routes = [
+const routes: Routes = [ 
+
   {
     path: "admin",
     component: AllTemplateBackComponent,
+   
     children: [
       {
         path: "",
         component: HomeComponent
-      },{
+      },
+      {
         path: "edite-profile",
-        component:EditprofileComponent
+        component: EditprofileComponent
+      },
+      {
+        path: "getall",
+        component: UsergetallComponent,
+      
       }
-     
     ]
   },
+  
+   
+ 
   { path: 'resetpassword/:passwordResetToken',component:ResetpasswordComponent },
   {
     path: "",
     component: AllTemplateFrontComponent,
+    canActivate: [AuthUserService] ,
     children: [
       {
         path: "",
         component: HomeFrontComponent
+      },
+      {
+        path: "edit",
+        component: EditProfileComponent,
+       
       }
     ]
   },
@@ -44,18 +64,10 @@ const routes: Routes = [
     component: LoginComponent
     
   },
-  {
-    path: "edit",
-    component: EditProfileComponent
-    
-  },
+ 
   {
     path: "register",
     component: RegisterComponent
-    
-  },{
-    path: "getall",
-    component: UsergetallComponent
     
   },
   
@@ -72,7 +84,8 @@ const routes: Routes = [
     path: "verifemail",
     component: VerifEmailComponent
     
-  }
+  },
+  { path: '**', component:Error404ComponentComponent }
 
 
 
