@@ -1,0 +1,77 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="table-responsive">
+            <form [formGroup]="UpdateForm">
+              <!-- Name -->
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter name">
+              </div>
+              <div class="alert alert-danger" *ngIf="UpdateForm.controls['name'].invalid && UpdateForm.controls['name'].touched">
+                <p *ngIf="UpdateForm.controls['name'].hasError('required')">Name required</p>
+                <p *ngIf="UpdateForm.controls['name'].hasError('minlength')">Name min Length 4 </p>
+              </div>
+            
+              <!-- Description -->
+              <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" formControlName="description" placeholder="Description">
+              </div>
+              <div class="alert alert-danger" *ngIf="UpdateForm.get('description')?.invalid && UpdateForm.controls['description'].touched">
+                <p *ngIf="UpdateForm.controls['description'].hasError('required')">Description required</p>
+                <p *ngIf="UpdateForm.controls['description'].hasError('maxlength')">Description max Length 100 </p>
+              </div>
+            
+              <!-- Type -->
+              <div class="form-group">
+                <label for="type">Type</label>
+                <input type="text" class="form-control" formControlName="type" placeholder="Type">
+              </div>
+              <div class="alert alert-danger" *ngIf="UpdateForm.get('type')?.invalid && UpdateForm.controls['type'].touched">
+                <p *ngIf="UpdateForm.controls['type'].hasError('required')">Type required</p>
+                <p *ngIf="UpdateForm.controls['type'].hasError('minLength')">Type min Length 4</p>
+              </div>
+            
+              <!-- Objectf -->
+              <div class="form-group">
+                <label for="objectf">Objectf</label>
+                <input type="text" class="form-control" formControlName="objectf" placeholder="Objectf">
+              </div>
+              <div class="alert alert-danger" *ngIf="UpdateForm.get('objectf')?.invalid && UpdateForm.controls['objectf'].touched">
+                <p *ngIf="UpdateForm.controls['objectf'].hasError('required')">Objectf required</p>
+                <p *ngIf="UpdateForm.controls['objectf'].hasError('maxlength')">Objectf max Length positif</p>
+              </div>
+            
+              <!-- Duration -->
+              <div class="form-group">
+                <label for="duration">Duration (days)</label>
+                <input type="number" class="form-control" formControlName="duration" placeholder="Duration">
+              </div>
+              <div class="alert alert-danger" *ngIf="UpdateForm.get('duration')?.invalid && UpdateForm.controls['duration'].touched">
+                <p *ngIf="UpdateForm.controls['duration'].hasError('required')">Duration required</p>
+                <p *ngIf="UpdateForm.controls['duration'].hasError('min')">Duration doit etre positif</p>
+              </div>
+            
+              <!-- Picture -->
+              <div class="form-group">
+                <label for="picture">Picture</label>
+                <input type="text" class="form-control" formControlName="picture" placeholder="Picture">
+              </div>
+              <div class="alert alert-danger" *ngIf="UpdateForm.get('picture')?.invalid && UpdateForm.controls['picture'].touched">
+                <!-- Provide appropriate validation messages for picture control if necessary -->
+              </div>
+            
+              <!-- Submit and Reset Buttons -->
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary" [disabled]="UpdateForm.invalid" (click)="save()">Submit</button>
+                <button type="button" class="btn btn-primary" (click)="reset()">Reset</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

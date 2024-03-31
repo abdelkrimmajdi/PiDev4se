@@ -12,6 +12,15 @@ import { EditprofileComponent } from './features/admin/editprofile/editprofile.c
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { VerifEmailComponent } from './verif-email/verif-email.component';
+import { AddExoComponent } from './Mentor/MentorExercice/add-exo/add-exo.component';
+import { MentorExerciceComponent } from './Mentor/mentor-exercice/mentor-exercice.component';
+import { MentorProgramComponent } from './Mentor/mentor-program/mentor-program.component';
+import { AddProgComponent } from './Mentor/MentorProgram/add-prog/add-prog.component';
+import { UpdateExoComponent } from './Mentor/MentorExercice/update-exo/update-exo.component';
+import { UpdateProgComponent } from './Mentor/MentorProgram/update-prog/update-prog.component';
+import { AssignEtoPComponent } from './Mentor/MentorExercice/assign-eto-p/assign-eto-p.component';
+import { AssignPtoUComponent } from './Mentor/MentorProgram/assign-pto-u/assign-pto-u.component';
+import { DetailProgComponent } from './Mentor/MentorProgram/detail-prog/detail-prog.component';
 
 const routes: Routes = [
   {
@@ -24,6 +33,16 @@ const routes: Routes = [
       },{
         path: "edite-profile",
         component:EditprofileComponent
+      },
+      {
+        path: "MentorExo",
+        component: MentorExerciceComponent
+        
+      },
+      {
+        path: "MentorProg",
+        component: MentorProgramComponent
+        
       }
      
     ]
@@ -37,6 +56,7 @@ const routes: Routes = [
         path: "",
         component: HomeFrontComponent
       }
+      
     ]
   },
   {
@@ -72,7 +92,59 @@ const routes: Routes = [
     path: "verifemail",
     component: VerifEmailComponent
     
+  },
+  {
+    path: "AddMentorExo",
+    component: AddExoComponent
+    
+  },
+  {
+    path: "MentorExo",
+    component: MentorExerciceComponent
+    
+  },
+  {
+    path: "MentorProg",
+    component: MentorProgramComponent
+    
+  },
+  {
+    path: "AddMentorProg",
+    component: AddProgComponent
+    
+  },
+  {
+    path: "UpdateProg/:idMentorProg",
+    component: UpdateProgComponent
+    
+  },
+  {
+    path: "UpdateExo/:idExercice",
+    component: UpdateExoComponent
+
+    
+  },
+  {
+    path: "assignEtoP",
+    component: AssignEtoPComponent
+
+    
+  },
+  {
+    path: "assignPtoU",
+    component: AssignPtoUComponent
+
+    
+  },
+  {
+    path: "Prog/:idMentorProg",
+    component: DetailProgComponent
+
+    
   }
+  
+
+  
 
 
 

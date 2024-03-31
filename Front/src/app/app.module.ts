@@ -22,6 +22,21 @@ import { EditprofileComponent } from './features/admin/editprofile/editprofile.c
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { VerifEmailComponent } from './verif-email/verif-email.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MentorProgramComponent } from './Mentor/mentor-program/mentor-program.component';
+import { MentorExerciceComponent } from './Mentor/mentor-exercice/mentor-exercice.component';
+import { AddProgComponent } from './Mentor/MentorProgram/add-prog/add-prog.component';
+import { UpdateProgComponent } from './Mentor/MentorProgram/update-prog/update-prog.component';
+import { UpdateExoComponent } from './Mentor/MentorExercice/update-exo/update-exo.component';
+import { AddExoComponent } from './Mentor/MentorExercice/add-exo/add-exo.component';
+
+// Import Angular Material modules
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { AssignEtoPComponent } from './Mentor/MentorExercice/assign-eto-p/assign-eto-p.component';
+import { AssignPtoUComponent } from './Mentor/MentorProgram/assign-pto-u/assign-pto-u.component';
+import { DetailProgComponent } from './Mentor/MentorProgram/detail-prog/detail-prog.component';
 
 
 
@@ -44,7 +59,16 @@ import { VerifEmailComponent } from './verif-email/verif-email.component';
     EditprofileComponent,
     ForgotpasswordComponent,
     ResetpasswordComponent,
-    VerifEmailComponent
+    VerifEmailComponent,
+    MentorProgramComponent,
+    MentorExerciceComponent,
+    AddProgComponent,
+    UpdateProgComponent,
+    UpdateExoComponent,
+    AddExoComponent,
+    AssignEtoPComponent,
+    AssignPtoUComponent,
+    DetailProgComponent
   
  
   ],
@@ -54,6 +78,9 @@ import { VerifEmailComponent } from './verif-email/verif-email.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatSortModule, // Import MatSortModule
+    MatTableModule // Import MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
