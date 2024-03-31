@@ -44,21 +44,30 @@ const routes: Routes = [
  
   { path: 'resetpassword/:passwordResetToken',component:ResetpasswordComponent },
   {
-    path: "",
+path:"",
     component: AllTemplateFrontComponent,
-    canActivate: [AuthUserService] ,
+  
     children: [
       {
         path: "",
         component: HomeFrontComponent
       },
+    
+    ]
+  },{
+    path:"",
+    component: AllTemplateFrontComponent,
+    canActivate: [ AuthUserService] ,
+    children: [
       {
         path: "edit",
         component: EditProfileComponent,
        
       }
+    
     ]
   },
+ 
   {
     path: "login",
     component: LoginComponent
