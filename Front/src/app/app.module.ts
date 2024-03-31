@@ -22,6 +22,7 @@ import { EditprofileComponent } from './features/admin/editprofile/editprofile.c
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { VerifEmailComponent } from './verif-email/verif-email.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MentorProgramComponent } from './Mentor/mentor-program/mentor-program.component';
 import { MentorExerciceComponent } from './Mentor/mentor-exercice/mentor-exercice.component';
@@ -37,6 +38,9 @@ import { MatSort } from '@angular/material/sort';
 import { AssignEtoPComponent } from './Mentor/MentorExercice/assign-eto-p/assign-eto-p.component';
 import { AssignPtoUComponent } from './Mentor/MentorProgram/assign-pto-u/assign-pto-u.component';
 import { DetailProgComponent } from './Mentor/MentorProgram/detail-prog/detail-prog.component';
+
+import { Error404ComponentComponent } from './error404-component/error404-component.component';
+
 
 
 
@@ -60,6 +64,7 @@ import { DetailProgComponent } from './Mentor/MentorProgram/detail-prog/detail-p
     ForgotpasswordComponent,
     ResetpasswordComponent,
     VerifEmailComponent,
+
     MentorProgramComponent,
     MentorExerciceComponent,
     AddProgComponent,
@@ -68,7 +73,10 @@ import { DetailProgComponent } from './Mentor/MentorProgram/detail-prog/detail-p
     AddExoComponent,
     AssignEtoPComponent,
     AssignPtoUComponent,
-    DetailProgComponent
+    DetailProgComponent,
+
+    Error404ComponentComponent
+
   
  
   ],

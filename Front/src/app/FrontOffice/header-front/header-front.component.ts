@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/model/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -19,6 +20,12 @@ export class HeaderFrontComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout;
+    localStorage.removeItem('userconnect');
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('state');
+  
+    this.router.navigateByUrl('/login');
   }
+  userconnect: User = JSON.parse(localStorage.getItem("userconnect")!);
 }

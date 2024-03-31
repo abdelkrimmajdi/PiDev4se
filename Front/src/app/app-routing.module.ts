@@ -12,6 +12,7 @@ import { EditprofileComponent } from './features/admin/editprofile/editprofile.c
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { VerifEmailComponent } from './verif-email/verif-email.component';
+
 import { AddExoComponent } from './Mentor/MentorExercice/add-exo/add-exo.component';
 import { MentorExerciceComponent } from './Mentor/mentor-exercice/mentor-exercice.component';
 import { MentorProgramComponent } from './Mentor/mentor-program/mentor-program.component';
@@ -22,17 +23,29 @@ import { AssignEtoPComponent } from './Mentor/MentorExercice/assign-eto-p/assign
 import { AssignPtoUComponent } from './Mentor/MentorProgram/assign-pto-u/assign-pto-u.component';
 import { DetailProgComponent } from './Mentor/MentorProgram/detail-prog/detail-prog.component';
 
-const routes: Routes = [
+import { Error404ComponentComponent } from './error404-component/error404-component.component';
+import { AuthAdminService } from './guards/admin/auth-admin.service';
+import { AuthUserService } from './guards/user/auth-user.service';
+import { AuthNutririonisteService } from './guards/Nutritioniste/auth-nutririoniste.service';
+
+const routes: Routes = [ 
   {
-    path: "admin",
+  path: "admin",
     component: AllTemplateBackComponent,
+   
     children: [
       {
         path: "",
         component: HomeComponent
-      },{
+      },
+      {
         path: "edite-profile",
-        component:EditprofileComponent
+        component: EditprofileComponent
+      },
+      {
+        path: "getall",
+        component: UsergetallComponent,
+      
       },
       {
         path: "MentorExo",
@@ -44,38 +57,46 @@ const routes: Routes = [
         component: MentorProgramComponent
         
       }
-     
     ]
   },
+  
+   
+ 
   { path: 'resetpassword/:passwordResetToken',component:ResetpasswordComponent },
   {
-    path: "",
+path:"",
     component: AllTemplateFrontComponent,
+  
     children: [
       {
         path: "",
         component: HomeFrontComponent
+      },
+    
+    ]
+  },{
+    path:"",
+    component: AllTemplateFrontComponent,
+    canActivate: [ AuthUserService] ,
+    children: [
+      {
+        path: "edit",
+        component: EditProfileComponent,
+       
       }
-      
+    
     ]
   },
+ 
   {
     path: "login",
     component: LoginComponent
     
   },
-  {
-    path: "edit",
-    component: EditProfileComponent
-    
-  },
+ 
   {
     path: "register",
     component: RegisterComponent
-    
-  },{
-    path: "getall",
-    component: UsergetallComponent
     
   },
   
@@ -93,6 +114,7 @@ const routes: Routes = [
     component: VerifEmailComponent
     
   },
+  { path: '**', component:Error404ComponentComponent },
   {
     path: "AddMentorExo",
     component: AddExoComponent
@@ -142,8 +164,6 @@ const routes: Routes = [
 
     
   }
-  
-
   
 
 

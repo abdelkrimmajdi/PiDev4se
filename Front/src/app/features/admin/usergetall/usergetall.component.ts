@@ -9,6 +9,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UsergetallComponent {
   listUser: User[] = [];
+  searchText: string = '';
+  selectedRole: string=''
 
   constructor(public userService: UserService) {}
 
@@ -35,5 +37,25 @@ export class UsergetallComponent {
   isAdmin(user: User): boolean {
     // Ajoutez ici la logique pour vérifier si l'utilisateur est un administrateur
     return true; // Pour l'exemple, supposons que l'utilisateur est toujours un administrateur
+  }
+ 
+  filterUsers() {
+    let filteredUsers = this.listUser;
+
+    // Filtrer par rôle si un rôle est sélectionné
+    if (this.selectedRole) {
+      filteredUsers = filteredUsers.filter(user => user.role === this.selectedRole);
+    }
+
+    // Filtrer par nom, prénom ou email si la recherche est effectuée
+    if (this.searchText.trim() !== '') {
+      filteredUsers = filteredUsers.filter(user => {
+        return user.firstName.toLowerCase().includes(this.searchText.toLowerCase()) || 
+               user.lastName.toLowerCase().includes(this.searchText.toLowerCase()) ||
+               user.email.toLowerCase().includes(this.searchText.toLowerCase());
+      });
+    }
+
+    return filteredUsers;
   }
 }
