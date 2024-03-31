@@ -20,8 +20,13 @@ export class RegisterComponent {
     lastName: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
-    role: ['', [Validators.required, Validators.minLength(6)]]
+    role: ['', [Validators.required]],
+    image:['', [Validators.required]]
   });
+  selectedFile: File | null = null;
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0] as File;
+  }
 
   register(): void {
     const formData = this.registerForm.value;

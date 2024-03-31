@@ -21,7 +21,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Random;
@@ -43,12 +48,14 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     EmailSender emailSender;
     @Autowired
     Servicess service;
+
+
     public User signup(SignUpRequest signUpRequest){
         User user = new User();
         user.setEmail(signUpRequest.getEmail());
         user.setFirstName(signUpRequest.getFirstName());
         user.setLastName(signUpRequest.getLastName());
-     user.setPhonenumber(signUpRequest.getPhonenumber());
+        user.setPhonenumber(signUpRequest.getPhonenumber());
         user.setRole((signUpRequest.getRole()));
         user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
 
@@ -69,6 +76,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         Integer code = 100000 + random.nextInt(900000);
         return code.toString();
     }
+
+
+
     public void sendEmailUser(User u,String code){
         String emailBody="Bonjour"+"<h1>"+u.getFirstName()+"</h1"+
                 "Votre code de validation est "+"<h1>"+code+"</h1>";

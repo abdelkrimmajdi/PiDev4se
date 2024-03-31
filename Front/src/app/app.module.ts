@@ -22,6 +22,7 @@ import { EditprofileComponent } from './features/admin/editprofile/editprofile.c
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { VerifEmailComponent } from './verif-email/verif-email.component';
+import { Error404ComponentComponent } from './error404-component/error404-component.component';
 
 
 
@@ -44,7 +45,8 @@ import { VerifEmailComponent } from './verif-email/verif-email.component';
     EditprofileComponent,
     ForgotpasswordComponent,
     ResetpasswordComponent,
-    VerifEmailComponent
+    VerifEmailComponent,
+    Error404ComponentComponent
   
  
   ],
