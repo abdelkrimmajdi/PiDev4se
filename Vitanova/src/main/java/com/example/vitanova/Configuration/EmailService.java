@@ -26,7 +26,7 @@ public class EmailService implements EmailSender {
 
     public void sendSimpleEmail(final Mail mail) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("vitavibes2024@gmail.com");
+        message.setFrom("majdi.abdelkrim@esprit.tn");
         message.setTo(mail.getTo());
         message.setSubject("Réinitialiser le mot de passe");
         message.setText(mail.getContent());
@@ -49,7 +49,7 @@ public class EmailService implements EmailSender {
         helper.setSubject("Confirm your email");
 
         // Définition de l'expéditeur
-        helper.setFrom("vitavibes2024@gmail.com");
+        helper.setFrom("majdi.abdelkrim@esprit.tn");
 
         // Envoi du message
 
