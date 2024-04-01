@@ -27,13 +27,16 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
     private String phonenumber;
-    private String image;
+    @OneToOne
+    private Image image;
     String passwordResetToken;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
+
 
     @Override
     public String getUsername() {

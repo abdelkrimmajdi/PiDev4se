@@ -27,6 +27,7 @@
                             <thead>
                                 <tr>
                                   <th><span>#</span></th>
+                                  <th><span>Image</span></th>
                                   <th><span>User</span></th>
                                   <th><span>Email</span></th>
                                   <th class="text-center"><span>Phone Number</span></th>
@@ -39,13 +40,19 @@
                                   <td>                                     
                                         <p class="text-sm font-weight-bold mb-0">{{ i + 1 }}</p>                                     
                                   </td>
+                                  <td>                                     
+                                    <td>                                     
+                                      <img src="{{ user.imageStr }}">                                  
+                                  </td>                                  
+                              
+                             
                                   <td>                           
                                         <a href="#" class="user-link">{{ user.firstName }} {{ user.lastName }}</a>                                      
                                   </td>
                                   <td>
                                     <a href="#">{{ user.email }}</a>
                                   </td>
-                                  <td>{{ user.phonenumber }}</td>
+                                  
                                   <td class="text-center">
                                     <span class="label label-default">{{ user.phonenumber }}</span>
                                   </td>

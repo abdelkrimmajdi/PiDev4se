@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Image } from 'src/app/model/image.model';
 import { User } from 'src/app/model/user.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,16 +13,21 @@ export class UsergetallComponent {
   listUser: User[] = [];
   searchText: string = '';
   selectedRole: string=''
-
-  constructor(public userService: UserService) {}
+  userconnect: User = JSON.parse(localStorage.getItem("userconnect")!);
+  user!: User;
+  constructor(public userService: UserService,private auth:AuthService) {}
 
   ngOnInit() {
     this.getAllUser();
   }
-
   getAllUser() {
     this.userService.getAllUser().subscribe((res: any) => {
       this.listUser = res;
+      this.listUser.forEach((user) => {
+        this.auth.loadImage(user.image.idImage).subscribe((img: Image) => {
+          user.imageStr = 'data:' + img.type + ';base64,' + img.image;
+        });
+      });
     });
   }
 

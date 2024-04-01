@@ -58,7 +58,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         user.setPhonenumber(signUpRequest.getPhonenumber());
         user.setRole((signUpRequest.getRole()));
         user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
-
+        user.setImage(signUpRequest.getImage());
         userRepository.save(user);
 
         String code =this.generateCode();
@@ -118,15 +118,17 @@ System.err.println(user.isEnabled());
 
 
     private User convertToUserDto(User user) {
-            User dto = new User();
-            dto.setId(user.getId());
-            dto.setFirstName(user.getFirstName());
-            dto.setLastName(user.getLastName());
-            dto.setEmail(user.getEmail());
-            dto.setPassword(user.getPassword());
-            dto.setRole(user.getRole());
-            return dto;
-        }
+        User dto = new User();
+        dto.setId(user.getId());
+        dto.setFirstName(user.getFirstName());
+        dto.setLastName(user.getLastName());
+        dto.setEmail(user.getEmail());
+        dto.setPassword(user.getPassword());
+        dto.setImage(user.getImage());
+        dto.setPhonenumber(user.getPhonenumber());
+        dto.setRole(user.getRole());
+        return dto;
+    }
 
     public JwtAuthenticationResponse refreshToken(RefreshTokenRequest refreshTokenRequest) {
         String userEmail = jwtService.ExtractUserName(refreshTokenRequest.getToken());
