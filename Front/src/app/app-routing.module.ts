@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AllTemplateBackComponent } from './BackOffice/all-template-back/all-template-back.component';
 import { HomeComponent } from './BackOffice/home/home.component';
 import { AllTemplateFrontComponent } from './FrontOffice/all-template-front/all-template-front.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './login/LoginComponent';
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
 import { RegisterComponent } from './register/register.component';
 import { UsergetallComponent } from './features/admin/usergetall/usergetall.component';

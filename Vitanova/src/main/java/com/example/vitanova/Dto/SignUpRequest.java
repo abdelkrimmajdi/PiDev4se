@@ -1,5 +1,6 @@
 package com.example.vitanova.Dto;
 
+import com.example.vitanova.Entities.Image;
 import com.example.vitanova.Entities.Role;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
@@ -11,6 +12,6 @@ public class SignUpRequest {
     private String email;
     private String password;
     private String phonenumber;
-
+    private Image image;
     private Role role;
 }

@@ -3,6 +3,8 @@ import { User } from 'src/app/model/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { AuthService } from 'src/app/services/auth.service';
+import { Image } from 'src/app/model/image.model';
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
@@ -15,21 +17,34 @@ export class EditProfileComponent {
   updateForm!: FormGroup;
   updatePasswordForm!: FormGroup;
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder) {}
+  constructor(private userService: UserService, private formBuilder: FormBuilder,private authService:AuthService) {}
 
   ngOnInit(): void {
+    console.log(this.userconnect.image);
+    this.loadUserImage(); // Corrected calling of the method
+
     this.updateForm = this.formBuilder.group({
       id: [this.userconnect.id], 
       firstName: [this.userconnect.firstName, [Validators.required, Validators.minLength(3)]],
       lastName: [this.userconnect.lastName, Validators.required],
-      email: [this.userconnect.email, Validators.required]
-  
+      email: [this.userconnect.email, Validators.required],
     });
     this.updatePasswordForm = this.formBuilder.group({
       id: [this.userconnect.id], 
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required]
-  }, { validator: this.passwordMatchValidator }); // Appel de la fonction de validation personnalisée
+    }, { validator: this.passwordMatchValidator }); 
+}
+userImage!: String; 
+  loadUserImage() {
+   
+
+    this.authService.loadImage(this.userconnect.image.idImage)
+      .subscribe((image: Image) => {
+        console.log(image)
+        this.userImage = 'data:'+image.type+';base64,'+image.image; // Stockez l'image dans la variable userImage
+      });
+
 }
 
 
