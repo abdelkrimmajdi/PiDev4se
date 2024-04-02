@@ -42,6 +42,10 @@ import { DetailProgComponent } from './Mentor/MentorProgram/detail-prog/detail-p
 import { Error404ComponentComponent } from './error404-component/error404-component.component';
 import { GetallMentorComponent } from './Umentor/getall-mentor/getall-mentor.component';
 import { MentorDetailComponent } from './Umentor/mentor-detail/mentor-detail.component';
+import { MarketComponent } from './market/market.component';
+import { AddproductComponent } from './addproduct/addproduct.component';
+import { ProductComponent } from './product/product.component';
+import { PanierComponent } from './panier/panier.component';
 
 
 
@@ -79,7 +83,11 @@ import { MentorDetailComponent } from './Umentor/mentor-detail/mentor-detail.com
 
     Error404ComponentComponent,
       GetallMentorComponent,
-      MentorDetailComponent
+      MentorDetailComponent,
+      MarketComponent,
+      AddproductComponent,
+      ProductComponent,
+      PanierComponent,
 
   
  

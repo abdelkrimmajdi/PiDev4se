@@ -24,6 +24,6 @@ public class Reclamation {
     @ManyToOne
     User user;
     @OneToMany(cascade = CascadeType.ALL, mappedBy="reclamation")
-    private Set<Response> Responses;
+    private Set< com.example.vitanova.Entities.Response> Responses;
 
 }

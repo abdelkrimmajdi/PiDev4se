@@ -12,7 +12,7 @@ import { MentorExerciceService } from 'src/app/services/mentor-exercice.service'
 export class MentorExerciceComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
   dataSource!: MatTableDataSource<MentorExercice>; // Initialize with definite assignment assertion
-  displayedColumns: string[] = ['idExercice', 'name', 'description', 'exeTime', 'picture', 'actions'];
+  displayedColumns: string[] = [ 'name', 'description', 'priority', 'exeTime', 'picture', 'actions'];
   searchCriteria: string = ''; // Change searchCriteria to string type
 
   constructor(private mentorExerciceService: MentorExerciceService) {}

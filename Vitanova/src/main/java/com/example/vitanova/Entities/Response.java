@@ -1,5 +1,6 @@
 package com.example.vitanova.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,6 +18,7 @@ public class Response {
     private Long IdRep;
     private String DescriptionRep;
     private Date DateRep;
+    @JsonIgnore
     @ManyToOne
     Reclamation reclamation;
 

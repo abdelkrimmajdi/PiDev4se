@@ -12,16 +12,18 @@ import { MentorProgramService } from 'src/app/services/mentor-program.service';
 export class MentorProgramComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
   dataSource!: MatTableDataSource<MentorProgram>;
-  displayedColumns: string[] = ['idMentorProg', 'name', 'description', 'type', 'objectf', 'duration', 'picture', 'actions'];
+  displayedColumns: string[] = ['name', 'description', 'type', 'objectf', 'duration', 'picture', 'actions'];
   searchCriteria: string = '';
+  isDarkModeEnabled: boolean = false;
 
-  constructor(private mentorProgramService: MentorProgramService) {}
+  constructor(private mentorProgramService: MentorProgramService) { }
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<MentorProgram>([]);
     this.dataSource.sort = this.sort;
     this.searchPrograms();
   }
+
 
   searchPrograms(): void {
     if (this.searchCriteria.trim()) {

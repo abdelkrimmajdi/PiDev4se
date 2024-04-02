@@ -1,0 +1,32 @@
+.basket-icon {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+/* Style for the basket handle */
+.basket-handle {
+    width: 4px;
+    height: 12px;
+    background-color: orange;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* Style for the basket body */
+.basket-body {
+    width: 18px;
+    height: 10px;
+    background-color: orange;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}

@@ -29,6 +29,11 @@ import { AuthUserService } from './guards/user/auth-user.service';
 import { AuthNutririonisteService } from './guards/Nutritioniste/auth-nutririoniste.service';
 import { GetallMentorComponent } from './Umentor/getall-mentor/getall-mentor.component';
 import { MentorDetailComponent } from './Umentor/mentor-detail/mentor-detail.component';
+import { AddproductComponent } from './addproduct/addproduct.component';
+import { ProductComponent } from './product/product.component';
+import { ProductUpdateComponent } from './product-update/product-update.component';
+import { MarketComponent } from './market/market.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [ 
   {
@@ -60,8 +65,31 @@ const routes: Routes = [
         
       }
     ]
-  },
-  
+  },{
+  path: "admin",
+  component: AllTemplateBackComponent,
+  children: [
+    {
+      path: "",
+      component: HomeComponent
+    },
+    {
+      path: "addproduct",
+      component:AddproductComponent
+
+    },
+    {
+      path: "product",
+      component:ProductComponent
+
+    },
+    {
+      path: "update-product/:id",
+      component: ProductUpdateComponent
+    },
+
+  ]
+},
    
  
   { path: 'resetpassword/:passwordResetToken',component:ResetpasswordComponent },
@@ -74,6 +102,15 @@ path:"",
         path: "",
         component: HomeFrontComponent
       },
+      {
+        path: "market",
+        component:MarketComponent
+    
+      },
+      {
+        path: "GetMentors",
+        component: GetallMentorComponent
+      },
     
     ]
   },{
@@ -85,11 +122,8 @@ path:"",
         path: "edit",
         component: EditProfileComponent,
        
-      },
-      {
-        path: "GetMentors",
-        component: GetallMentorComponent
-      },
+      }
+      
     
     ]
   },

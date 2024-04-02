@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    h1 {
+      margin-left: 270px;
+      /* Add an empty space on the left side of the title */
+    }
+
+    .table-container {
+      padding-left: 270px;
+      /* Add an empty space on the left side of the table */
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+      /* Center the content of the table */
+    }
+
+    .table th, .table td {
+      padding: 8px;
+      border: 1px solid #ddd;
+    }
+
+    .form-container {
+      margin-left: 270px; /* Align with the table */
+      margin-top: 20px; /* Space from the table */
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1 class="card-title fw-semibold" style="text-align: center;">Update Product</h1>
+
+  <!-- Form for updating a product -->
+  <div class="form-container">
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+      <table class="table table-striped">
+        <!-- Table headers -->
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Image URL</th>
+          <th>Category</th>
+        </tr>
+        </thead>
+        <!-- Table body with form inputs -->
+        <tbody>
+        <tr>
+          <td>
+            <input formControlName="nameProd" placeholder="Name">
+          </td>
+          <td>
+            <input formControlName="priceProd" placeholder="Price">
+          </td>
+          <td>
+            <input formControlName="imageProd" placeholder="Image URL">
+          </td>
+          <td>
+            <input formControlName="categorie" placeholder="Category">
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-primary" (click)="onSubmit()">Update Product</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>
