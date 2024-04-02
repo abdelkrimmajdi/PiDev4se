@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.ByteArrayOutputStream;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -141,7 +142,44 @@ public class MentorServiceImpl implements MentorService{
                 .orElseThrow(() -> new RuntimeException("Mentor program not found for this id :: " + programId));
         return program.getMentorexercices();
     }
+    // Method to generate PDF for Mentor Program Details
+    @Override
+    public byte[] generatePDFForMentorProgramDetails(Long id) {
+        MentorProgram program = mentorProgramRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Mentor program not found for this id :: " + id));
+        Set<MentorExercice> exercises = program.getMentorexercices();
 
+        // Here you can use a library like Apache PDFBox or iText to generate the PDF content
+        // For demonstration, I'll create a simple PDF using iText
+        try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+            com.itextpdf.text.Document document = new com.itextpdf.text.Document();
+            com.itextpdf.text.pdf.PdfWriter.getInstance(document, outputStream);
+            document.open();
+            document.add(new com.itextpdf.text.Paragraph("Mentor Program Details:"));
+            document.add(new com.itextpdf.text.Paragraph("Program ID: " + program.getIdMentorProg()));
+            document.add(new com.itextpdf.text.Paragraph("Name: " + program.getName()));
+            document.add(new com.itextpdf.text.Paragraph("Description: " + program.getDescription()));
+            document.add(new com.itextpdf.text.Paragraph("Type: " + program.getType()));
+            document.add(new com.itextpdf.text.Paragraph("Objective: " + program.getObjectf()));
+            document.add(new com.itextpdf.text.Paragraph("Duration: " + program.getDuration()));
+            document.add(new com.itextpdf.text.Paragraph("Picture: " + program.getPicture()));
+            document.add(new com.itextpdf.text.Paragraph("Mentor Exercises:"));
+            for (MentorExercice exercise : exercises) {
+                document.add(new com.itextpdf.text.Paragraph("- " + exercise.getName()));
+            }
+            document.close();
+            return outputStream.toByteArray();
+        } catch (Exception e) {
+            throw new RuntimeException("Error generating PDF for Mentor Program Details", e);
+        }
+
+    }
+    @Override
+    public Set<MentorProgram> getMentorProgramsForUser(Long userId) {
+        User user = UserRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found for this id :: " + userId));
+        return user.getMentorprograms();
+    }
 
 
 

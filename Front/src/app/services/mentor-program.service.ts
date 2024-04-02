@@ -37,5 +37,15 @@ export class MentorProgramService {
   getMentorExercisesForProgram(programId: number): Observable<MentorExercice[]> {
     return this.http.get<MentorExercice[]>(`${this.apiUrl}/getMentorExercisesForProgram/${programId}`);
   }
-
+  generatePDFForMentorProgramDetails(programId: number): Observable<Blob> {
+    const url = `${this.apiUrl}/generatePDF/${programId}`;
+    // Set responseType as 'blob' to handle binary data (PDF)
+    return this.http.get(url, { responseType: 'blob' });
+  }
+  getMentorProgramsForUser(userId: number): Observable<MentorProgram[]> {
+    return this.http.get<MentorProgram[]>(`${this.apiUrl}/getMentorProgramsForUser/${userId}`);
+  }
+  getUserById(id:number){
+    return this.http.get<MentorProgram>('http://localhost:8081/api/v1/admin'+'/'+id)
+  }
 }

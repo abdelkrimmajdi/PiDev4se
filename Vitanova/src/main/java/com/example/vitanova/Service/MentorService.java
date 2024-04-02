@@ -25,4 +25,9 @@ public interface MentorService {
     public List<MentorProgram> searchProgramsByName(String name);
     public List<MentorExercice> searchExercisesByName(String name);
     public Set<MentorExercice> getMentorExercisesForProgram(Long programId);
+
+    // Method to generate PDF for Mentor Program Details
+    public byte[] generatePDFForMentorProgramDetails(Long id);
+
+    Set<MentorProgram> getMentorProgramsForUser(Long userId);
 }

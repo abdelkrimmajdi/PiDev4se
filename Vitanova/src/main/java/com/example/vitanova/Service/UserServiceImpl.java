@@ -79,7 +79,8 @@ public class UserServiceImpl implements UserService{
             User user = userOptional.get();
 
             // Trouver les tokens de vérification liés à cet utilisateur
-            List<VerificationToken> tokens = verificationTokenRepository.findByUser(user);
+
+        List<VerificationToken> tokens = verificationTokenRepository.findByUser(user);
 
             // Supprimer chaque token de vérification trouvé
             for (VerificationToken token : tokens) {

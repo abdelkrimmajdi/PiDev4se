@@ -21,7 +21,7 @@
               </div>
               <div class="alert alert-danger" *ngIf="UpdateForm.get('description')?.invalid && UpdateForm.controls['description'].touched">
                 <p *ngIf="UpdateForm.controls['description'].hasError('required')">Description required</p>
-                <p *ngIf="UpdateForm.controls['description'].hasError('maxlength')">Description max Length 100 </p>
+                <p *ngIf="UpdateForm.controls['description'].hasError('maxlength')">Description max Length 500 </p>
               </div>
             
               <!-- Type -->

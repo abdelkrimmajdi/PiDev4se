@@ -30,8 +30,8 @@
           <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef> Actions </th>
             <td mat-cell *matCellDef="let exercise">
-              <button class="btn btn-danger" (click)="supp(exercise.idExercice)">Delete</button>
-              <button type="button" class="btn btn-danger" [routerLink]="['/UpdateExo', exercise.idExercice]">Update</button>
+              <button type="button" class="btn btn-sm btn-danger" (click)="supp(exercise.idExercice)">Delete</button>
+              <button type="button" class="btn btn-sm btn-danger" [routerLink]="['/UpdateExo', exercise.idExercice]">Update</button>
             </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -39,7 +39,7 @@
         </table>
       </div>
     </div>
-    <a routerLink="/AddMentorExo" class="btn btn-primary">Create Exercise</a>
-    <a routerLink="/assignEtoP" class="btn btn-primary">Assign Exercise</a>
+    <a routerLink="/AddMentorExo" class="btn btn-lg btn-primary">Create Exercise</a>
+    <a routerLink="/assignEtoP" class="btn btn-lg btn-primary">Assign Exercise</a>
   </div>
 </div>

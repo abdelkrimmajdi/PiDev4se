@@ -22,7 +22,7 @@ export class UpdateExoComponent implements OnInit {
   ) {
     this.UpdateForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(4)]),
-      description: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      description: new FormControl('', [Validators.required, Validators.maxLength(500)]),
       priority: new FormControl('', [Validators.required, Validators.min(1)]),
       exeTime: new FormControl('', [Validators.required, Validators.min(1)]),
       picture: new FormControl(''),

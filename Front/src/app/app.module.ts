@@ -40,6 +40,8 @@ import { AssignPtoUComponent } from './Mentor/MentorProgram/assign-pto-u/assign-
 import { DetailProgComponent } from './Mentor/MentorProgram/detail-prog/detail-prog.component';
 
 import { Error404ComponentComponent } from './error404-component/error404-component.component';
+import { GetallMentorComponent } from './Umentor/getall-mentor/getall-mentor.component';
+import { MentorDetailComponent } from './Umentor/mentor-detail/mentor-detail.component';
 
 
 
@@ -75,7 +77,9 @@ import { Error404ComponentComponent } from './error404-component/error404-compon
     AssignPtoUComponent,
     DetailProgComponent,
 
-    Error404ComponentComponent
+    Error404ComponentComponent,
+      GetallMentorComponent,
+      MentorDetailComponent
 
   
  

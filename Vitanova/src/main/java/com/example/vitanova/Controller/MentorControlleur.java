@@ -66,6 +66,10 @@ public class MentorControlleur {
     public Set<MentorExercice> getMentorExercisesForProgram(@PathVariable Long programId) {
         return mentorService.getMentorExercisesForProgram(programId);
     }
+    @GetMapping("/getMentorProgramsForUser/{userId}")
+    public Set<MentorProgram> getMentorProgramsForUser(@PathVariable Long userId) {
+        return mentorService.getMentorProgramsForUser(userId);
+    }
 
     @PutMapping("/updateMentorExercice/{id}")
     public MentorExercice updateMentorExercice(@RequestBody MentorExercice mentorExercice, @PathVariable Long id) {
@@ -98,6 +102,13 @@ public class MentorControlleur {
     @GetMapping("/searchExercises/{name}")
     public List<MentorExercice> searchExercisesByName(@PathVariable String name) {
         return mentorService.searchExercisesByName(name);
+    }
+    @GetMapping("/generatePDF/{id}")
+    public ResponseEntity<byte[]> generatePDF(@PathVariable Long id) {
+        byte[] pdfBytes = mentorService.generatePDFForMentorProgramDetails(id);
+        return ResponseEntity.ok()
+                .header("Content-Type", "application/pdf")
+                .body(pdfBytes);
     }
 }
 

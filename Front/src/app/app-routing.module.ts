@@ -27,6 +27,8 @@ import { Error404ComponentComponent } from './error404-component/error404-compon
 import { AuthAdminService } from './guards/admin/auth-admin.service';
 import { AuthUserService } from './guards/user/auth-user.service';
 import { AuthNutririonisteService } from './guards/Nutritioniste/auth-nutririoniste.service';
+import { GetallMentorComponent } from './Umentor/getall-mentor/getall-mentor.component';
+import { MentorDetailComponent } from './Umentor/mentor-detail/mentor-detail.component';
 
 const routes: Routes = [ 
   {
@@ -83,7 +85,11 @@ path:"",
         path: "edit",
         component: EditProfileComponent,
        
-      }
+      },
+      {
+        path: "GetMentors",
+        component: GetallMentorComponent
+      },
     
     ]
   },
@@ -114,7 +120,7 @@ path:"",
     component: VerifEmailComponent
     
   },
-  { path: '**', component:Error404ComponentComponent },
+  
   {
     path: "AddMentorExo",
     component: AddExoComponent
@@ -163,8 +169,14 @@ path:"",
     component: DetailProgComponent
 
     
-  }
+  },
   
+  {
+    path: "GetMentorsDetails/:id",
+    component: MentorDetailComponent
+  },
+  
+  { path: '**', component:Error404ComponentComponent }
 
 
 

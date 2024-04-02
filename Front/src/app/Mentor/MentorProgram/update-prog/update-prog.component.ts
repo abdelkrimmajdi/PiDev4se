@@ -25,7 +25,7 @@ export class UpdateProgComponent implements OnInit {
     this.idMentorProg = this.route.snapshot.params['idMentorProg'];
     this.UpdateForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(4)]),
-      description: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      description: new FormControl('', [Validators.required, Validators.maxLength(500)]),
       type: new FormControl('', [Validators.required, Validators.minLength(4)]),
       objectf: new FormControl('', [Validators.required, Validators.maxLength(50)]),
       duration: new FormControl('', [Validators.required, Validators.min(1)]),
