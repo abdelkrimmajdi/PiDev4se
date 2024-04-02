@@ -12,7 +12,7 @@ import { AllTemplateFrontComponent } from './FrontOffice/all-template-front/all-
 import { FooterFrontComponent } from './FrontOffice/footer-front/footer-front.component';
 import { HeaderFrontComponent } from './FrontOffice/header-front/header-front.component';
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './login/LoginComponent';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';

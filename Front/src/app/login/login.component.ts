@@ -1,27 +1,7 @@
 
-import { Component } from '@angular/core';
-import { User } from '../model/user.model';
-import { Role } from "../model/role.enum";
-import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import Swal from 'sweetalert2';
-import { LoginPayload } from '../model/login-payload';
-import { FormBuilder } from '@angular/forms';
 import { HeaderFrontComponent } from '../FrontOffice/header-front/header-front.component';
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
-})
-export class LoginComponent {
-  user: User = new User()
-  
-  loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)])
-  });
 
+<<<<<<< HEAD
   constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder,) { }
   
 
@@ -155,3 +135,5 @@ export class LoginComponent {
     });
   }
 }
+=======
+>>>>>>> 3041507f6355607a630e9ef9562e4329b8a20a9c

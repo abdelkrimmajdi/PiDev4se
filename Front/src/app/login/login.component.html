@@ -62,6 +62,11 @@
                           <i class="input-icon uil uil-phone"></i>
                         </div>
                         <div class="form-group mt-2">
+                          <input type="file" class="form-style" placeholder="Photo profile" (change)="onImageUpload($event)">
+                          <i class="input-icon uil uil-image"></i>
+                        </div>
+                        
+                        <div class="form-group mt-2">
                           <input type="password" class="form-style" placeholder="Password" formControlName="password">
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
