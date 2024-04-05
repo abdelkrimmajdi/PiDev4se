@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Votre titre</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <style>
+    body{margin-left: 300px;margin-right: 50px;}
+    </style>
+</head>
+<body>
+  <div class="container">
+    <div class="search-container">
+      <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher...">
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div *ngIf="filteredResponses.length > 0; else noResponses">
+      <h2 class="center-text">Responses List</h2>
+      <table class="table">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Description</th>
+                  <th>Date</th>
+                  <th>Associated Reclamation ID</th>
+                  <th>Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let response of filterResponses()">
+                  <td>{{ response.idRep }}</td>
+                  <td>{{ response.descriptionRep }}</td>
+                  <td>{{ response.dateRep }}</td>
+                  <td>{{ response.idRep }}</td>
+                  <td>
+                      <button class="button btn-danger" (click)="deleteResponse(response.idRep)"><i class="fas fa-trash"></i> Delete</button>
+                      <button class="button btn-primary" (click)="editResponse(response.idRep)"><i class="fas fa-edit"></i> Update</button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      <button  class="button center-button" (click)="returnReclamation()"><i class="fas fa-reply"></i> Return To Reclamations List</button>
+    </div>
+    <ng-template #noResponses>
+      <p>Aucune réponse trouvée.</p>
+    </ng-template>
+  </div>
+</body>
+</html>

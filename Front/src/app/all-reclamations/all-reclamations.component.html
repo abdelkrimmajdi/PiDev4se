@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Votre titre</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <style>
+    body{margin-left: 300px;margin-right: 50px;}
+    /* Bouton de base */
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      background-color: #007bff; /* Couleur de fond */
+      color: #fff; /* Couleur du texte */
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    /* Bouton survolé */
+    .button:hover {
+      background-color: #0056b3; /* Couleur de fond survolée */
+    }
+
+    /* Bouton centré */
+    .center-button {
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="search-container">
+      <input type="text" [(ngModel)]="searchTerm" (input)="applyFilters()" placeholder="Rechercher...">
+    </div>
+    <div class="filter-container">
+      <label for="filterState">Filtrer par état :</label>
+      <select id="filterState" (change)="filterByState($event)" [(ngModel)]="defaultFilterState">
+        <option value="All">Toutes les réclamations</option>
+        <option value="Treated">Traitées</option>
+        <option value="NotTreated">Non traitées</option>
+      </select>
+    </div>
+    <button class="button" (click)="generatePDF()"><i class="fas fa-download"></i> Download Reclamations List</button>
+  </div>
+  <div class="main-content">
+    <div *ngIf="filteredReclamations.length > 0; else noReclamations">
+      <h2 class="center-text">Reclamations List</h2>
+      <table class="table" #pdfTable>
+        <!-- Table Header -->
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>State</th>
+            <th class="action-column">Action</th>
+          </tr>
+        </thead>
+        <!-- Table Body -->
+        <tbody>
+          <tr *ngFor="let reclamation of filteredReclamations">
+            <td>{{ reclamation.idReclam }}</td>
+            <td>{{ reclamation.reclamType }}</td>
+            <td>{{ reclamation.reclamDate }}</td>
+            <td>{{ reclamation.descriptionReclam }}</td>
+            <td>{{ reclamation.stateReclam }}</td>
+            <td >
+              <button class="btn btn-danger" (click)="deleteReclamation(reclamation.idReclam)"><i class="fas fa-trash"></i> Delete</button>
+              <button class="btn btn-primary" (click)="editReclamation(reclamation.idReclam)"><i class="fas fa-edit"></i> Update</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button  class="button center-button" (click)="repondreReclamation()"><i class="fas fa-reply"></i> Respoond To A Reclamation</button><button  class="button center-button" (click)="responselist()"><i class="fas fa-reply"></i> Response List</button>
+      <!-- Dashboard -->
+      <div>
+        <canvas *ngIf="filteredReclamations.length > 0" #pieChartCanvas id="pieChartCanvas"></canvas>
+      </div>
+    </div>
+    <ng-template #noReclamations>
+      <p>Aucune réclamation trouvée.</p>
+    </ng-template>
+  </div>
+  </body>
+</html>

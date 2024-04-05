@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Form</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 600px; /* Optional: Adjust the maximum width of the form */
+        }
+
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .input-row .input-wrapper {
+            flex: 1;
+            margin-right: 1rem;
+        }
+
+        .input-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input-wrapper label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .input-wrapper input, .input-wrapper textarea {
+            background-color: #eee;
+            border: none;
+            padding: 1rem;
+            font-size: 1rem;
+            width: 100%; /* Adjust as needed */
+            border-radius: 1rem;
+            color: lightcoral;
+            box-shadow: 0 0.4rem #dfd9d9;
+            cursor: pointer;
+        }
+
+        .input-wrapper input:focus, .input-wrapper textarea:focus {
+            outline-color: lightcoral;
+        }
+
+        .btn {
+            padding: 1em 1.5em;
+            font-size: 17px;
+            background: transparent;
+            border: none;
+            color: black; /* Change text color to black */
+            font-weight: bold; /* Make text bold */
+            text-transform: uppercase;
+            position: relative;
+            transition: 0.5s ease;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            width: 0;
+            background-color: #ffc506;
+            transition: 0.5s ease;
+        }
+
+        .btn:hover {
+            color: red; /* Change text color to red on hover */
+            transition-delay: 0.5s;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 0;
+            width: 100%;
+            background-color: #ffc506;
+            transition: 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::after {
+            height: 100%;
+            transition-delay: 0.4s;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+
+<form (submit)="Onsubmit()">
+    <div class="input-row">
+        <div class="input-wrapper">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" [(ngModel)]="event.name" required>
+        </div>
+
+        <div class="input-wrapper">
+            <label for="location">place:</label>
+            <input type="text" id="location" name="location" [(ngModel)]="event.location" required>
+        </div>
+    </div>
+
+    <div class="input-row">
+        <div class="input-wrapper">
+            <label for="datedebut">Begin Date</label>
+            <input type="datetime-local" id="datedebut" name="datedebut" [(ngModel)]="event.datedebut" required>
+        </div>
+
+        <div class="input-wrapper">
+            <label for="datefin">End Date</label>
+            <input type="datetime-local" id="datefin" name="datefin" [(ngModel)]="event.datefin" required>
+        </div>
+    </div>
+
+    <div class="input-row">
+        <div class="input-wrapper">
+            <label for="nbplace">nbplace</label>
+            <input type="number" id="nbplace" name="nbplace" [(ngModel)]="event.nbplace" required>
+        </div>
+
+        <div class="input-wrapper">
+            <label for="summary">summary</label>
+            <textarea id="summary" name="summary" [(ngModel)]="event.summary" required></textarea>
+        </div>
+    </div>
+
+    <div class="input-row">
+        <div class="input-wrapper">
+            <label for="nbplacemin">nbplace min</label>
+            <input type="number" id="nbplacemin" name="nbplacemin" [(ngModel)]="event.nbplacemin" required>
+        </div>
+    </div>
+
+    <button type="submit" class="btn">Save</button>
+</form>
+
+</body>
+</html>

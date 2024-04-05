@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Votre titre</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<style>
+  body {
+    background-image: url('/assets/FrontOffice/img/slider-1.jpg');
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+    background-size: cover; /* Ajuste la taille de l'image pour couvrir tout l'arrière-plan */
+    /* Autres styles de fond si nécessaire */
+  }
+</style>
+<body>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<div>
+  <h2>Create A Reclamation</h2>
+  <form (submit)="createReclamation()" #reclamationForm="ngForm">
+    <div>
+      <label for="reclamType">Reclamation Type :</label>
+      <select id="reclamType" name="reclamType" [(ngModel)]="reclamationData.reclamType" required>
+        <option value="Opinion">Opinion</option>
+        <option value="Problem">Problem</option>
+      </select>
+    </div>
+    <div>
+      <label for="reclamDate">Reclamation Date :</label>
+      <input type="date" id="reclamDate" name="reclamDate" [(ngModel)]="reclamationData.reclamDate" required required class="input-field" >
+    </div>
+    <div>
+      <label for="descriptionReclam">  Reclamation Description :</label>
+      <textarea id="descriptionReclam" name="descriptionReclam" [(ngModel)]="reclamationData.descriptionReclam" required></textarea>
+      <div *ngIf="reclamationData.descriptionReclam && reclamationData.descriptionReclam.length < minLength && reclamationForm.controls['descriptionReclam'].valid" class="error-message">
+        La description doit comporter au moins {{ minLength }} caractères.
+      </div>
+    </div>
+    <button class="button center-button" type="submit"> <i class="fas fa-send"></i>  Send Reclamation</button>
+  </form>
+</div>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+</body>
+
+<footer><app-footer-front></app-footer-front></footer>

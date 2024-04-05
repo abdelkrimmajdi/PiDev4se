@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="search-input-container">
+          <!-- User selection dropdown -->
+          <div class="form-group">
+            <label for="userSelect">Select User:</label>
+            <select class="form-control" id="userSelect" [(ngModel)]="id" style="height: 50px;">
+              <option *ngFor="let user of users" [value]="user.id">{{ user.email }}</option>
+            </select>
+          </div>
+          
+          <!-- Program selection dropdown -->
+          <div class="form-group">
+            <label for="programSelect">Select Program:</label>
+            <select class="form-control" id="programSelect" [(ngModel)]="idMentorProg" style="height: 50px;">
+              <option *ngFor="let program of programs" [value]="program.idMentorProg">{{ program.name }}</option>
+            </select>
+          </div>
+          
+          <!-- Button to assign program to user -->
+          <button class="btn btn-success" (click)="assignProgramToUser()">Assign Program to User</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,28 @@
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="search-input-container">
+          <div class="form-group">
+            <label for="programSelect">Select Program:</label>
+            <!-- Apply inline style to increase the height -->
+            <select class="form-control" id="programSelect" [(ngModel)]="name" style="height: 50px;">
+              <option *ngFor="let program of programs" [value]="program.name">{{ program.name }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exerciseSelect">Select Exercise:</label>
+            <!-- Apply inline style to increase the height -->
+            <select class="form-control" id="exerciseSelect" [(ngModel)]="idExercice" style="height: 50px;">
+              <option *ngFor="let exercise of exercises" [value]="exercise.idExercice">{{ exercise.name }}</option>
+            </select>
+          </div>
+
+          
+          <!-- Button to assign exercise to program using the entered program name -->
+          <button class="btn btn-success" (click)="assignExerciceToProgramUsingName()">Assign Exercise to Program</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

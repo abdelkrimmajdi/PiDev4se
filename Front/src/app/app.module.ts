@@ -22,7 +22,54 @@ import { EditprofileComponent } from './features/admin/editprofile/editprofile.c
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { VerifEmailComponent } from './verif-email/verif-email.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MentorProgramComponent } from './Mentor/mentor-program/mentor-program.component';
+import { MentorExerciceComponent } from './Mentor/mentor-exercice/mentor-exercice.component';
+import { AddProgComponent } from './Mentor/MentorProgram/add-prog/add-prog.component';
+import { UpdateProgComponent } from './Mentor/MentorProgram/update-prog/update-prog.component';
+import { UpdateExoComponent } from './Mentor/MentorExercice/update-exo/update-exo.component';
+import { AddExoComponent } from './Mentor/MentorExercice/add-exo/add-exo.component';
+
+// Import Angular Material modules
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { AssignEtoPComponent } from './Mentor/MentorExercice/assign-eto-p/assign-eto-p.component';
+import { AssignPtoUComponent } from './Mentor/MentorProgram/assign-pto-u/assign-pto-u.component';
+import { DetailProgComponent } from './Mentor/MentorProgram/detail-prog/detail-prog.component';
+
 import { Error404ComponentComponent } from './error404-component/error404-component.component';
+import { GetallMentorComponent } from './Umentor/getall-mentor/getall-mentor.component';
+import { MentorDetailComponent } from './Umentor/mentor-detail/mentor-detail.component';
+import { MarketComponent } from './market/market.component';
+import { AddproductComponent } from './addproduct/addproduct.component';
+import { ProductComponent } from './product/product.component';
+import { PanierComponent } from './panier/panier.component';
+import { CreateReclamationComponent } from './create-reclamation/create-reclamation.component';
+import { UpdateReclamationComponent } from './update-reclamation/update-reclamation.component';
+import { CreateResponseComponent } from './create-response/create-response.component';
+import { AllResponsesComponent } from './all-responses/all-responses.component';
+import { UpdateResponseComponent } from './update-response/update-response.component';
+import { ForbiddenWordsDirective } from './forbidden-words.directive';
+import { AllReclamationsComponent } from './all-reclamations/all-reclamations.component';
+import { ExerciceComponent } from './exercice/exercice.component';
+import { ExerciceaddComponent } from './exerciceadd/exerciceadd.component';
+import { ExercicedetailComponent } from './exercicedetail/exercicedetail.component';
+import { ExercicefrontComponent } from './exercicefront/exercicefront.component';
+import { WorkoutaddComponent } from './workoutadd/workoutadd.component';
+import { WorkoutComponent } from './workout/workout.component';
+import { WorkoutdetailComponent } from './workoutdetail/workoutdetail.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { Event } from './model/Event';
+import { EventDetailComponent } from './EventCRUD/event-detail/event-detail.component';
+import { UpdateeventComponent } from './EventCRUD/updateevent/updateevent.component';
+import { GetalleventComponent } from './EventCRUD/getallevent/getallevent.component';
+import { CreateEventComponent } from './EventCRUD/create-event/create-event.component';
+import { EventfrontComponent } from './EventCRUD/eventfront/eventfront.component';
+import { DemandeComponent } from './demande/demande.component';
 
 
 
@@ -46,7 +93,45 @@ import { Error404ComponentComponent } from './error404-component/error404-compon
     ForgotpasswordComponent,
     ResetpasswordComponent,
     VerifEmailComponent,
-    Error404ComponentComponent
+    CreateReclamationComponent,
+    UpdateReclamationComponent,
+    CreateResponseComponent,
+    AllResponsesComponent,
+    UpdateResponseComponent,
+    ForbiddenWordsDirective,
+AllReclamationsComponent,
+    MentorProgramComponent,
+    MentorExerciceComponent,
+    AddProgComponent,
+    UpdateProgComponent,
+    UpdateExoComponent,
+    AddExoComponent,
+    AssignEtoPComponent,
+    AssignPtoUComponent,
+    DetailProgComponent,
+    ExerciceComponent,
+    ExerciceaddComponent,
+    ExercicedetailComponent,
+    ExercicefrontComponent,
+    WorkoutComponent,
+    WorkoutaddComponent,
+    WorkoutdetailComponent,
+    EventDetailComponent,
+    UpdateeventComponent,
+    GetalleventComponent,
+    CreateEventComponent,
+    EventfrontComponent,
+    GetalleventComponent,
+    EventfrontComponent,
+    Error404ComponentComponent,
+      GetallMentorComponent,
+      MentorDetailComponent,
+      MarketComponent,
+      AddproductComponent,
+      ProductComponent,
+      PanierComponent,
+      DemandeComponent
+
   
  
   ],
@@ -56,6 +141,13 @@ import { Error404ComponentComponent } from './error404-component/error404-compon
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatSortModule, // Import MatSortModule
+    MatTableModule,// Import MatTableModule
+ 
+    MatTooltipModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

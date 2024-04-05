@@ -1,14 +1,20 @@
 package com.example.vitanova.Service;
 
+import com.example.vitanova.Configuration.EmailSender;
+import com.example.vitanova.Configuration.EmailService;
+import com.example.vitanova.Entities.Mail;
 import com.example.vitanova.Entities.MentorExercice;
 import com.example.vitanova.Entities.MentorProgram;
 import com.example.vitanova.Entities.User;
 import com.example.vitanova.Repositorie.MentorExerciceRepository;
 import com.example.vitanova.Repositorie.MentorProgramRepository;
 import com.example.vitanova.Repositorie.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.ByteArrayOutputStream;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -17,11 +23,16 @@ import java.util.Set;
 @Service
 public class MentorServiceImpl implements MentorService{
     @Autowired
+    private EmailService emailService;
+    @Autowired
+    EmailSender emailSender;
+    @Autowired
     private MentorProgramRepository mentorProgramRepository;
     @Autowired
     private MentorExerciceRepository mentorExerciceRepository;
     @Autowired
     private UserRepository UserRepository;
+    private static final Logger logger = LoggerFactory.getLogger(MentorServiceImpl.class);
     @Override
     public MentorProgram createMentorProgram(MentorProgram mentorProgram) {
         return mentorProgramRepository.save(mentorProgram);
@@ -85,24 +96,90 @@ public class MentorServiceImpl implements MentorService{
 
         MentorProgram programme = mentorProgramRepository.findById(programmeId)
                 .orElseThrow(() -> new RuntimeException("Programme not found for this id :: " + programmeId));
+
         if (programme != null) {
             user.getMentorprograms().add(programme);
             UserRepository.save(user);
+
+            // Send email notification to the user
+            sendProgramUpdateNotification(user.getEmail(), programme.getName());
         }
+    }
+    @Override
+    public void sendProgramUpdateNotification(String userEmail, String programName) {
+        // You can construct your email message here
+        String subject = "Program Update Notification";
+        String message = "Dear User,\n\nYour programs have been updated. " +
+                "You have been assigned to the program: " + programName + ".\n\n" +
+                "Best regards,\nThe Winners Team";
+
+        // Send the email
+        // Assuming you have an email service configured
+        // You can use the existing email service or any email sending mechanism
+        // Example:
+        Mail mail = new Mail();
+        mail.setSubject(subject);
+        mail.setTo(userEmail);
+        mail.setContent(message);
+        emailService.sendSimpleEmailFares(mail);  // Assuming you have an email service
+
+        // You may want to log the success or failure of email sending
+        logger.info("Program update notification email sent to: {}", userEmail);
     }
 
 
     @Override
     public List<MentorProgram> searchProgramsByName(String name) {
         return mentorProgramRepository.findMentorProgramByByName(name);
-
     }
     @Override
     public List<MentorExercice> searchExercisesByName(String name) {
         return mentorExerciceRepository.findMentorExerciceByByName(name);
     }
+    @Override
+    public Set<MentorExercice> getMentorExercisesForProgram(Long programId) {
+        MentorProgram program = mentorProgramRepository.findById(programId)
+                .orElseThrow(() -> new RuntimeException("Mentor program not found for this id :: " + programId));
+        return program.getMentorexercices();
+    }
+    // Method to generate PDF for Mentor Program Details
+    @Override
+    public byte[] generatePDFForMentorProgramDetails(Long id) {
+        MentorProgram program = mentorProgramRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Mentor program not found for this id :: " + id));
+        Set<MentorExercice> exercises = program.getMentorexercices();
 
+        // Here you can use a library like Apache PDFBox or iText to generate the PDF content
+        // For demonstration, I'll create a simple PDF using iText
+        try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+            com.itextpdf.text.Document document = new com.itextpdf.text.Document();
+            com.itextpdf.text.pdf.PdfWriter.getInstance(document, outputStream);
+            document.open();
+            document.add(new com.itextpdf.text.Paragraph("Mentor Program Details:"));
+            document.add(new com.itextpdf.text.Paragraph("Program ID: " + program.getIdMentorProg()));
+            document.add(new com.itextpdf.text.Paragraph("Name: " + program.getName()));
+            document.add(new com.itextpdf.text.Paragraph("Description: " + program.getDescription()));
+            document.add(new com.itextpdf.text.Paragraph("Type: " + program.getType()));
+            document.add(new com.itextpdf.text.Paragraph("Objective: " + program.getObjectf()));
+            document.add(new com.itextpdf.text.Paragraph("Duration: " + program.getDuration()));
+            document.add(new com.itextpdf.text.Paragraph("Picture: " + program.getPicture()));
+            document.add(new com.itextpdf.text.Paragraph("Mentor Exercises:"));
+            for (MentorExercice exercise : exercises) {
+                document.add(new com.itextpdf.text.Paragraph("- " + exercise.getName()));
+            }
+            document.close();
+            return outputStream.toByteArray();
+        } catch (Exception e) {
+            throw new RuntimeException("Error generating PDF for Mentor Program Details", e);
+        }
 
+    }
+    @Override
+    public Set<MentorProgram> getMentorProgramsForUser(Long userId) {
+        User user = UserRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found for this id :: " + userId));
+        return user.getMentorprograms();
+    }
 
 
 

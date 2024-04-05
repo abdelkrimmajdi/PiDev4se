@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div *ngIf="user">
+        <table class="table">
+          <tbody>
+          
+            <tr *ngIf="programs.length > 0">
+              <th>Mentor Programs</th>
+              <td>
+                <ul>
+                  <li *ngFor="let program of programs">{{ program.name }}</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

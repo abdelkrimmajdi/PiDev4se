@@ -17,12 +17,13 @@ public class WorkoutSession {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long IdWork;
     private Date Date;
+    @Transient
     private int Duration;
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Exercice> exercices;
 
-
-
-
+    public void calculateDuration() {
+        this.Duration= exercices.stream().mapToInt(Exercice::getDurationExer).sum();
+    }
 
 }

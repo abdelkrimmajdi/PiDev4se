@@ -11,4 +11,5 @@ import java.util.List;
 public interface MentorProgramRepository extends JpaRepository<MentorProgram, Long> {
     @Query("SELECT e FROM MentorProgram e WHERE e.name LIKE CONCAT(?1, '%')")
     List<MentorProgram> findMentorProgramByByName(String name);
+
 }

@@ -118,12 +118,15 @@ export class LoginComponent {
   }
 
 
-
+  validatePassword(control: FormControl) {
+    const passwordRegex = /^(?=.*[A-Z])/; // Expression régulière pour vérifier la présence d'une lettre majuscule
+    return passwordRegex.test(control.value) ? null : { invalidPassword: true };
+  }
   registerForm: FormGroup = this.formBuilder.group({
     firstName: ['', [Validators.required, Validators.minLength(3)]],
     lastName: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
+    password: ['', [Validators.required, Validators.minLength(6), this.validatePassword]],
     phonenumber: ['', [Validators.required, Validators.minLength(8)]],
     role: ['', [Validators.required]],
     image: ['', [Validators.required]]
@@ -172,4 +175,3 @@ export class LoginComponent {
       });
   }
 }
-  

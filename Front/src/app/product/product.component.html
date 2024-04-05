@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {margin-left: 250px;}
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="row justify-content-end mb-3">
+    <div class="col-auto">
+      <input type="number" class="form-control" placeholder="Search by ID..." [(ngModel)]="searchTerm">
+    </div>
+    <div class="col-auto">
+      <button (click)="generatePDF()">Générer PDF</button>
+
+      <button class="btn btn-primary" (click)="searchProduct()">Search</button>
+    </div>
+  </div>
+
+  <!-- Display an error message if there is any -->
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+  <h1 class="card-title fw-semibold" style="text-align: center;">Products</h1>
+  <div class="table-container">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th (click)="sort('idProduct')">
+          id 
+          <span *ngIf="sortColumn === 'idProduct'" class="sort-indicator">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+      </th>       
+      <th (click)="sort('nameProd')">
+        Name 
+        <span *ngIf="sortColumn === 'nameProd'" class="sort-indicator">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+    </th>   
+    <th (click)="sort('priceProd')">
+      Price  
+      <span *ngIf="sortColumn === 'priceProd'" class="sort-indicator">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+  </th>        
+
+  <th>Image</th>
+
+  <th (click)="sort('categorie')">
+    Category  
+    <span *ngIf="sortColumn === 'categorie'" class="sort-indicator">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+</th>          
+
+<th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let p of filteredProducts">
+        <td>{{ p.idProduct }}</td>
+        <td>{{ p.nameProd }}</td>
+        <td>{{ p.priceProd }}</td>
+        <td><img [src]="p.imageProd" alt="Product Image" style="max-width: 100px;"></td>
+        <td>{{ p.categorie }}</td>
+        <td>
+          <button class="btn btn-info" [routerLink]="['/admin/update-product', p.idProduct]">Edit</button>
+          <button class="btn btn-danger" (click)="deleteProduct(p.idProduct)">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <a [routerLink]="['/admin/addproduct']" class="btn btn-primary">Add New Product</a>
+  </div>
+</div>
+</body>
+</html>

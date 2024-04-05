@@ -32,6 +32,14 @@ public class EmailService implements EmailSender {
         message.setText(mail.getContent());
         mailSender.send(message);
     }
+    public void sendSimpleEmailFares(final Mail mail) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("majdi.abdelkrim@esprit.tn");
+        message.setTo(mail.getTo());
+        message.setSubject("Update of your program");
+        message.setText(mail.getContent());
+        mailSender.send(message);
+    }
 
 
     public void sendEmail(String toEmail, String email) {

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        h1 {
+            margin-left: 275px; /* Add an empty space on the left side of the title */
+            margin-right: 5px;
+        }
+
+        .table-container {
+            padding-left: 275px; /* Add an empty space on the left side of the table */
+            padding-right: 5px;
+        }
+
+        .search-input-container {
+            padding-left: 275px;
+            padding-right: 5px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center; /* Center the content of the table */
+        }
+
+        .table th {
+            text-align: center; /* Center the content of the table header */
+        }
+
+        .table th, .table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<h1 class="card-title fw-semibold" style="text-align: center;">Workouts</h1>
+<div class="search-input-container">
+    <input type="text" [(ngModel)]="search" (ngModelChange)="searchWorkouts()" placeholder="Search Workouts" class="form-control mb-3">
+</div>
+<div class="table-container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th (click)="sort('idWork')">
+                    idWork 
+                    <span *ngIf="sortColumn === 'idWork'" class="sort-indicator">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+                </th>
+                <th (click)="sort('date')">
+                    date 
+                    <span *ngIf="sortColumn === 'date'" class="sort-indicator">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+                </th>
+                <th (click)="sort('duration')">
+                    duration 
+                    <span *ngIf="sortColumn === 'duration'" class="sort-indicator">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+                </th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of filteredWorkouts">
+                <td>{{e.idWork}}</td>
+                <td>{{ e.date | date:'dd/MM/yyyy' }}</td>
+                <td>{{e.duration}}</td>
+                <td>
+                    <button [routerLink]="['/admin/workoutUpdate',e.idWork]" class="btn btn-primary" style="margin-right: 10px">UPD</button>
+                    <button class="btn btn-danger" (click)="deleteWorkout(e.idWork)" style="margin-right: 10px">dlt</button>
+                    <button class="btn btn-secondary" (click)="generateWorkoutPDF(e)">PDF</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>    
+    <a [routerLink]="['/admin/workoutAdd']" class="btn btn-primary">Add</a>
+</div>
+
+</body>
+</html>

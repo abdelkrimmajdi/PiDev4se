@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Votre titre</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h2>Modifier la réclamation</h2>
+    <!-- Formulaire de modification de la réclamation -->
+    <form (submit)="updateReclamation()">
+      <div>
+        <label for="reclamType">Type de réclamation :</label>
+        <select id="reclamType" name="reclamType" [(ngModel)]="reclamationData.reclamType" required>
+          <option value="Opinion">Opinion</option>
+          <option value="Problem">Problème</option>
+        </select>
+      </div>
+      <div>
+        <label for="reclamDate">Date de réclamation :</label>
+        <input type="date" id="reclamDate" name="reclamDate" [(ngModel)]="reclamationData.reclamDate" required>
+      </div>
+      <div>
+        <label for="descriptionReclam">Description de réclamation :</label>
+        <textarea id="descriptionReclam" name="descriptionReclam" [(ngModel)]="reclamationData.descriptionReclam" required></textarea>
+      </div>
+      <button type="submit" class="button center-button"><i class="fas fa-sync-alt"></i> Mettre à jour Réclamation</button>
+    </form>
+  </div>
+</body>
+</html>
