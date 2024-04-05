@@ -1,7 +1,3 @@
-
-
-
-
 <html lang="en">
 <head>
   <title>Webleb</title>
@@ -52,41 +48,69 @@
                         <div class="form-group">
                           <input type="text" class="form-style" placeholder="First Name" formControlName="firstName">
                           <i class="input-icon uil uil-user"></i>
+                          <div *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched" class="error-message">
+                            <div *ngIf="registerForm.get('firstName')?.errors?.['required']">First Name is required.</div>
+                            <div *ngIf="registerForm.get('firstName')?.errors?.['minlength']">First Name must be at least 3 characters.</div>
+                          </div>
                         </div>  
                         <div class="form-group mt-2">
-                          <input type="tel" class="form-style" placeholder="last Name" formControlName="lastName">
+                          <input type="text" class="form-style" placeholder="Last Name" formControlName="lastName">
                           <i class="input-icon uil uil-user"></i>
+                          <div *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched" class="error-message">
+                            <div *ngIf="registerForm.get('lastName')?.errors?.['required']">Last Name is required.</div>
+                            <div *ngIf="registerForm.get('lastName')?.errors?.['minlength']">Last Name must be at least 3 characters.</div>
+                          </div>
                         </div>  
                         <div class="form-group mt-2">
                           <input type="email" class="form-style" placeholder="Email" formControlName="email">
                           <i class="input-icon uil uil-at"></i>
+                          <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error-message">
+                            <div *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</div>
+                            <div *ngIf="registerForm.get('email')?.errors?.['email']">Invalid email format.</div>
+                          </div>
                         </div>
                         <div class="form-group mt-2">
-                          <input type="number" class="form-style" placeholder="Phone Number" formControlName="phonenumber">
+                          <input type="tel" class="form-style" placeholder="Phone Number" formControlName="phonenumber">
                           <i class="input-icon uil uil-phone"></i>
+                          <div *ngIf="registerForm.get('phonenumber')?.invalid && registerForm.get('phonenumber')?.touched" class="error-message">
+                            <div *ngIf="registerForm.get('phonenumber')?.errors?.['required']">Phone Number is required.</div>
+                            <div *ngIf="registerForm.get('phonenumber')?.errors?.['minlength']">Phone Number must be at least 8 characters.</div>
+                          </div>
                         </div>
                         <div class="form-group mt-2">
                           <input type="file" class="form-style" placeholder="Photo profile" (change)="onImageUpload($event)">
                           <i class="input-icon uil uil-image"></i>
+                          <!-- Vous pouvez ajouter des contrôles de validation ici si nécessaire -->
                         </div>
-                        
                         <div class="form-group mt-2">
                           <input type="password" class="form-style" placeholder="Password" formControlName="password">
                           <i class="input-icon uil uil-lock-alt"></i>
+                          <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error-message">
+                            <div *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</div>
+                            <div *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.</div>
+                            <div *ngIf="registerForm.get('password')?.errors?.['invalidPassword']" class="error-message">
+                              Password must contain at least one uppercase letter.
+                            </div>
+                            <!-- Ajoutez d'autres messages d'erreur personnalisés ici si nécessaire -->
+                          </div>
                         </div>
                         <div class="form-group mt-2">
-                    
                           <select id="role" class="form-style select" formControlName="role">
                             <option value="" disabled selected><i class="input-icon uil uil-user"></i>Choose Role:</option>
                             <option value="USER"><i class="input-icon uil uil-user"></i> User</option>
                             <option value="NUTRITIONISTE"><i class="input-icon uil uil-leaf"></i> Nutritioniste</option>
                             <option value="COACH"><i class="input-icon uil uil-dumbbell"></i> Coach</option>
                             <option value="MENTOR"><i class="input-icon uil uil-graduation-cap"></i> Mentor</option>
-                        </select>
-                        
-                      </div>
+                          </select>
+                          <div *ngIf="registerForm.get('role')?.invalid && registerForm.get('role')?.touched" class="error-message">
+                            <div *ngIf="registerForm.get('role')?.errors?.['required']">Role is required.</div>
+                            <!-- Ajoutez d'autres messages d'erreur personnalisés ici si nécessaire -->
+                          </div>
+                        </div>
                         <button type="submit" class="btn mt-4">Register</button>
                       </form>
+                      
+                      
                     </div>
                   </div>
                 </div>
@@ -98,4 +122,5 @@
     </div>
   </div>
 </body>
+
   </html>

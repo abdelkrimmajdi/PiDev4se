@@ -12,15 +12,51 @@ import { EditprofileComponent } from './features/admin/editprofile/editprofile.c
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { VerifEmailComponent } from './verif-email/verif-email.component';
+
+import { AddExoComponent } from './Mentor/MentorExercice/add-exo/add-exo.component';
+import { MentorExerciceComponent } from './Mentor/mentor-exercice/mentor-exercice.component';
+import { MentorProgramComponent } from './Mentor/mentor-program/mentor-program.component';
+import { AddProgComponent } from './Mentor/MentorProgram/add-prog/add-prog.component';
+import { UpdateExoComponent } from './Mentor/MentorExercice/update-exo/update-exo.component';
+import { UpdateProgComponent } from './Mentor/MentorProgram/update-prog/update-prog.component';
+import { AssignEtoPComponent } from './Mentor/MentorExercice/assign-eto-p/assign-eto-p.component';
+import { AssignPtoUComponent } from './Mentor/MentorProgram/assign-pto-u/assign-pto-u.component';
+import { DetailProgComponent } from './Mentor/MentorProgram/detail-prog/detail-prog.component';
+
 import { Error404ComponentComponent } from './error404-component/error404-component.component';
 import { AuthAdminService } from './guards/admin/auth-admin.service';
 import { AuthUserService } from './guards/user/auth-user.service';
 import { AuthNutririonisteService } from './guards/Nutritioniste/auth-nutririoniste.service';
+import { GetallMentorComponent } from './Umentor/getall-mentor/getall-mentor.component';
+import { MentorDetailComponent } from './Umentor/mentor-detail/mentor-detail.component';
+import { AddproductComponent } from './addproduct/addproduct.component';
+import { ProductComponent } from './product/product.component';
+import { ProductUpdateComponent } from './product-update/product-update.component';
+import { MarketComponent } from './market/market.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CreateReclamationComponent } from './create-reclamation/create-reclamation.component';
+import { AllReclamationsComponent } from './all-reclamations/all-reclamations.component';
+import { AllResponsesComponent } from './all-responses/all-responses.component';
+import { UpdateReclamationComponent } from './update-reclamation/update-reclamation.component';
+import { CreateResponseComponent } from './create-response/create-response.component';
+import { UpdateResponseComponent } from './update-response/update-response.component';
+import { ExerciceComponent } from './exercice/exercice.component';
+import { ExerciceaddComponent } from './exerciceadd/exerciceadd.component';
+import { ExercicedetailComponent } from './exercicedetail/exercicedetail.component';
+import { WorkoutComponent } from './workout/workout.component';
+import { WorkoutaddComponent } from './workoutadd/workoutadd.component';
+import { WorkoutdetailComponent } from './workoutdetail/workoutdetail.component';
+import { ExercicefrontComponent } from './exercicefront/exercicefront.component';
+import { CreateEventComponent } from './EventCRUD/create-event/create-event.component';
+import { EventDetailComponent } from './EventCRUD/event-detail/event-detail.component';
+import { EventfrontComponent } from './EventCRUD/eventfront/eventfront.component';
+import { GetalleventComponent } from './EventCRUD/getallevent/getallevent.component';
+import { UpdateeventComponent } from './EventCRUD/updateevent/updateevent.component';
+import { DemandeComponent } from './demande/demande.component';
 
 const routes: Routes = [ 
-
   {
-    path: "admin",
+  path: "admin",
     component: AllTemplateBackComponent,
    
     children: [
@@ -36,10 +72,124 @@ const routes: Routes = [
         path: "getall",
         component: UsergetallComponent,
       
-      }
+      },
+      {
+        path: "MentorExo",
+        component: MentorExerciceComponent
+        
+      },
+      {
+        path: "MentorProg",
+        component: MentorProgramComponent
+        
+      },{
+        path: 'exercice',
+        component: ExerciceComponent
+      },
+      {
+        path: 'exerciceAdd',
+        component: ExerciceaddComponent
+      },
+      {
+        path: 'exerciceUpdate/:idExer',
+        component: ExercicedetailComponent
+      },
+      {
+        path: 'workout',
+        component: WorkoutComponent
+      },
+      {
+        path: 'workoutAdd',
+        component: WorkoutaddComponent
+      },
+      {
+        path: 'workoutUpdate/:idWork',
+        component: WorkoutdetailComponent
+      },
+
     ]
-  },
-  
+  },{
+  path: "admin",
+  component: AllTemplateBackComponent,
+  children: [
+    {
+      path: "",
+      component: HomeComponent
+    },
+    {
+      path: "addproduct",
+      component:AddproductComponent
+
+    },
+    {
+      path: "product",
+      component:ProductComponent
+
+    },
+    {
+      path: "update-product/:id",
+      component: ProductUpdateComponent
+    },
+    {
+      path : "event",
+      component : EventfrontComponent
+    }
+]},{
+    path: "admin",
+    component: AllTemplateBackComponent,
+    children: [ 
+    {
+      path: "getReclamations",
+      component: AllReclamationsComponent
+    },
+    {
+      path: "getResponses",
+      component: AllResponsesComponent
+    },
+    {
+      path: "updateReclamation/:id", // Définir une route pour la modification de réclamation avec un paramètre d'ID
+      component: UpdateReclamationComponent // Utiliser le composant de modification de réclamation
+    },
+    {
+      path: 'update-reclamation/:id', // Chemin pour la modification de la réclamation avec un paramètre d'ID
+      component: UpdateReclamationComponent
+    },
+    {
+      path: "createReponse",
+      component: CreateResponseComponent
+    },
+    {
+      path: "updateResponse/:id", // Définir une route pour la modification de réclamation avec un paramètre d'ID
+      component: UpdateResponseComponent // Utiliser le composant de modification de réclamation
+    },
+    {
+      path: 'update-response/:id', // Chemin pour la modification de la réclamation avec un paramètre d'ID
+      component: UpdateResponseComponent
+    },
+    {
+      path: "update-event/:id",
+      component:  UpdateeventComponent
+    } ,
+    {
+      path : "all-events",
+      component : GetalleventComponent
+    }
+    ,
+    {
+      path : "create-event",
+      component: CreateEventComponent
+    },
+    {
+      path :  "detail-event/:id",
+      component : EventDetailComponent
+    },
+    {
+      path :  "demande-event",
+      component : DemandeComponent
+    }
+
+  ]
+},
    
  
   { path: 'resetpassword/:passwordResetToken',component:ResetpasswordComponent },
@@ -51,6 +201,23 @@ path:"",
       {
         path: "",
         component: HomeFrontComponent
+      },
+      {
+        path: 'exercice',
+        component: ExercicefrontComponent
+      },
+      {
+        path: "createReclamation",
+        component: CreateReclamationComponent
+      },
+      {
+        path: "market",
+        component:MarketComponent
+    
+      },
+      {
+        path: "GetMentors",
+        component: GetallMentorComponent
       },
     
     ]
@@ -64,6 +231,7 @@ path:"",
         component: EditProfileComponent,
        
       }
+      
     
     ]
   },
@@ -94,6 +262,62 @@ path:"",
     component: VerifEmailComponent
     
   },
+  
+  {
+    path: "AddMentorExo",
+    component: AddExoComponent
+    
+  },
+  {
+    path: "MentorExo",
+    component: MentorExerciceComponent
+    
+  },
+  {
+    path: "MentorProg",
+    component: MentorProgramComponent
+    
+  },
+  {
+    path: "AddMentorProg",
+    component: AddProgComponent
+    
+  },
+  {
+    path: "UpdateProg/:idMentorProg",
+    component: UpdateProgComponent
+    
+  },
+  {
+    path: "UpdateExo/:idExercice",
+    component: UpdateExoComponent
+
+    
+  },
+  {
+    path: "assignEtoP",
+    component: AssignEtoPComponent
+
+    
+  },
+  {
+    path: "assignPtoU",
+    component: AssignPtoUComponent
+
+    
+  },
+  {
+    path: "Prog/:idMentorProg",
+    component: DetailProgComponent
+
+    
+  },
+  
+  {
+    path: "GetMentorsDetails/:id",
+    component: MentorDetailComponent
+  },
+  
   { path: '**', component:Error404ComponentComponent }
 
 

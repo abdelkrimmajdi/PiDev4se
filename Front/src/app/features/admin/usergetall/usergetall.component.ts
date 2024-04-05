@@ -66,4 +66,3 @@ export class UsergetallComponent {
     return filteredUsers;
   }
 }
-

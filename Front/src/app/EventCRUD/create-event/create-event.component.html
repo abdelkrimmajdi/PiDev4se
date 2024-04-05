@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Form</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 600px; /* Optional: Adjust the maximum width of the form */
+        }
+
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .input-row .input-wrapper {
+            flex: 1;
+            margin-right: 1rem;
+        }
+
+        .input-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input-wrapper label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .input-wrapper input, .input-wrapper textarea {
+            background-color: #eee;
+            border: none;
+            padding: 1rem;
+            font-size: 1rem;
+            width: 100%; /* Adjust as needed */
+            border-radius: 1rem;
+            color: lightcoral;
+            box-shadow: 0 0.4rem #dfd9d9;
+            cursor: pointer;
+        }
+
+        .input-wrapper input:focus, .input-wrapper textarea:focus {
+            outline-color: lightcoral;
+        }
+
+        .button {
+            margin-top: 1rem;
+            height: auto;
+            background: transparent;
+            padding: 0;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            text-transform: uppercase;
+            color: transparent;
+        }
+
+        .actual-text {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6); /* Text stroke effect */
+            letter-spacing: 3px;
+            font-size: 2em;
+            font-family: "Arial";
+        }
+
+        .hover-text {
+            position: absolute;
+            box-sizing: border-box;
+            content: attr(data-text);
+            color: #37FF8B; /* Hover text color */
+            width: 0%;
+            inset: 0;
+            border-right: 6px solid #37FF8B; /* Border color */
+            overflow: hidden;
+            transition: width 0.5s, filter 0.5s; /* Smooth transition */
+        }
+
+        /* Hover effect */
+        .button:hover .hover-text {
+            width: 100%; /* Expand width on hover */
+            filter: drop-shadow(0 0 23px #37FF8B); /* Text shadow effect */
+        }
+    </style>
+</head>
+<body>
+
+<form (submit)="createEvent()">
+    <div class="input-row">
+        <div class="input-wrapper">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" [(ngModel)]="event.name" required>
+        </div>
+
+        <div class="input-wrapper">
+            <label for="location">Place</label>
+            <input type="text" id="location" name="location" [(ngModel)]="event.location" required>
+        </div>
+    </div>
+
+    <div class="input-row">
+        <div class="input-wrapper">
+            <label for="datedebut">begin Date</label>
+            <input type="date" id="datedebut" name="datedebut" [(ngModel)]="event.datedebut" required>
+        </div>
+
+        <div class="input-wrapper">
+            <label for="datefin">End Date</label>
+            <input type="date" id="datefin" name="datefin" [(ngModel)]="event.datefin" required>
+        </div>
+    </div>
+
+    <div class="input-row">
+        <div class="input-wrapper">
+            <label for="nbplace">nbplace</label>
+            <input type="number" id="nbplace" name="nbplace" [(ngModel)]="event.nbplace" required>
+        </div>
+
+        <div class="input-wrapper">
+            <label for="summary">summary</label>
+            <textarea id="summary" name="summary" [(ngModel)]="event.summary" required></textarea>
+        </div>
+    </div>
+
+    <div class="input-row">
+        <div class="input-wrapper">
+            <label for="nbplacemin">nbplaces min</label>
+            <input type="number" id="nbplacemin" name="nbplacemin" [(ngModel)]="event.nbplacemin" required>
+        </div>
+
+        <div class="input-wrapper">
+            <label for="image">picture</label>
+            <input name="file" [(ngModel)]="event.image" type="file">
+        </div>
+    </div>
+
+    <!-- Custom button -->
+    <button type="submit" class="button" data-text="Créer l'événement">
+        <span class="actual-text">&nbsp;Save&nbsp;</span>
+        <span aria-hidden="true" class="hover-text">&nbsp;Save&nbsp;</span>
+    </button>
+</form>
+
+</body>
+</html>

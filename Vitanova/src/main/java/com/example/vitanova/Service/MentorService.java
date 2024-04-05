@@ -19,6 +19,15 @@ public interface MentorService {
     public void deleteMentorExercice(Long id);
     public void assignExerciceToProgram(Long exerciceId, Long programmeId);
     public void assignProgramToUser(Long userId, Long programmeId);
+
+    void sendProgramUpdateNotification(String userEmail, String programName);
+
     public List<MentorProgram> searchProgramsByName(String name);
     public List<MentorExercice> searchExercisesByName(String name);
+    public Set<MentorExercice> getMentorExercisesForProgram(Long programId);
+
+    // Method to generate PDF for Mentor Program Details
+    public byte[] generatePDFForMentorProgramDetails(Long id);
+
+    Set<MentorProgram> getMentorProgramsForUser(Long userId);
 }

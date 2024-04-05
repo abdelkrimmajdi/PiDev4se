@@ -1,0 +1,69 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="table-responsive">
+          <form [formGroup]="UpdateForm">
+            <!-- Name -->
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter name">
+            </div>
+            <div class="alert alert-danger" *ngIf="UpdateForm.controls['name'].invalid && UpdateForm.controls['name'].touched">
+              <p *ngIf="UpdateForm.controls['name'].hasError('required')">Name required</p>
+              <p *ngIf="UpdateForm.controls['name'].hasError('minlength')">Name min Length 4 </p>
+            </div>
+          
+            <!-- Description -->
+            <div class="form-group">
+              <label for="description">Description</label>
+              <input type="text" class="form-control" formControlName="description" placeholder="Description">
+            </div>
+            <div class="alert alert-danger" *ngIf="UpdateForm.get('description')?.invalid && UpdateForm.controls['description'].touched">
+              <p *ngIf="UpdateForm.controls['description'].hasError('required')">Description required</p>
+              <p *ngIf="UpdateForm.controls['description'].hasError('maxlength')">Description max Length 500 </p>
+            </div>
+          
+            <!-- Priority -->
+            <!-- Ensure that formControlName is correctly set to "priority" -->
+            <div class="form-group">
+              <label for="priority">Priority</label>
+              <input type="text" class="form-control" formControlName="priority" placeholder="Priority">
+            </div>
+            <div class="alert alert-danger" *ngIf="UpdateForm.get('priority')?.invalid && UpdateForm.controls['priority'].touched">
+              <p *ngIf="UpdateForm.controls['priority'].hasError('required')">Priority required</p>
+              <p *ngIf="UpdateForm.controls['priority'].hasError('min')">Priority must be positive</p>
+            </div>
+          
+            <!-- ExeTime -->
+            <!-- Ensure that formControlName is correctly set to "exeTime" -->
+            <div class="form-group">
+              <label for="exeTime">ExeTime (mins)</label>
+              <input type="number" class="form-control" formControlName="exeTime" placeholder="ExeTime">
+            </div>
+            <div class="alert alert-danger" *ngIf="UpdateForm.get('exeTime')?.invalid && UpdateForm.controls['exeTime'].touched">
+              <p *ngIf="UpdateForm.controls['exeTime'].hasError('required')">ExeTime required</p>
+              <p *ngIf="UpdateForm.controls['exeTime'].hasError('min')">ExeTime must be positive</p>
+            </div>
+          
+            <!-- Picture -->
+            <!-- Ensure that formControlName is correctly set to "picture" -->
+            <div class="form-group">
+              <label for="picture">Picture</label>
+              <input type="text" class="form-control" formControlName="picture" placeholder="Picture">
+            </div>
+            <div class="alert alert-danger" *ngIf="UpdateForm.get('picture')?.invalid && UpdateForm.controls['picture'].touched">
+              <!-- Provide appropriate validation messages for picture control if necessary -->
+            </div>
+          
+            <!-- Submit Button -->
+            <!-- Ensure that the submit button is inside the form and is of type "submit" -->
+            <button type="submit" class="btn btn-primary" [disabled]="UpdateForm.invalid" (click)="save()">Submit</button>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

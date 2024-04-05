@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Details</title>
+<style>
+/* Tooltip CSS */
+.tooltip-container {
+  color: #ffffff;
+  --background: #00a36d;
+  position: relative;
+  background: var(--background);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 17px;
+  padding: 0.7em 1.8em;
+  border-radius: 50px;
+}
+
+.tooltip {
+  background-color: #00a36d;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.3em 0.6em;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  border-radius: 50px;
+}
+
+.tooltip::before {
+  background-color: #00a36d;
+  position: absolute;
+  content: "";
+  height: 0.6em;
+  width: 0.6em;
+  bottom: -0.2em;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+}
+
+.tooltip-container:hover .tooltip,
+.tooltip-container.active .tooltip {
+  top: -100%;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Form CSS */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.form_area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #EDDCD9;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  color: #00bfff; /* Couleur du titre */
+  font-weight: 600; /* Épaisseur de la police */
+  font-size: 28px; /* Taille de la police */
+  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+}
+
+.title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  background-color: #00bfff; /* Couleur de l'icône */
+  border-radius: 50%;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  background-color: #00bfff; /* Couleur de l'icône */
+  border-radius: 50%;
+  animation: pulse 1s linear infinite;
+}
+
+.sub_title {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #DE5499;
+  background-color: #fff;
+  padding: 5px 10px;
+  border: 2px solid #264143;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.detail {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.btn {
+  padding: 15px 30px;
+  margin-top: 20px;
+  font-size: 16px;
+  background-color: #DE5499;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #D42E74;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+</style>
+<script>
+function goBack() {
+  // Mettez ici le code pour revenir en arrière
+}
+function tooltipClicked() {
+  goBack(); // Exécutez la fonction goBack() lorsque le tooltip est cliqué
+}
+</script>
+</head>
+<body>
+<div class="container">
+    <div class="form_area">
+        <p class="title">Event Details</p>
+        <div class="form_group">
+            <div class="sub_title">Name</div>
+            <p class="detail"><strong>{{ event.name }}</strong></p>
+        </div>
+        <div class="form_group">
+            <div class="sub_title">Summary</div>
+            <p class="detail"><strong>{{ event.summary }}</strong></p>
+        </div>
+        <div class="form_group">
+            <div class="sub_title">Location</div>
+            <p class="detail"><strong>{{ event.location }}</strong></p>
+        </div>
+        <div class="form_group">
+            <div class="sub_title">Number of places available</div>
+            <p class="detail"><strong>{{ event.nbplace }}</strong></p>
+        </div>
+        <div class="form_group">
+            <div class="sub_title">Start Date</div>
+            <p class="detail"><strong>{{ event.datedebut }}</strong></p>
+        </div>
+        <div class="form_group">
+            <div class="sub_title">End Date</div>
+            <p class="detail"><strong>{{ event.datefin }}</strong></p>
+        </div>
+        <div class="tooltip-container" (click)="tooltipClicked()">
+          <span class="tooltip">THANKS </span>
+          <span class="text">Back To List</span>
+      </div>
+      
+        <button type="button" class="btn" (click)="downloadPDF()">Download PDF</button>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Votre titre</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h2>Modifier la réponse</h2>
+    <!-- Formulaire de modification de la réponse -->
+    <form (submit)="updateResponse()">
+      <div>
+        <label for="descriptionRep">Description de la réponse :</label>
+        <textarea id="descriptionRep" name="descriptionRep" [(ngModel)]="responseData.descriptionRep" required></textarea>
+      </div>
+      <div>
+        <label for="dateRep">Date de réponse :</label>
+        <input type="date" id="dateRep" name="dateRep" [(ngModel)]="responseData.dateRep" required>
+      </div>
+      <!-- Ajoutez d'autres champs pour les attributs supplémentaires de la réponse si nécessaire -->
+      <button type="submit" class="button center-button"><i class="fas fa-sync-alt"></i> Mettre à jour Réponse</button>
+    </form>
+  </div>
+</body>
+</html>

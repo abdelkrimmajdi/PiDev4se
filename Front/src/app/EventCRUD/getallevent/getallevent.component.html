@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votre titre</title>
+    <!-- Ajout du lien vers Font Awesome pour les icônes -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Déplacement du style body au début */
+        body {
+            margin-left: 300px;
+            margin-right: 50px;
+        }
+
+        /* Bouton de base */
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            /* Couleur de fond */
+            color: #fff;
+            /* Couleur du texte */
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        /* Bouton survolé */
+        .button:hover {
+            background-color: #0056b3;
+            /* Couleur de fond survolée */
+        }
+
+        /* Bouton centré */
+        .center-button {
+            display: block;
+            margin: 20px auto;
+        }
+
+        /* Ajout de la classe .table pour le style de la table */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            /* Ajout d'une marge en haut pour l'espace */
+        }
+
+        /* Style pour les cellules et en-têtes de la table */
+        .table th,
+        .table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        /* Style pour les en-têtes de la table */
+        .table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        /* Style pour les lignes impaires de la table */
+        .table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Style pour les lignes survolées de la table */
+        .table tr:hover {
+            background-color: #ddd;
+        }
+
+        .input-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px; /* Ajout de marge en bas pour l'espace */
+        }
+
+        .input {
+            border-style: none;
+            height: 50px;
+            width: 50px;
+            padding: 10px;
+            outline: none;
+            border-radius: 50%;
+            transition: .5s ease-in-out;
+            background-color: #7e4fd4;
+            box-shadow: 0px 0px 3px #f3f3f3;
+            padding-right: 40px;
+            color: #fff;
+        }
+
+        .input::placeholder,
+        .input {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 17px;
+        }
+
+        .input::placeholder {
+            color: #8f8f8f;
+        }
+
+        .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            right: 0px;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            outline: none;
+            border-style: none;
+            border-radius: 50%;
+            pointer-events: painted;
+            background-color: transparent;
+            transition: .2s linear;
+        }
+
+        .icon:focus~.input,
+        .input:focus {
+            box-shadow: none;
+            width: 250px;
+            border-radius: 0px;
+            background-color: transparent;
+            border-bottom: 3px solid #7e4fd4;
+            transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+        }
+
+        /* Style pour le bouton "Créer un événement" */
+        .create-event-button {
+            padding: 0.5em 1em; /* Réduction du padding */
+            font-size: 12px; /* Réduction de la taille de la police */
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 4px;
+            color: transparent;
+            border: 3px solid #ff0;
+            position: relative;
+            font-family: inherit;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .create-event-button::before {
+            content: "Créer un événement"; /* Texte modifié */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #363636;
+            color: #ff0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.5s;
+        }
+
+        .create-event-button:hover::before {
+            left: 100%;
+            transform: scale(0) rotateY(360deg);
+            opacity: 0;
+        }
+
+        .create-event-button::after {
+            content: "Créer un événement"; /* Texte modifié */
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: #363636;
+            color: #ff0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.5s;
+            transform: scale(0) rotateY(0deg);
+            opacity: 0;
+        }
+
+        .create-event-button:hover::after {
+            left: 0;
+            transform: scale(1) rotateY(360deg);
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Conteneur principal -->
+    <div class="container">
+        <!-- Contenu du filtre - Vous devez ajouter le contenu ici -->
+        <div class="filter-container">
+            <!-- Ajout du champ de recherche -->
+            <div class="input-wrapper">
+                <button class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="25px"
+                        width="25px">
+                        <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#fff"
+                            d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z">
+                        </path>
+                        <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#fff"
+                            d="M22 22L20 20"></path>
+                    </svg>
+                </button>
+                <input placeholder="search.." class="input" name="text" type="text" [(ngModel)]="searchTerm"
+                    (keyup)="searchEvents()">
+            </div>
+        </div>
+        <!-- Contenu principal -->
+        <div class="main-content">
+            <!-- Titre de la liste des réclamations -->
+            <h2 class="center-text">EVENTS LIST</h2>
+            <!-- Tableau des réclamations -->
+            <table class="table" #pdfTable>
+                <!-- En-tête de la table -->
+                <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>Lieu</th>
+                        <th>Begin</th>
+                        <th>End</th>
+                        <th>nbplace</th>
+                        <th>nbplace min</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <!-- Corps de la table - Affichage des événements filtrés -->
+                <tbody>
+                    <tr *ngFor="let event of filteredEvents">
+                        <td>{{ event.name }}</td>
+                        <td>{{ event.location }}</td>
+                        <td>{{ event.datedebut }}</td>
+                        <td>{{ event.datefin }}</td>
+                        <td>{{ event.nbplace }}</td>
+                        <td>{{ event.nbplacemin }}</td>
+                        <td>
+                            <img [src]="'assets/' + event.image" alt="{{event.image}}"
+                                style="height: 100px; width: 100px;" />
+                        </td>
+                        <td>
+                            <!-- Boutons pour les actions -->
+                            <button class="btn btn-danger" (click)="deleteEvent(event.id)"><i
+                                    class="fas fa-trash"></i> Delete</button>
+                            <button class="btn btn-primary" (click)="Updateevent(event.id)"><i
+                                    class="fas fa-edit"></i> Update</button>
+                            <!-- Supposons que c'était censé être le détail de l'événement -->
+                            <button class="btn btn-primary" (click)="EventDetail(event.id)"><i
+                                    class="fas fa-info"></i> Details</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Bouton "Créer un événement" -->
+            <button class="create-event-button button" (click)="createEvent()">Créer un événement</button>
+        </div>
+    </div>
+</body>
+
+</html>

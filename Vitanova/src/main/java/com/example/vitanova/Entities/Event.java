@@ -1,27 +1,27 @@
 package com.example.vitanova.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.*;
+import jakarta.persistence.*;
+import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
-
+import java.util.Set;
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
+@Data
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long IdEvent;
-    private Date StartDate;
-    private Date EndDate;
-    private String Description;
-    private int price;
-
-
+    private Long id ;
+    private String name ;
+    private String location ;
+    @DateTimeFormat(pattern = "dd-mm-yyyy")
+    private Date datedebut;
+    @DateTimeFormat(pattern = "dd-mm-yyyy")
+    private Date datefin ;
+    private int nbplace ;
+    private String summary;
+    private int nbplacemin ;
+    private String image;
+    @OneToMany(mappedBy = "event")
+    private Set<Demande> demandes;
 }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        h1 {
+            margin-left: 275px; /* Add an empty space on the left side of the title */
+            margin-right: 5px;
+        }
+
+        .table-container {
+            padding-left: 275px; /* Add an empty space on the left side of the table */
+            padding-right: 5px;
+        }
+
+        .search-input-container {
+            padding-left: 275px;
+            padding-right: 5px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center; /* Center the content of the table */
+        }
+
+        .table th {
+            text-align: center; /* Center the content of the table header */
+        }
+
+        .table th, .table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<h1 class="card-title fw-semibold" style="text-align: center;">Exercices</h1>
+<div class="search-input-container">
+    <input type="text" [(ngModel)]="search" (ngModelChange)="searchExercices()" placeholder="Search Exercises" class="form-control mb-3">
+</div>
+<div class="table-container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th (click)="sort('nameExer')">
+                    nameExer 
+                    <span *ngIf="sortColumn === 'nameExer'" class="sort-indicator">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+                </th>
+                <th (click)="sort('durationExer')">
+                    durationExer 
+                    <span *ngIf="sortColumn === 'durationExer'" class="sort-indicator">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+                </th>
+                <th (click)="sort('intensity')">
+                    intensity 
+                    <span *ngIf="sortColumn === 'intensity'" class="sort-indicator">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+                </th>
+                <th (click)="sort('muscle')">
+                    muscle 
+                    <span *ngIf="sortColumn === 'muscle'" class="sort-indicator">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+                </th>
+                <th>
+                    picture 
+                </th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of filteredExercises">
+                <td>{{e.nameExer}}</td>
+                <td>{{e.durationExer}}</td>
+                <td>{{e.intensity}}</td>
+                <td>{{e.muscle}}</td>
+                <td><img src="{{e.picture}}" alt="Exercise Image" class="exercise-image"></td>
+                <td>
+                    <button [routerLink]="['/admin/exerciceUpdate',e.idExer]" class="btn btn-primary" style="margin-right: 10px">UPD</button>
+                    <button class="btn btn-danger" (click)="deleteExercice(e.idExer)">dlt</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>    
+    <a [routerLink]="['/admin/exerciceAdd']" class="btn btn-primary">Add</a>
+</div>
+
+</body>
+</html>

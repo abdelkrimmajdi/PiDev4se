@@ -1,0 +1,75 @@
+body {
+   
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Couleur de fond */
+}
+
+.container {
+    margin: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #ddd;
+   font-size : 40px;
+}
+
+form {
+    width: 50%; 
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff;
+    font-size : 20px;
+
+}
+
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: red;background-color: black;
+    margin-top: 5px;
+    font-size: 14px;
+}
+.center-button {
+    display: block;
+    margin: 20px auto;
+  }
+  .input-field:focus {
+    background-color: #fff; /* Changez la couleur de fond en focus */
+    transition: background-color 0.3s ease; /* Ajoutez une transition pour une animation en douceur */
+}
