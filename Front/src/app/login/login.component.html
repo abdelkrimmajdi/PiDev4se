@@ -1,126 +1,106 @@
-<html lang="en">
-<head>
-  <title>Webleb</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/styles.css">
-</head>
-<body>
-  <div class="section">
-    <div class="container">
-      <div class="row full-height justify-content-center">
-        <div class="col-12 text-center align-self-center py-5">
-          <div class="section pb-5 pt-5 pt-sm-2 text-center">
-            <h6 class="mb-0 pb-3">
-              <span>Log In</span>
-              <span>Sign Up</span>
-            </h6>
-            <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
-            <label for="reg-log"></label>
-            <div class="card-3d-wrap mx-auto">
-              <div class="card-3d-wrapper">
-                <div class="card-front">
-                  <div class="center-wrap">
-                    <div class="section text-center">
-                      <h4 class="mb-4 pb-3">Log In</h4>
-                      <form [formGroup]="loginForm" (ngSubmit)="login()">
-                        <div class="form-group">
-                          <input type="email" class="form-style" placeholder="Email" formControlName="email">
-                          <i class="input-icon uil uil-at"></i>
-                        </div> 
-                        <div class="form-group mt-2">
-                          <input type="password" class="form-style" placeholder="Password" formControlName="password">
-                          <i class="input-icon uil uil-lock-alt"></i>
-                        </div>
-                        <button type="submit" class="btn mt-4">Sign In</button>
-                      </form>
-                      <p class="mb-0 mt-4 text-center"><a routerLink="/forgotpassword" class="link">Forgot your password?</a></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-back">
-                  <div class="center-wrap">
-                    <div class="section text-center">
-                      <h4 class="mb-3 pb-3">Sign Up</h4>
-                      <form [formGroup]="registerForm" (ngSubmit)="register()">
-                        <div class="form-group">
-                          <input type="text" class="form-style" placeholder="First Name" formControlName="firstName">
-                          <i class="input-icon uil uil-user"></i>
-                          <div *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched" class="error-message">
-                            <div *ngIf="registerForm.get('firstName')?.errors?.['required']">First Name is required.</div>
-                            <div *ngIf="registerForm.get('firstName')?.errors?.['minlength']">First Name must be at least 3 characters.</div>
+<div class="row">
+  <div class="col-md-6 mx-auto p-0">
+      <div class="card">
+          <div class="login-box" >
+              <div class="login-snip">
+                  <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Login</label>
+                  <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+                  <div class="login-space">
+                      <div class="login" [formGroup]="loginForm">
+                          <div class="group">
+                              <label for="user" class="label">Email</label>
+                              <input id="user" type="text" class="input" placeholder="Enter your Email" formControlName="email">
                           </div>
-                        </div>  
-                        <div class="form-group mt-2">
-                          <input type="text" class="form-style" placeholder="Last Name" formControlName="lastName">
-                          <i class="input-icon uil uil-user"></i>
+                          <div class="group">
+                              <label for="pass" class="label">Password</label>
+                              <input id="pass" type="password" class="input" data-type="password" placeholder="Enter your password" formControlName="password">
+                          </div>
+                          <div class="group">
+                              <button type="submit" class="button" (click)="login()">Sign In</button>
+                          </div>
+                          <div class="hr"></div>
+                          <div class="foot">
+                              <a routerLink="/forgotpassword">Forgot Password?</a>
+                          </div>
+                      </div>
+                      <div class="sign-up-form" [formGroup]="registerForm">
+                          <div class="group">
+                              <label for="pass" class="label">First Name</label>
+                              <input type="text" class="input" placeholder="First Name" formControlName="firstName">
+                              <div  *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched" class="error-message">
+                                  <div *ngIf="registerForm.get('firstName')?.errors?.['required']">First Name is required.</div>
+                                  <div   *ngIf="registerForm.get('firstName')?.errors?.['minlength']">First Name must be at least 3 characters.</div>
+                              </div>
+                          </div> 
+                      <div class="group">
+                        <label for="pass" class="label">Last Name</label>
+                          <input type="text" class="input" placeholder="Last Name" formControlName="lastName">
+                          
                           <div *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched" class="error-message">
-                            <div *ngIf="registerForm.get('lastName')?.errors?.['required']">Last Name is required.</div>
-                            <div *ngIf="registerForm.get('lastName')?.errors?.['minlength']">Last Name must be at least 3 characters.</div>
+                              <div *ngIf="registerForm.get('lastName')?.errors?.['required']">Last Name is required.</div>
+                              <div *ngIf="registerForm.get('lastName')?.errors?.['minlength']">Last Name must be at least 3 characters.</div>
                           </div>
-                        </div>  
-                        <div class="form-group mt-2">
-                          <input type="email" class="form-style" placeholder="Email" formControlName="email">
-                          <i class="input-icon uil uil-at"></i>
+                      </div>  
+                      <div class="group">
+                      <label for="pass" class="label">Email</label>
+                          <input type="email" class="input" placeholder="Email" formControlName="email">
+                          
                           <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error-message">
-                            <div *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</div>
-                            <div *ngIf="registerForm.get('email')?.errors?.['email']">Invalid email format.</div>
+                              <div *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</div>
+                              <div *ngIf="registerForm.get('email')?.errors?.['email']">Invalid email format.</div>
                           </div>
-                        </div>
-                        <div class="form-group mt-2">
-                          <input type="tel" class="form-style" placeholder="Phone Number" formControlName="phonenumber">
-                          <i class="input-icon uil uil-phone"></i>
+                      </div>
+                      <div class="group">
+                        <label for="pass" class="label">Phone Number</label>
+                          <input type="tel" class="input" placeholder="Phone Number" formControlName="phonenumber">
+                      
                           <div *ngIf="registerForm.get('phonenumber')?.invalid && registerForm.get('phonenumber')?.touched" class="error-message">
-                            <div *ngIf="registerForm.get('phonenumber')?.errors?.['required']">Phone Number is required.</div>
-                            <div *ngIf="registerForm.get('phonenumber')?.errors?.['minlength']">Phone Number must be at least 8 characters.</div>
+                              <div *ngIf="registerForm.get('phonenumber')?.errors?.['required']">Phone Number is required.</div>
+                              <div *ngIf="registerForm.get('phonenumber')?.errors?.['minlength']">Phone Number must be at least 8 characters.</div>
                           </div>
-                        </div>
-                        <div class="form-group mt-2">
-                          <input type="file" class="form-style" placeholder="Photo profile" (change)="onImageUpload($event)">
+                      </div>
+                      <div class="group">
+                        <label for="pass" class="label">Photo Profile</label>
+                          <input type="file" class="input" placeholder="Photo Profile" (change)="onImageUpload($event)">
                           <i class="input-icon uil uil-image"></i>
                           <!-- Vous pouvez ajouter des contrôles de validation ici si nécessaire -->
+                      </div>
+                      <div class="group">
+                        <label for="pass" class="label">Password</label>
+                        <input id="pass" type="password" class="input" placeholder="Password" formControlName="password">
+                        <div class="error-message">
+                            <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.errors?.['required']">Password is required.</div>
+                            <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.</div>
+                            <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.errors?.['invalidPassword']">Password must contain at least one uppercase letter.</div>
                         </div>
-                        <div class="form-group mt-2">
-                          <input type="password" class="form-style" placeholder="Password" formControlName="password">
-                          <i class="input-icon uil uil-lock-alt"></i>
-                          <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error-message">
-                            <div *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</div>
-                            <div *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.</div>
-                            <div *ngIf="registerForm.get('password')?.errors?.['invalidPassword']" class="error-message">
-                              Password must contain at least one uppercase letter.
-                            </div>
-                            <!-- Ajoutez d'autres messages d'erreur personnalisés ici si nécessaire -->
-                          </div>
-                        </div>
-                        <div class="form-group mt-2">
+                    </div>
+                      <div class="group">
+                        <label for="pass" class="label">Role</label>
                           <select id="role" class="form-style select" formControlName="role">
-                            <option value="" disabled selected><i class="input-icon uil uil-user"></i>Choose Role:</option>
-                            <option value="USER"><i class="input-icon uil uil-user"></i> User</option>
-                            <option value="NUTRITIONISTE"><i class="input-icon uil uil-leaf"></i> Nutritioniste</option>
-                            <option value="COACH"><i class="input-icon uil uil-dumbbell"></i> Coach</option>
-                            <option value="MENTOR"><i class="input-icon uil uil-graduation-cap"></i> Mentor</option>
+                              <option value="" disabled selected><i class="input-icon uil uil-user"></i>Choose Role:</option>
+                              <option value="USER"><i class="input-icon uil uil-user"></i> User</option>
+                              <option value="NUTRITIONISTE"><i class="input-icon uil uil-leaf"></i> Nutritioniste</option>
+                              <option value="COACH"><i class="input-icon uil uil-dumbbell"></i> Coach</option>
+                              <option value="MENTOR"><i class="input-icon uil uil-graduation-cap"></i> Mentor</option>
                           </select>
                           <div *ngIf="registerForm.get('role')?.invalid && registerForm.get('role')?.touched" class="error-message">
-                            <div *ngIf="registerForm.get('role')?.errors?.['required']">Role is required.</div>
-                            <!-- Ajoutez d'autres messages d'erreur personnalisés ici si nécessaire -->
+                              <div *ngIf="registerForm.get('role')?.errors?.['required']">Role is required.</div>
+                       
                           </div>
-                        </div>
-                        <button type="submit" class="btn mt-4">Register</button>
-                      </form>
+                      </div>
                       
-                      
+                      <div class="group">
+                        <button type="submit" class="button" (click)="register()">Sign In</button>
                     </div>
-                  </div>
-                </div>
+                
               </div>
-            </div>
           </div>
-        </div>
       </div>
-    </div>
   </div>
-</body>
+</div>
 
-  </html>
+
+
+
+
+
