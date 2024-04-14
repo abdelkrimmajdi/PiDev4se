@@ -66,7 +66,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         VerificationTokenRepo.save(token);
         SmsRequest smsRequest = new SmsRequest(user.getPhonenumber(), token.getToken());
 
-// Appelez la méthode sendSms avec cet objet SmsRequest
         this.service.sendSms(smsRequest);
 
         return user;
