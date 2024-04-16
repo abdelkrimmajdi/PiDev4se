@@ -143,24 +143,39 @@ System.err.println(user.isEnabled());
         return null;
     }
     public HashMap<String, String> forgetPassword(String email) {
-        HashMap message = new HashMap();
+        HashMap<String, String> message = new HashMap<>();
 
-        User userexisting = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
+        User userexisting = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
 
         UUID token = UUID.randomUUID();
         userexisting.setPasswordResetToken(token.toString());
         userexisting.setId(userexisting.getId());
 
-        Mail mail = new Mail();
+        String resetLink = "http://localhost:4200/resetpassword/" + userexisting.getPasswordResetToken();
 
+        // Création du contenu du mail personnalisé
+        String mailContent = "Dear " + userexisting.getFirstName() + ",\n\n"
+                + "You are receiving this email because a request has been made to reset the password for your account.\n\n"
+                + "To reset your password, please click on the following link:\n"
+                + resetLink + "\n\n"
+                + "If you did not request this password reset, please ignore this email.\n\n"
+                + "Thank you,\n"
+                + "VitaVibes";
+
+        Mail mail = new Mail();
         mail.setSubject("Reset Password");
         mail.setTo(userexisting.getEmail());
-        mail.setContent("Votre nouveau TOKEN est : " + "http://localhost:4200/resetpassword/"+userexisting.getPasswordResetToken());
+        mail.setContent(mailContent);
+
+        // Envoi du mail
         emailService.sendSimpleEmail(mail);
+
         userRepository.save(userexisting);
-        message.put("user","user FOUND and email is Sent");
+        message.put("user", "User found and email is sent");
         return message;
     }
+
 
 
     public HashMap<String,String> resetPassword(@PathVariable String passwordResetToken, String newPassword){

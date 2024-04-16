@@ -49,6 +49,7 @@ public class UserServiceImpl implements UserService{
                 }
                 if (user.getLastName() != null) {
                     existinguser.setLastName(user.getLastName());
+
                 }
 
                 if (user.getEmail() != null) {
