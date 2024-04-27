@@ -1,5 +1,6 @@
 package com.example.vitanova.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,6 +17,7 @@ public class Menu {
     private Long IdMenu;
     private int Calories;
     private String Meal;
+    @JsonIgnore
     @ManyToOne
-    NutrisionistProgram nutrisionistprogram;
+    private NutrisionistProgram nutrisionistprogram;
 }

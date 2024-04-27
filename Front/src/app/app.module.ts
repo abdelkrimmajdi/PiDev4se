@@ -70,6 +70,9 @@ import { GetalleventComponent } from './EventCRUD/getallevent/getallevent.compon
 import { CreateEventComponent } from './EventCRUD/create-event/create-event.component';
 import { EventfrontComponent } from './EventCRUD/eventfront/eventfront.component';
 import { DemandeComponent } from './demande/demande.component';
+import { ProgrammComponent } from './features/Nutrionniste/programm/programm.component';
+import { AddProgrammComponent } from './features/Nutrionniste/add-programm/add-programm.component';
+import { AddMenuComponent } from './features/Nutrionniste/add-menu/add-menu.component';
 
 
 
@@ -130,7 +133,10 @@ AllReclamationsComponent,
       AddproductComponent,
       ProductComponent,
       PanierComponent,
-      DemandeComponent
+      DemandeComponent,
+      ProgrammComponent,
+      AddProgrammComponent,
+      AddMenuComponent
 
   
  

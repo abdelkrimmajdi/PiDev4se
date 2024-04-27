@@ -68,7 +68,7 @@
                       <div class="group">
                         <label for="pass" class="label">Password</label>
                         <input id="pass" type="password" class="input" placeholder="Password" formControlName="password">
-                        <div class="error-message">
+                        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error-message">
                             <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.errors?.['required']">Password is required.</div>
                             <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.</div>
                             <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.errors?.['invalidPassword']">Password must contain at least one uppercase letter.</div>
