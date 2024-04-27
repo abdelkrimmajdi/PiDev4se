@@ -9,4 +9,6 @@ public interface NutritionisteService {
     public NutrisionistProgram getNutrisionistProgramById(Long id);
     public NutrisionistProgram saveNutrisionistProgram(NutrisionistProgram nutrisionistProgram);
     public void deleteNutrisionistProgram(Long id);
+    public List<NutrisionistProgram> getProgramsByUserId(Long userId);
+    public NutrisionistProgram create(NutrisionistProgram nutrisionistProgram, Long userId);
 }

@@ -53,6 +53,8 @@ import { EventfrontComponent } from './EventCRUD/eventfront/eventfront.component
 import { GetalleventComponent } from './EventCRUD/getallevent/getallevent.component';
 import { UpdateeventComponent } from './EventCRUD/updateevent/updateevent.component';
 import { DemandeComponent } from './demande/demande.component';
+import { ProgrammComponent } from './features/Nutrionniste/programm/programm.component';
+import { AddProgrammComponent } from './features/Nutrionniste/add-programm/add-programm.component';
 
 const routes: Routes = [ 
   {
@@ -231,6 +233,26 @@ path:"",
         component: EditProfileComponent,
        
       }
+      
+    
+    ]
+  },
+  {
+    path:"admin",
+    component: AllTemplateBackComponent,
+
+    children: [
+      {
+        path: "Program",
+        component: ProgrammComponent,
+       
+      },
+      
+        {
+          path: "AddProgram",
+          component: AddProgrammComponent,
+         
+        }
       
     
     ]

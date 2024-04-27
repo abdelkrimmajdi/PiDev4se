@@ -145,12 +145,12 @@ export class LoginComponent {
     this.authService.uploadImage(this.uploadedImage, this.uploadedImage.name)
       .subscribe((img: Image) => {
         console.log(img);
-        // Ajoutez l'ID de l'image aux données du formulaire
-        formData.image = img; // ou img.id selon votre structure de données
+       
+        formData.image = img; 
         this.user.image=img
         this.authService.register(formData).subscribe({
           next: (response: any) => {
-            // Handle the registration response
+         
             this.authService.SetRegistredUser(this.user);
             
             Swal.fire({
