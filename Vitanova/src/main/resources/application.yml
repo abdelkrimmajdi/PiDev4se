@@ -1,6 +1,5 @@
 
 twilio:
-  accountSid: AC984992c682e5e246ae954279af192033
-
-  authToken: 712b1b16b18b14d25b300f117bbf59a5
-  trialNumber: +13347216322
+  accountSid: ACb639977fb93c28e1befc3c8f4467151f
+  authToken: da307dc6b58fd4967f8e588a60456d60
+  trialNumber: +13185861313
