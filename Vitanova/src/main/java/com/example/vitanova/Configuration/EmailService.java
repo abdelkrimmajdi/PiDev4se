@@ -26,7 +26,7 @@ public class EmailService implements EmailSender {
 
     public void sendSimpleEmail(final Mail mail) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("abdelkrimajdi@gmail.com");
+        message.setFrom("vitavibesesprit@gmail.com");
         message.setTo(mail.getTo());
         message.setSubject("Réinitialiser le mot de passe");
         message.setText(mail.getContent());
@@ -34,7 +34,7 @@ public class EmailService implements EmailSender {
     }
     public void sendSimpleEmailFares(final Mail mail) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("abdelkrimajdi@gmail.com");
+        message.setFrom("vitavibesesprit@gmail.com");
         message.setTo(mail.getTo());
         message.setSubject("Update of your program");
         message.setText(mail.getContent());
@@ -57,7 +57,7 @@ public class EmailService implements EmailSender {
         helper.setSubject("Confirm your email");
 
         // Définition de l'expéditeur
-        helper.setFrom("majdi.abdelkrim@esprit.tn");
+        helper.setFrom("vitavibesesprit@gmail.com");
 
         // Envoi du message
 

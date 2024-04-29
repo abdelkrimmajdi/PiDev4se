@@ -1,1 +1,59 @@
-<p>add-menu works!</p>
+<div class="container">
+    <div class="conteneur-formulaires">
+        <ng-container *ngFor="let index of generateIndices()">
+            <form [formGroup]="AddProgramForm" class="formulaire" *ngIf="currentPage === getPageForIndex(index)">
+                <div class="day-label">
+                    <strong>{{ daysOfWeek[index % daysOfWeek.length] }}</strong>
+                </div>
+
+                <div class="meal-label">
+                    <strong>Breakfast</strong>
+                </div>
+                <div class="form-group">                   
+                    <label for="breakfast-calories-{{index}}">Nombre de calories  </label>
+                    <input type="number" id="breakfast-calories-{{index}}" class="form-control" formControlName="calories" placeholder="Entrez le nombre de calories">
+                </div>
+                <div class="form-group">                  
+                    <label for="breakfast-meal-{{index}}">Nom du plat</label>
+                    <input type="text" id="breakfast-meal-{{index}}" class="form-control" formControlName="meal" placeholder="Entrez le nom du plat">
+                </div>
+                <button class="btn btn-primary" (click)="saveProgram()">Add Menu</button>
+                <div class="meal-label">
+                    <strong>Lunch</strong>
+                </div>
+                <div class="form-group">                  
+                    <label for="lunch-calories-{{index}}">Nombre de calories </label>
+                    <input type="number" id="lunch-calories-{{index}}" class="form-control" formControlName="calories" placeholder="Entrez le nombre de calories">
+                </div>
+                <div class="form-group">                    
+                    <label for="lunch-meal-{{index}}">Nom du plat</label>
+                    <input type="text" id="lunch-meal-{{index}}" class="form-control" formControlName="meal" placeholder="Entrez le nom du plat">
+                </div>
+                <button class="btn btn-primary" (click)="saveProgram()">Add Menu</button>
+                <div class="meal-label">
+                    <strong>Dinner</strong>
+                </div>            
+                <div class="form-group">                    
+                    <label for="dinner-calories-{{index}}">Nombre de calories</label>
+                    <input type="number" id="dinner-calories-{{index}}" class="form-control" formControlName="calories" placeholder="Entrez le nombre de calories">
+                </div>
+                <div class="form-group">                   
+                    <label for="dinner-meal-{{index}}">Nom du plat </label>
+                    <input type="text" id="dinner-meal-{{index}}" class="form-control" formControlName="meal" placeholder="Entrez le nom du plat">
+                </div>
+                <button class="btn btn-primary" (click)="saveProgram()">Add Menu</button>
+               
+            </form>
+        </ng-container>
+    </div>
+    <div class="pagination">
+        <button class="page-link" (click)="goToPreviousPage()">Previous</button>
+        <ng-container *ngIf="currentPage !== 0">
+        <li class="page-item"><a class="page-link" (click)="goToPreviousPage()">{{currentPage }}</a></li></ng-container>
+        <li class="page-item active">
+            <a class="page-link" href="#">{{currentPage + 1}} <span class="sr-only">{{currentPage + 1}}</span></a>
+          </li>
+          <li class="page-item"><a class="page-link" (click)="goToNextPage()">{{currentPage + 2}}</a></li>
+        <button class="page-link" (click)="goToNextPage()">Next</button>
+    </div>
+</div>

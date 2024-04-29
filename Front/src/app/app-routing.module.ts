@@ -55,6 +55,8 @@ import { UpdateeventComponent } from './EventCRUD/updateevent/updateevent.compon
 import { DemandeComponent } from './demande/demande.component';
 import { ProgrammComponent } from './features/Nutrionniste/programm/programm.component';
 import { AddProgrammComponent } from './features/Nutrionniste/add-programm/add-programm.component';
+import { MenuComponent } from './features/Nutrionniste/menu/menu.component';
+import { AddMenuComponent } from './features/Nutrionniste/add-menu/add-menu.component';
 
 const routes: Routes = [ 
   {
@@ -252,7 +254,15 @@ path:"",
           path: "AddProgram",
           component: AddProgrammComponent,
          
-        }
+      },
+      {
+        path: "Menu",
+        component: MenuComponent,
+        },
+        {
+          path: "AddMenu",
+          component:AddMenuComponent,
+          }
       
     
     ]

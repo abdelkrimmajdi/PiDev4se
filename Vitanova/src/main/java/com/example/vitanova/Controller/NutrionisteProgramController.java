@@ -35,7 +35,7 @@ public class NutrionisteProgramController {
         return savedProgram;
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("DeleteProgram/{id}")
     public void deleteNutrisionistProgram(@PathVariable Long id) {
         service.deleteNutrisionistProgram(id);
     }

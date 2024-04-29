@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NutrionnistProgram } from 'src/app/model/NutrionnistProgram';
 import { User } from 'src/app/model/user.model';
 import { NutritionnistService } from 'src/app/services/nutritionnist.service';
+import { SelectProgramService } from 'src/app/services/select-program.service';
 
 @Component({
   selector: 'app-programm',
@@ -14,16 +15,25 @@ export class ProgrammComponent  {
   programss: NutrionnistProgram[] = [];
 
 
-  constructor(private ServiceNut: NutritionnistService) { }
+  constructor(private ServiceNut: NutritionnistService, private selectedProgramService: SelectProgramService) { }
   
   ngOnInit(): void {
     this.loadPrograms(); 
-    console.log("User connecté :", this.userconnect);
+
     
     
   }
   delete(id: number) {
     this.ServiceNut.deleteProgramm(id).subscribe(() => this.getAllProgramm());
+  }
+  selectProgram(programId: number) {
+    this.selectedProgramService.selectedProgramId = programId;
+    console.log('Selected program ID:', programId);
+  }
+
+  selectProgramduration(duration: number) {
+    this.selectedProgramService.duration = duration;
+    console.log('Selected program ID:', duration);
   }
   getAllProgramm() {
     this.ServiceNut.getAllProgramm().subscribe(
