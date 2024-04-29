@@ -57,11 +57,7 @@ export class AuthService {
     return this.http.get<Image>(`http://localhost:8081/image/get/info/${id}` );
   }
   logout() {
-  
-  
-  
-    
-  }
+}
 
   
 }
