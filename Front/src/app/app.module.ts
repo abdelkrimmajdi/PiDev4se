@@ -73,6 +73,7 @@ import { DemandeComponent } from './demande/demande.component';
 import { ProgrammComponent } from './features/Nutrionniste/programm/programm.component';
 import { AddProgrammComponent } from './features/Nutrionniste/add-programm/add-programm.component';
 import { AddMenuComponent } from './features/Nutrionniste/add-menu/add-menu.component';
+import { MenuComponent } from './features/Nutrionniste/menu/menu.component';
 
 
 
@@ -136,7 +137,8 @@ AllReclamationsComponent,
       DemandeComponent,
       ProgrammComponent,
       AddProgrammComponent,
-      AddMenuComponent
+      AddMenuComponent,
+      MenuComponent
 
   
  

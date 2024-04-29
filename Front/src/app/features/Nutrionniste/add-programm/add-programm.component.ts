@@ -49,33 +49,6 @@ export class AddProgrammComponent {
   
 
   
-  AddProg(): void{
 
-    const formData = this.AddProgramForm.value;
- 
-console.log(formData)
-      this.NutritionnistServices.createProgramm(formData as any).subscribe({
-        next: (response: any) => { 
-          Swal.fire({
-            icon: 'success',
-            title: 'Programme ajouter avec succées',
-            text: 'Programme ajouter avec succées',
-            showConfirmButton: false,
-            timer: 1500
-          });
-          this.router.navigate(['/admin/Program']);
-        },
-        error: (error: any) => {
-        
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Une erreur est survenue',
-            footer: 'Veuillez réessayer'
-          });
-        }
-      });
-  
-}
   
 }

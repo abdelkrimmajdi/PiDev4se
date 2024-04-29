@@ -63,7 +63,6 @@
                         <label for="pass" class="label">Photo Profile</label>
                           <input type="file" class="input" placeholder="Photo Profile" (change)="onImageUpload($event)">
                           <i class="input-icon uil uil-image"></i>
-                          <!-- Vous pouvez ajouter des contrôles de validation ici si nécessaire -->
                       </div>
                       <div class="group">
                         <label for="pass" class="label">Password</label>
@@ -76,7 +75,7 @@
                     </div>
                       <div class="group">
                         <label for="pass" class="label">Role</label>
-                          <select id="role" class="form-style select" formControlName="role">
+                          <select id="role" class="input" formControlName="role">
                               <option value="" disabled selected><i class="input-icon uil uil-user"></i>Choose Role:</option>
                               <option value="USER"><i class="input-icon uil uil-user"></i> User</option>
                               <option value="NUTRITIONISTE"><i class="input-icon uil uil-leaf"></i> Nutritioniste</option>

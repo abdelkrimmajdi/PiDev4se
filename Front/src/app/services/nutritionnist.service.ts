@@ -21,7 +21,7 @@ export class NutritionnistService {
     return this.http.post(`http://localhost:8081/addProgram`,NutrionnistProgram);
   }
   deleteProgramm(idProgram: number) {
-    return this.http.delete('http://localhost:8081/delete' + '/' + idProgram);
+    return this.http.delete('http://localhost:8081/DeleteProgram' + '/' + idProgram);
   }
   getNutrisionistProgramsByUserId(userId: number): Observable<NutrionnistProgram[]> {
     return this.http.get<NutrionnistProgram[]>(`http://localhost:8081/user/${userId}/nutrisionistPrograms`);

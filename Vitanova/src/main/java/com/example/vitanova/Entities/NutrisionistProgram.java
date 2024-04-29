@@ -18,7 +18,7 @@ public class NutrisionistProgram {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long IdNutrisionistProgram;
     private String NameProg;
-    private String  Duration;
+    private int  Duration;
     @ManyToOne
     @JsonIgnore
     User user;

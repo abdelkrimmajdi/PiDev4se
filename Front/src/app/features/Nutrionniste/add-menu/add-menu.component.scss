@@ -1,0 +1,23 @@
+.formulaire {
+    flex: 0 0 calc(33.33% - 10px); /* Chaque formulaire occupe un tiers de la largeur avec un espace entre eux */
+    margin-bottom: 20px; /* Espace entre les lignes */
+}
+
+.conteneur-formulaires {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end; /* Alignement des formulaires à droite */
+    gap: 20px; /* Espace entre les formulaires */
+}
+.pagination {
+    margin-top: 20px;
+    justify-content: flex-end; /* Add some margin for better spacing */
+  }
+  .meal-label {
+    font-size: 1.2em; /* Taille de police plus grande */
+    font-weight: white; /* Texte en gras */
+}
+.day-label {
+    font-size: 1.4em; /* Taille de police plus grande */
+    font-weight: black; /* Texte en gras */
+}
