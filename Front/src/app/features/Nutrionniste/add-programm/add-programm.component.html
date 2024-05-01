@@ -6,16 +6,16 @@
         <div class="card-body">
           <form [formGroup]="AddProgramForm" (ngSubmit)="saveProgram()">
             <div class="form-group">
-              <label for="nameProg">Nom du programme</label>
-              <input type="text" id="nameProg" class="form-control" formControlName="nameProg" placeholder="Entrez le nom du programme">
+              <label for="nameProg">Program name</label>
+              <input type="text" id="nameProg" class="form-control" formControlName="nameProg" placeholder="Enter the program name">
             </div>
         
             <div class="form-group">
-              <label for="duration">Durée du programme</label>
-              <input type="number" id="duration" class="form-control" formControlName="duration" placeholder="Entrez la durée du programme">
+              <label for="duration">Program duration</label>
+              <input type="number" id="duration" class="form-control" formControlName="duration" placeholder="Enter the duration of the program">
             </div>
             <input type="hidden" formControlName="userId">
-            <button type="submit" class="btn btn-primary">Ajouter</button>
+            <button type="submit" class="btn btn-primary" >Add</button>
           </form>
         </div>
       </div>

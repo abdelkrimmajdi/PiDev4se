@@ -39,7 +39,7 @@ export class ProgrammComponent  {
     this.ServiceNut.getAllProgramm().subscribe(
       (data: NutrionnistProgram[]) => {
         console.log(data);
-        // Filtrer les programmes pour n'afficher que ceux de l'utilisateur connecté
+  
         this.listProgram = data.filter(program => program.user === this.userconnect);
         console.log("Programmes filtrés :", this.listProgram);
       },

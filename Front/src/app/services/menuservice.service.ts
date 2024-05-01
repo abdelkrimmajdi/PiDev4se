@@ -10,7 +10,9 @@ export class MenuserviceService {
 
   constructor(private http:HttpClient ) {}
 
- 
+  deleteMenu(id: number) {
+    return this.http.delete('http://localhost:8081/deleteMenu' + '/' + id);
+  }
 
   saveMenu(menu: Menu, NutritionnisteProgram: number): Observable<Menu> {
     return this.http.post<Menu>(`http://localhost:8081/SaveMenu?NutritionnisteProgram=${NutritionnisteProgram}`, menu);

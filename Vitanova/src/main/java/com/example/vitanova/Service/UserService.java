@@ -10,4 +10,5 @@ public interface UserService {
     List<User> getAllUser();
     public User updatePassword (Long idUser, String password);
     public User updateUser(User user);
+    public List<User> getAllNutritionists();
 }

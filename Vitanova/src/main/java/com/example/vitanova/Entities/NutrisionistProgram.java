@@ -19,6 +19,7 @@ public class NutrisionistProgram {
     private Long IdNutrisionistProgram;
     private String NameProg;
     private int  Duration;
+
     @ManyToOne
     @JsonIgnore
     User user;

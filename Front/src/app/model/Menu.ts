@@ -4,4 +4,6 @@ export class Menu{
     calories!: number;
     meal!: string;
     nutrisionistprogram!: NutrionnistProgram;
+    repas!: string;
+    day!: string;
 }

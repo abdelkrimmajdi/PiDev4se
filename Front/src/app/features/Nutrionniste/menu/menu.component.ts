@@ -16,7 +16,6 @@ export class MenuComponent {
 
   ngOnInit(): void {
     this.loadPrograms();
-    console.log(this.selectedProgramService.selectedProgramId)
   }
 
   loadPrograms() {
@@ -34,5 +33,9 @@ export class MenuComponent {
     } else {
       console.log('Aucun programme sélectionné.');
     }
+  }
+  delete(id: number) {
+    this.service.deleteMenu(id).subscribe(( data => { console.log(data);
+    this.loadPrograms();}) );
   }
 }

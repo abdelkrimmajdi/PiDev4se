@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
@@ -20,6 +22,10 @@ public class UserController {
     @PutMapping("/update")
     public User updateEtudiant(@RequestBody User etudiant) {
         return userService.updateUser(etudiant);
+    }
+    @GetMapping("/nutritionists")
+    public List<User> getAllNutritionists() {
+        return userService.getAllNutritionists();
     }
 }
 

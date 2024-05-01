@@ -1,0 +1,101 @@
+
+<style>
+    body {
+      background-image: url('/assets/FrontOffice/img/healthy-eating-on-budget.png');
+      background-repeat: no-repeat; /* Empêche la répétition de l'image */
+      background-size: cover; /* Ajuste la taille de l'image pour couvrir tout l'arrière-plan */
+      /* Autres styles de fond si nécessaire */
+    }
+    .user-table {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-table th,
+        .user-table td {
+            vertical-align: middle !important;
+        }
+
+        .user-link {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .user-link:hover {
+            text-decoration: underline;
+        }
+  </style>
+  <body>
+  <app-header-front></app-header-front>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<hr>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive user-table">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th><span>Image</span></th>
+                            <th>Nutritionist</th>
+                            <th>Email</th>
+                            <th class="text-center">Phone Number</th>
+        
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of listUser; let i = index">
+                            <td>{{ i + 1 }}</td>
+                            <td>                                     
+                                <img src="{{ user.imageStr }}">                                  
+                            </td>  
+                            <td>
+                                <a href="#" class="user-link">{{ user.firstName }} {{ user.lastName }}</a>
+                            </td>
+                            <td>{{ user.email }}</td>
+                            <td class="text-center">{{ user.phonenumber }}</td>
+                            
+                            <td class="text-center">
+                                <button type="button" class="btn btn-sm btn-danger"(click)="selectProgram(user.id)"routerLink="/NutritionistProgram">Show Details</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+</body>
+
+<footer><app-footer-front></app-footer-front></footer>

@@ -29,6 +29,9 @@ export class NutritionnistService {
   saveNutrisionistProgram(nutrisionistProgram: NutrionnistProgram, userId: number): Observable<NutrionnistProgram> {
     return this.http.post<NutrionnistProgram>(`http://localhost:8081/save?userId=${userId}`, nutrisionistProgram);
   }
+  getAllNutritionnists(): Observable<any> { 
+    return this.http.get(`http://localhost:8081/api/v1/user/nutritionists`);
+  }
  
 
 }

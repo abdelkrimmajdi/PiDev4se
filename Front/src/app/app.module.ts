@@ -75,6 +75,9 @@ import { AddProgrammComponent } from './features/Nutrionniste/add-programm/add-p
 import { AddMenuComponent } from './features/Nutrionniste/add-menu/add-menu.component';
 import { MenuComponent } from './features/Nutrionniste/menu/menu.component';
 
+import { GetNutrionnistComponent } from './features/user/get-nutrionnist/get-nutrionnist.component';
+import { ShowProgramComponent } from './features/user/show-program/show-program.component';
+
 
 
 @NgModule({
@@ -138,7 +141,10 @@ AllReclamationsComponent,
       ProgrammComponent,
       AddProgrammComponent,
       AddMenuComponent,
-      MenuComponent
+      MenuComponent,
+   
+      GetNutrionnistComponent,
+          ShowProgramComponent
 
   
  

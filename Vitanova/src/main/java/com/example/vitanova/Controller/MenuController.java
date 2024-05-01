@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 public class MenuController {
     @Autowired
     private MenuService service;
@@ -24,7 +25,7 @@ public class MenuController {
     }
     @DeleteMapping("deleteMenu/{id}")
     public void deleteMenu(@PathVariable Long id) {
-        service.getMenuByProgramId(id);
+        service.deleteMenu(id);
     }
 
 }

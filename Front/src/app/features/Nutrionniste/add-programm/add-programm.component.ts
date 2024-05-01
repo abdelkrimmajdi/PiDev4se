@@ -27,12 +27,14 @@ export class AddProgrammComponent {
       .subscribe({
         next: (response: any) => { 
           Swal.fire({
+         
             icon: 'success',
             title: 'Programme ajouté avec succès',
             text: 'Programme ajouté avec succès',
             showConfirmButton: false,
             timer: 1500
           });
+          this.router.navigateByUrl('/admin/Program');
         },
         error: (error) => {
           console.error('Error while saving program:', error);

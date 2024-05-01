@@ -79,17 +79,15 @@ public class UserServiceImpl implements UserService{
 
             User user = userOptional.get();
 
-            // Trouver les tokens de vérification liés à cet utilisateur
 
         List<VerificationToken> tokens = verificationTokenRepository.findByUser(user);
 
-            // Supprimer chaque token de vérification trouvé
             for (VerificationToken token : tokens) {
                 verificationTokenRepository.delete(token);
             }
 
-            // Supprimer l'utilisateur lui-même
             userRepository.deleteById(idUser);
+
 
     }
     public User getUserById(Long idUser) {
@@ -100,6 +98,9 @@ public class UserServiceImpl implements UserService{
                 .orElseThrow(() -> new NotFoundException("User not found with id: " + userId));
         user.setRole(newRole);
         return userRepository.save(user);
+    }
+    public List<User> getAllNutritionists() {
+        return userRepository.findAllNutritionists();
     }
 
 }
