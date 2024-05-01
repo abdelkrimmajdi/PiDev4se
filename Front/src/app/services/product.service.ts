@@ -17,23 +17,40 @@ export class ProductService {
     return this.http.get<product[]>(this.apiUrl);
   }
 
+<<<<<<< HEAD
   getProductById(idProduct: number): Observable<product> {
     return this.http.get<product>(`${this.apiUrl}/${idProduct}`);
   }
 
   
+=======
+  getProductById(IdProduct: number): Observable<product> {
+    return this.http.get<product>(`${this.apiUrl}/${IdProduct}`);
+  }
+
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
   createProduct(product: product): Observable<product> {
     return this.http.post<product>(this.apiUrl, product);
   }
 
+<<<<<<< HEAD
   updateProduct(id: number, productData: product): Observable<product> {
     return this.http.put<product>(`${this.apiUrl}/${id}`, productData);
   }
 
+=======
+  updateProduct(IdProduct: number, product: product): Observable<product> {
+    return this.http.put<product>(`${this.apiUrl}/${IdProduct}`, product);
+  }
+
+  
+
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
   getProductByName(nameProd: string): Observable<product> {
     return this.http.get<product>(`${this.apiUrl}/nameProd/${nameProd}`);
   }
 
+<<<<<<< HEAD
   deleteProduct(productId: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${productId}`);
   }
@@ -46,3 +63,12 @@ export class ProductService {
     return this.http.post<product>(this.apiUrl, product);
   }
 }
+=======
+  deleteProduct(IdProduct: number): Observable<void> {
+    const url = `${this.apiUrl}/${IdProduct}`;
+    return this.http.delete<void>(url);
+  }
+
+ 
+}
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a

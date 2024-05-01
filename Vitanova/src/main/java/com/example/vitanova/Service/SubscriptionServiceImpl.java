@@ -2,6 +2,10 @@ package com.example.vitanova.Service;
 
 import com.example.vitanova.Entities.Subscription;
 import com.example.vitanova.Repositorie.SubscriptionRepositorie;
+<<<<<<< HEAD
+=======
+import lombok.AllArgsConstructor;
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +13,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+<<<<<<< HEAD
 public class SubscriptionServiceImpl {
+=======
+@AllArgsConstructor
+public class SubscriptionServiceImpl implements SubscriptionService{
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
     @Autowired
     private SubscriptionRepositorie subscriptionRepositorie;
 
@@ -42,4 +51,8 @@ public class SubscriptionServiceImpl {
                 .orElseThrow(() -> new RuntimeException("Subscription not found for this id :: " + id));
         subscriptionRepositorie.delete(subscription);
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 }

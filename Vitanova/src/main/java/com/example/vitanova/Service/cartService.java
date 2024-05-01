@@ -1,10 +1,14 @@
 package com.example.vitanova.Service;
 
 import com.example.vitanova.Entities.Cart;
+<<<<<<< HEAD
 import com.example.vitanova.Entities.Product;
 import com.example.vitanova.Repositorie.CartRepository;
 import com.example.vitanova.Repositorie.ProductRepository;
 import lombok.RequiredArgsConstructor;
+=======
+import com.example.vitanova.Repositorie.CartRepository;
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +17,7 @@ import java.util.Optional;
 
 
 @Service
+<<<<<<< HEAD
 @RequiredArgsConstructor
 public class cartService implements CartServiceImpl{
 
@@ -55,5 +60,30 @@ public class cartService implements CartServiceImpl{
             }
             CartRepository.delete(cart);
         }
+=======
+public class cartService {
+
+    private final com.example.vitanova.Repositorie.CartRepository CartRepository;
+
+    @Autowired
+    public cartService(CartRepository CartRepository) {
+        this.CartRepository = CartRepository;
+    }
+
+    public List<Cart> getAllCarts() {
+        return CartRepository.findAll();
+    }
+
+    public Optional<Cart> getCartById(Long IdCard) {
+        return CartRepository.findById(IdCard);
+    }
+
+    public Cart saveCart(Cart cart) {
+        return CartRepository.save(cart);
+    }
+
+    public void deleteCart(Long IdCard) {
+        CartRepository.deleteById(IdCard);
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
     }
 }

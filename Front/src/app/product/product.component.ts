@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { product } from '../model/product';
 import { ProductService } from '../services/product.service';
+<<<<<<< HEAD
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { jsPDF } from 'jspdf';
+=======
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 
 @Component({
   selector: 'app-product',
@@ -11,6 +14,7 @@ import { jsPDF } from 'jspdf';
 })
 export class ProductComponent {
   products: product[]=[];
+<<<<<<< HEAD
   updateForm: FormGroup;
 
   authToken: string | null | undefined;
@@ -25,12 +29,18 @@ export class ProductComponent {
       categorie: ['', Validators.required]
     });
   }
+=======
+
+
+  constructor(private productService: ProductService) {}
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 
   ngOnInit(): void {
     this.loadProduct();
   }
 
   loadProduct(): void {
+<<<<<<< HEAD
     this.productService.getProducts().subscribe({
       next: (products) => {
         this.products = products;
@@ -126,5 +136,35 @@ sortColumn: keyof product | null = null; // Initialize to an empty string
     // Sauvegarde du PDF
     doc.save('liste_produits.pdf');
   }
+=======
+    this.productService.getProducts().subscribe(products => {
+      this.products = products;
+    })
+  }
+
+  filteredProducts: product[] = []; // Tableau des repas filtrés
+  error: string | null = null;
+  searchTerm: string = '';
+
+  searchProduct(): void {
+    if (this.searchTerm.trim() !== '') {
+      this.filteredProducts = this.products.filter(product =>
+        product.nameProd.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      this.filteredProducts = this.products; // Si le terme de recherche est vide, afficher tous les repas
+    }
+  }
+
+
+
+
+  deleteProduct(IdProduct: number): void {
+    this.productService.deleteProduct(IdProduct).subscribe(() => {
+      this.products = this.products.filter(product => product.IdProduct !== IdProduct);
+    });
+  }
+  
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 
 }

@@ -21,6 +21,9 @@ public class WorkoutSession {
     private int Duration;
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Exercice> exercices;
+    public void calculateDuration() {
+        this.Duration= exercices.stream().mapToInt(Exercice::getDurationExer).sum();
+    }
 
     public void calculateDuration() {
         this.Duration= exercices.stream().mapToInt(Exercice::getDurationExer).sum();

@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './all-template-front.component.html',
   styleUrls: ['./all-template-front.component.scss']
 })
-export class AllTemplateFrontComponent {
-
-  
+export class AllTemplateFrontComponent{
 
 }

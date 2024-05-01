@@ -2,6 +2,10 @@ package com.example.vitanova.Controller;
 
 import com.example.vitanova.Entities.Subscription;
 import com.example.vitanova.Service.SubscriptionServiceImpl;
+<<<<<<< HEAD
+=======
+import lombok.AllArgsConstructor;
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +19,10 @@ public class SubscriptionController {
     @Autowired
     private SubscriptionServiceImpl subscriptionService;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
     @GetMapping
     public List<Subscription> getAllSubscriptions() {
         return subscriptionService.findAllSubscriptions();

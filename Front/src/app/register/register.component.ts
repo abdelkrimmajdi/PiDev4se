@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+<<<<<<< HEAD
 import { User } from '../model/user.model';
 import { Role } from "../model/role.enum";
 import { AuthService } from '../services/auth.service';
@@ -8,6 +9,13 @@ import Swal from 'sweetalert2';
 import { LoginPayload } from '../model/login-payload';
 import { FormBuilder } from '@angular/forms';
 import { Image } from '../model/image.model';
+=======
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { User } from '../model/user.model';
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 
 @Component({
   selector: 'app-login',
@@ -17,6 +25,7 @@ import { Image } from '../model/image.model';
 export class RegisterComponent {
   user: User = new User();
 
+<<<<<<< HEAD
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
@@ -122,10 +131,15 @@ export class RegisterComponent {
     const passwordRegex = /^(?=.*[A-Z])/; // Expression régulière pour vérifier la présence d'une lettre majuscule
     return passwordRegex.test(control.value) ? null : { invalidPassword: true };
   }
+=======
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {}
+
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
   registerForm: FormGroup = this.formBuilder.group({
     firstName: ['', [Validators.required, Validators.minLength(3)]],
     lastName: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.email]],
+<<<<<<< HEAD
     password: ['', [Validators.required, Validators.minLength(6), this.validatePassword]],
     phonenumber: ['', [Validators.required, Validators.minLength(8)]],
     role: ['', [Validators.required]],
@@ -175,3 +189,32 @@ export class RegisterComponent {
       });
   }
 }
+=======
+    password: ['', [Validators.required, Validators.minLength(6)]]
+  });
+
+  register(): void {
+    const formData = this.registerForm.value;
+    this.authService.register(formData).subscribe({
+      next: (response: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Inscription réussie',
+          text: 'Vous pouvez maintenant vous connecter',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        this.router.navigate(['/login']);
+      },
+      error: (error: any) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Une erreur est survenue lors de l\'inscription',
+          footer: 'Veuillez réessayer'
+        });
+      }
+    });
+  }
+}
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a

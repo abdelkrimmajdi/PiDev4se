@@ -1,6 +1,9 @@
 package com.example.vitanova.Controller;
 
+<<<<<<< HEAD
 import com.example.vitanova.Entities.Category;
+=======
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 import com.example.vitanova.Entities.Product;
 import com.example.vitanova.Service.ProductService;
 
@@ -30,11 +33,14 @@ public class ProductController {
     }
 
 
+<<<<<<< HEAD
     @GetMapping("/nameProd/{nameProd}")
     public Product getProductByName(@PathVariable String nameProd) {
         return ProductService.getProductByName(nameProd);
     }
 
+=======
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
     @PostMapping
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
         Product createdProduct = ProductService.createProduct(product);
@@ -57,6 +63,7 @@ public class ProductController {
         return ResponseEntity.noContent().build();
     }
 
+<<<<<<< HEAD
     @GetMapping("/productsByCategory/{prodCategory}")
     public List<Product> getProductsByCategory(@PathVariable("prodCategory") String prodCategory) {
         if(Category.accessoire.toString().equals(prodCategory)){
@@ -72,5 +79,7 @@ public class ProductController {
         }
     }
 
+=======
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 
 }

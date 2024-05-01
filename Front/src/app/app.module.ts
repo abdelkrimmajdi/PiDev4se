@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
+<<<<<<< HEAD
 import { UsergetallComponent } from './features/admin/usergetall/usergetall.component';
 import { EditProfileComponent } from './features/user/edit-profile/edit-profile.component';
 import { EditprofileComponent } from './features/admin/editprofile/editprofile.component';
@@ -76,6 +77,11 @@ import { AddMenuComponent } from './features/Nutrionniste/add-menu/add-menu.comp
 import { MenuComponent } from './features/Nutrionniste/menu/menu.component';
 
 
+=======
+import { MarketComponent } from './market/market.component';
+import { AddproductComponent } from './addproduct/addproduct.component';
+import { ProductComponent } from './product/product.component';
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 
 @NgModule({
   declarations: [
@@ -91,6 +97,7 @@ import { MenuComponent } from './features/Nutrionniste/menu/menu.component';
     HomeFrontComponent,
     LoginComponent,
     RegisterComponent,
+<<<<<<< HEAD
     UsergetallComponent,
     EditProfileComponent,
     EditprofileComponent,
@@ -142,6 +149,11 @@ AllReclamationsComponent,
 
   
  
+=======
+    MarketComponent,
+    AddproductComponent,
+    ProductComponent
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
   ],
   imports: [
     BrowserModule,

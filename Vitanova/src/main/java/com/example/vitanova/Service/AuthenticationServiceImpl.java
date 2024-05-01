@@ -8,13 +8,22 @@ import com.example.vitanova.Dto.JwtAuthenticationResponse;
 import com.example.vitanova.Dto.RefreshTokenRequest;
 import com.example.vitanova.Dto.SignUpRequest;
 import com.example.vitanova.Dto.SigninRequest;
+<<<<<<< HEAD
 import com.example.vitanova.Entities.*;
+=======
+import com.example.vitanova.Entities.MentorProgram;
+import com.example.vitanova.Entities.Role;
+import com.example.vitanova.Entities.User;
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 import com.example.vitanova.Repositorie.UserRepository;
 import com.example.vitanova.Repositorie.VerificationTokenRepository;
 import lombok.RequiredArgsConstructor;
 
 import lombok.extern.slf4j.Slf4j;
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
+=======
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -58,6 +67,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         user.setPhonenumber(signUpRequest.getPhonenumber());
         user.setRole((signUpRequest.getRole()));
         user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
+<<<<<<< HEAD
         user.setImage(signUpRequest.getImage());
         userRepository.save(user);
 
@@ -116,6 +126,33 @@ System.err.println(user.isEnabled());
     }
 
 
+=======
+        return userRepository.save(user);
+
+    }
+
+    public JwtAuthenticationResponse signin(SigninRequest signinRequest){
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signinRequest.getEmail(),signinRequest.getPassword()));
+        var user =userRepository.findByEmail(signinRequest.getEmail()).orElseThrow(() -> new IllegalArgumentException("Invalid email or password."));
+        var jwt = jwtService.generateToken(user);
+        var refreshToken = jwtService.generateRefreshToken(new HashMap<>(),user);
+        JwtAuthenticationResponse jwtAuthenticationResponse=new JwtAuthenticationResponse();
+        jwtAuthenticationResponse.setToken(jwt);
+        jwtAuthenticationResponse.setRefreshToken(refreshToken);
+        if (user.getRole() == Role.USER) {
+            // Replace Etudiant with User
+            User userDetails = (User) user;
+            User userDto = convertToUserDto(userDetails); // Assuming convertToUserDto is implemented elsewhere
+            jwtAuthenticationResponse.setUserDetails(userDto);
+        } else {
+            // Replace Etudiant with User
+            User userDetails = (User) user;
+            User userDto = convertToUserDto(userDetails); // Assuming convertToUserDto is implemented elsewhere
+            jwtAuthenticationResponse.setUserDetails(userDto);
+        }
+        return jwtAuthenticationResponse;
+    }
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
     private User convertToUserDto(User user) {
         User dto = new User();
         dto.setId(user.getId());
@@ -123,8 +160,11 @@ System.err.println(user.isEnabled());
         dto.setLastName(user.getLastName());
         dto.setEmail(user.getEmail());
         dto.setPassword(user.getPassword());
+<<<<<<< HEAD
         dto.setImage(user.getImage());
         dto.setPhonenumber(user.getPhonenumber());
+=======
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
         dto.setRole(user.getRole());
         return dto;
     }
@@ -212,5 +252,5 @@ User user=token.getUser();
     return  user;
     }
 
-}
 
+}

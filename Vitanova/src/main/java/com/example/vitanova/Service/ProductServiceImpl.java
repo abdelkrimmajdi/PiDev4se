@@ -1,6 +1,9 @@
 package com.example.vitanova.Service;
 
+<<<<<<< HEAD
 import com.example.vitanova.Entities.Category;
+=======
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 import com.example.vitanova.Entities.Product;
 import com.example.vitanova.Repositorie.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +30,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+<<<<<<< HEAD
     public Product getProductByName(String nameProd) {
         return com.example.vitanova.Repositorie.ProductRepository.findByName(nameProd);
     }
@@ -37,6 +41,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+=======
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
     public Product createProduct(Product product) {
         return ProductRepository.save(product);
     }

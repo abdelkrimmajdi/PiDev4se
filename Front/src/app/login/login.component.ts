@@ -6,21 +6,29 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { LoginPayload } from '../model/login-payload';
+<<<<<<< HEAD
 import { FormBuilder } from '@angular/forms';
 import { Image } from '../model/image.model';
 
+=======
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+<<<<<<< HEAD
   user: User = new User();
 
+=======
+  
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
+<<<<<<< HEAD
 
   constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder) { }
 
@@ -175,3 +183,56 @@ export class LoginComponent {
       });
   }
 }
+=======
+
+  constructor(private router: Router, private authService: AuthService) { }
+
+  login() {
+    const payload: LoginPayload = {
+      email: this.loginForm.value.email || '',
+      password: this.loginForm.value.password || ''
+    };
+
+    this.authService.login(payload).subscribe((res: any) => {
+      console.log(res);
+
+      if (res && res.userDetails && res.userDetails.enabled) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        });
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Connexion réussie'
+        });
+
+        localStorage.setItem('userconnect', JSON.stringify(res.userDetails));
+        localStorage.setItem('accessToken', res.accessToken);
+        localStorage.setItem('refreshToken', res.refreshToken);
+        localStorage.setItem("state", "0");
+
+        if (res.userDetails.role === Role.ADMIN) {
+          this.router.navigateByUrl('/admin');
+        } else {
+          this.router.navigateByUrl('/acceuil');
+        }
+      }
+    }, err => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Erreur',
+        text: 'Login failed. Please check your credentials.',
+        showConfirmButton: true
+      });
+    });
+  }
+}
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a

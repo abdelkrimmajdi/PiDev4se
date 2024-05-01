@@ -1,9 +1,13 @@
 package com.example.vitanova.Service;
 
 import com.example.vitanova.Entities.MentorProgram;
+<<<<<<< HEAD
 import com.example.vitanova.Entities.Role;
 import com.example.vitanova.Entities.User;
 import com.example.vitanova.Entities.VerificationToken;
+=======
+import com.example.vitanova.Entities.User;
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 import com.example.vitanova.Repositorie.UserRepository;
 import com.example.vitanova.Repositorie.VerificationTokenRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +22,8 @@ import org.webjars.NotFoundException;
 
 import java.util.List;
 import java.util.Optional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -42,6 +48,7 @@ public class UserServiceImpl implements UserService{
 
     public User updateUser(User user) {
         if (user.getId() != null) {
+<<<<<<< HEAD
             User existinguser = userRepository.findById(user.getId()).orElse(null);
             if (existinguser != null) {
                 if (user.getFirstName()!= null) {
@@ -58,10 +65,32 @@ public class UserServiceImpl implements UserService{
 
 
                 return userRepository.save(existinguser);
+=======
+            User existingEtudiant = userRepository.findById(user.getId()).orElse(null);
+            if (existingEtudiant != null) {
+                if (user.getFirstName()!= null) {
+                    existingEtudiant.setFirstName(user.getFirstName());
+                }
+                if (user.getLastName() != null) {
+                    existingEtudiant.setLastName(user.getLastName());
+                }
+
+                if (user.getEmail() != null) {
+                    existingEtudiant.setEmail(user.getEmail());
+                }
+                if (user.getPassword() != null) {
+                    existingEtudiant.setPassword(user.getPassword());
+                }
+                if (user.getRole() != null) {
+                    existingEtudiant.setRole(user.getRole());
+                }
+                return userRepository.save(existingEtudiant);
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
             }
         }
         return null;
     }
+<<<<<<< HEAD
     public User updatePassword (Long idUser, String password) {
 
         User user = userRepository.findById(idUser).orElse(null);
@@ -69,11 +98,14 @@ public class UserServiceImpl implements UserService{
         return userRepository.save(user);
     }
 
+=======
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
     @Override
     public List<User> getAllUser() {
         return userRepository.findAll();
     }
     public void deleteUser(Long idUser) {
+<<<<<<< HEAD
         Optional<User> userOptional = userRepository.findById(idUser);
 
 
@@ -103,3 +135,9 @@ public class UserServiceImpl implements UserService{
     }
 
 }
+=======
+        userRepository.deleteById(idUser);
+    }
+
+}
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a

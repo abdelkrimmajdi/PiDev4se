@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../model/user.model';
+<<<<<<< HEAD
 import { Role } from '../model/role.enum';
+=======
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +14,7 @@ export class UserService {
 
 
 
+<<<<<<< HEAD
   apiUrl: string = `http://localhost:8081/api/v1/auth`;
 
   updateUser(user: User) {
@@ -46,3 +50,17 @@ export class UserService {
   
   }
 
+=======
+  
+
+  getAllUser() {
+
+  
+    return this.http.get<User[]> ('http://localhost:8081/api/v1/admin/getall')
+  }
+  deleteUser(idUser: number) {
+    return this.http.delete( 'http://localhost:8081/api/v1/admin/delete'+'/'+idUser);
+  }
+
+}
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a

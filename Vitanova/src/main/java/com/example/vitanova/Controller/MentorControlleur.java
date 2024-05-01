@@ -3,7 +3,11 @@ package com.example.vitanova.Controller;
 import com.example.vitanova.Entities.MentorExercice;
 import com.example.vitanova.Entities.MentorProgram;
 import com.example.vitanova.Service.MentorService;
+<<<<<<< HEAD
 import lombok.RequiredArgsConstructor;
+=======
+import lombok.AllArgsConstructor;
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,9 +17,15 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
+<<<<<<< HEAD
 @RequestMapping("/Mentor")
 @RequiredArgsConstructor
 @CrossOrigin("*")
+=======
+@CrossOrigin("*")
+@AllArgsConstructor
+@RequestMapping("/Mentor")
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 public class MentorControlleur {
 
     private final MentorService mentorService;

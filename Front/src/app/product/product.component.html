@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 <head>
   <style>
     body {margin-left: 250px;}
@@ -71,3 +72,93 @@
 </div>
 </body>
 </html>
+=======
+
+<head>
+    <style>
+        h1 {
+            margin-left: 270px;
+            /* Add an empty space on the left side of the title */
+        }
+
+        .table-container {
+            padding-left: 270px;
+            /* Add an empty space on the left side of the table */
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            /* Center the content of the table */
+        }
+
+        .table th {
+            text-align: center;
+            /* Center the content of the table header */
+        }
+
+        .table th,
+        .table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row justify-content-end mb-3">
+            <div class="col-auto">
+                <input type="text" class="form-control" placeholder="Rechercher par nom..." [(ngModel)]="searchTerm">
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-primary" (click)="searchProduct()">Rechercher</button>
+            </div>
+        </div>
+
+        <h1 class="card-title fw-semibold" style="text-align: center;">product</h1>
+        <div class="table-container">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>IdProduct</th>
+                        <th>nameProd</th>
+                        <th>priceProd</th>
+                        <th>imageProd</th>
+                        <th>categorie</th>
+
+                    </tr>
+                    
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let p of products">
+                        <td>{{p.IdProduct}}</td>
+                        <td>{{p.nameProd}}</td>
+                        <td>{{p.priceProd}}</td>
+                        <td><img [src]="p.imageProd"  alt="Product Image" style="max-width: 100px;" ></td>
+                        <td>{{p.categorie}}</td>
+                       
+                        <td>
+                            <button class="btn btn-primary" style="margin-right: 10px">UPD</button>
+                            <button class="btn btn-danger" (click)="deleteProduct(p.IdProduct)">dlt</button>
+
+
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <a [routerLink]="['/admin/addproduct']" class="btn btn-primary">Add</a>
+        </div>
+    </div>
+
+
+
+    
+</body>
+
+</html>
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a

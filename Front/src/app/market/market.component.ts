@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+<<<<<<< HEAD
 import { product } from '../model/product';
 import { ProductService } from '../services/product.service';
 import { CartService } from '../services/cart.service';
 import { Cart } from '../model/Cart';
 import Swal from 'sweetalert2';
+=======
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 
 @Component({
   selector: 'app-market',
@@ -11,6 +14,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./market.component.scss']
 })
 export class MarketComponent{
+<<<<<<< HEAD
   
   products: product[]=[];
   selectedTab: number = 0;
@@ -108,3 +112,6 @@ deletecard(cart: Cart){
   }
   }
 
+=======
+}
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a

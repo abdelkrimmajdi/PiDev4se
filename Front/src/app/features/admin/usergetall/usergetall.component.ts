@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
+<<<<<<< HEAD
 import { Image } from 'src/app/model/image.model';
 import { User } from 'src/app/model/user.model';
 import { AuthService } from 'src/app/services/auth.service';
+=======
+import { User } from 'src/app/model/user.model';
+
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,6 +14,7 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './usergetall.component.html',
   styleUrls: ['./usergetall.component.scss']
 })
+<<<<<<< HEAD
 export class UsergetallComponent {
   listUser: User[] = [];
   searchText: string = '';
@@ -66,4 +72,26 @@ export class UsergetallComponent {
 
     return filteredUsers;
   }
+=======
+  
+export class UsergetallComponent {
+  listUser: User[] = [];
+  constructor(public userService: UserService) { }
+ 
+  getAllUser() {
+
+    this.userService.getAllUser().subscribe((res: any) => {
+      this.listUser = res;
+    });
+  }
+  ngOnInit() {
+    this.getAllUser();
+  }
+  delete(id: number) {
+    this.userService.deleteUser(id).subscribe(
+      ()=>this.ngOnInit()
+    )
+  }
+
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 }

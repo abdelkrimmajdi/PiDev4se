@@ -6,12 +6,19 @@ import { AllTemplateFrontComponent } from './FrontOffice/all-template-front/all-
 import { LoginComponent } from './login/login.component';
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
 import { RegisterComponent } from './register/register.component';
+<<<<<<< HEAD
 import { UsergetallComponent } from './features/admin/usergetall/usergetall.component';
 import { EditProfileComponent } from './features/user/edit-profile/edit-profile.component';
 import { EditprofileComponent } from './features/admin/editprofile/editprofile.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { VerifEmailComponent } from './verif-email/verif-email.component';
+=======
+import { MarketComponent } from './market/market.component';
+import { UsergetallComponent } from './features/admin/usergetall/usergetall.component';
+import { AddproductComponent } from './addproduct/addproduct.component';
+import { ProductComponent } from './product/product.component';
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 
 import { AddExoComponent } from './Mentor/MentorExercice/add-exo/add-exo.component';
 import { MentorExerciceComponent } from './Mentor/mentor-exercice/mentor-exercice.component';
@@ -69,6 +76,7 @@ const routes: Routes = [
         component: HomeComponent
       },
       {
+<<<<<<< HEAD
         path: "edite-profile",
         component: EditprofileComponent
       },
@@ -109,6 +117,16 @@ const routes: Routes = [
       {
         path: 'workoutUpdate/:idWork',
         component: WorkoutdetailComponent
+=======
+        path: "addproduct",
+        component:AddproductComponent
+        
+      },
+      {
+        path: "product",
+        component:ProductComponent
+        
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
       },
 
     ]
@@ -279,6 +297,7 @@ path:"",
     component: RegisterComponent
     
   },
+<<<<<<< HEAD
   
   {
     path: "forgotpassword",
@@ -353,6 +372,19 @@ path:"",
   { path: '**', component:Error404ComponentComponent }
 
 
+=======
+  {
+    path: "market",
+    component:MarketComponent
+    
+  },
+  {
+    path: "getall",
+    component:UsergetallComponent
+    
+  },
+ 
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 
 ];
 

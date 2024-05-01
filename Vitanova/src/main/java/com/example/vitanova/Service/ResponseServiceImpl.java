@@ -1,9 +1,13 @@
 package com.example.vitanova.Service;
 
+<<<<<<< HEAD
 
 import com.example.vitanova.Entities.Reclamation;
 import com.example.vitanova.Entities.Response;
 import com.example.vitanova.Repositorie.ReclamationRepositorie;
+=======
+import com.example.vitanova.Entities.Response;
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 import com.example.vitanova.Repositorie.ResponseRepositorie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +19,12 @@ import java.util.Optional;
 public class ResponseServiceImpl implements ResponseService {
     @Autowired
     private ResponseRepositorie responseRepository;
+<<<<<<< HEAD
     @Autowired
     private ReclamationRepositorie reclamationRepository;
+=======
+
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
     @Override
     public List<Response> getAllResponses() {
         return responseRepository.findAll();
@@ -51,6 +59,7 @@ public class ResponseServiceImpl implements ResponseService {
     public void deleteResponse(Long id) {
         responseRepository.deleteById(id);
     }
+<<<<<<< HEAD
     @Override
     public Response saveReponseAndAssociateToReclamation(Response reponse, Long idReclamation) {
         Optional<Reclamation> optionalReclamation = reclamationRepository.findById(idReclamation);
@@ -66,4 +75,6 @@ public class ResponseServiceImpl implements ResponseService {
             return null;
         }
     }
+=======
+>>>>>>> 4095e4be584b28adb5ad3d57622c43f1b6596c3a
 }
