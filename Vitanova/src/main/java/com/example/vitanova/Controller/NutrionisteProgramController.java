@@ -1,7 +1,9 @@
 package com.example.vitanova.Controller;
 
 import com.example.vitanova.Entities.NutrisionistProgram;
+import com.example.vitanova.Entities.User;
 import com.example.vitanova.Service.NutritionisteService;
+import com.example.vitanova.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,9 @@ import java.util.List;
 public class NutrionisteProgramController {
     @Autowired
     private NutritionisteService service;
+    @Autowired
+
+    private UserService userService;
 
     @GetMapping("/nutrisionistPrograms")
     public List<NutrisionistProgram> getAllNutrisionistPrograms() {
@@ -43,4 +48,5 @@ public class NutrionisteProgramController {
     public List<NutrisionistProgram> getNutrisionistProgramsByUserId(@PathVariable Long userId) {
         return service.getProgramsByUserId(userId);
     }
+
 }

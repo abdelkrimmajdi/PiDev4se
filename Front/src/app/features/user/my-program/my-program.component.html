@@ -1,0 +1,42 @@
+
+
+
+
+
+<div class="wrapper">
+    <hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table">
+                <table class="table ">
+                    <thead>
+                        <tr>
+                            <th><span>#</span></th>
+                            <th><span>Program Name</span></th>
+                            <th><span>Duration</span></th>
+                       
+                        </tr>
+                    </thead>
+                    <tbody>
+                                <tr *ngFor="let Program of listProgram "(click)="selectProgram(Program.idNutrisionistProgram)">
+                                    <td (click)="selectProgram(Program.idNutrisionistProgram)" routerLink="/NutritionistMenu">{{Program.idNutrisionistProgram}}</td>
+                                    <td (click)="selectProgram(Program.idNutrisionistProgram)" routerLink="/NutritionistMenu">{{Program.nameProg}}</td>
+                                    <td (click)="selectProgram(Program.idNutrisionistProgram)" routerLink="/NutritionistMenu">{{Program.duration}}</td>
+                                    
+                                   
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        
+

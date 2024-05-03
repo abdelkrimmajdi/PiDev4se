@@ -7,5 +7,6 @@ export class SelectProgramService {
 
   selectedProgramId: number | null = null;
   duration: number | null = null;
+  IdUser: number | null = null;
 
   constructor() { }}

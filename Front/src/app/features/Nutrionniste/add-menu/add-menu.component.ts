@@ -26,6 +26,8 @@ export class AddMenuComponent {
     this.AddProgramForm = this.formBuilder.group({
       calories: ['', Validators.required],
       meal: ['', Validators.required],
+      day: ['', Validators.required],
+      repas: ['', Validators.required],
       programId: [this.selectedProgramService.selectedProgramId]
     });
   }
@@ -39,6 +41,7 @@ export class AddMenuComponent {
     const programId = this.selectedProgramService.selectedProgramId;
     if (duration && programId) {
       if (this.listMenu.length < duration) {
+      
         const formData = this.AddProgramForm.value;
         this.service.saveMenu(formData as any, programId)
           .subscribe({

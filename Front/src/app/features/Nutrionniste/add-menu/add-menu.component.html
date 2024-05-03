@@ -2,13 +2,22 @@
     <div class="conteneur-formulaires">
         <ng-container *ngFor="let index of generateIndices()">
             <form [formGroup]="AddProgramForm" class="formulaire" *ngIf="currentPage === getPageForIndex(index)">
-                <div class="day-label">
-                    <strong>{{ daysOfWeek[index % daysOfWeek.length] }}</strong>
+                <div class="input">
+                    <label for="breakfast-calories-{{index}}">Day  </label>
+                    <select  class="form-control" formControlName="day">
+                        <option *ngFor="let day of daysOfWeek" [value]="day">{{ day }}</option>
+                    </select>
                 </div>
 
-                <div class="meal-label">
-                    <strong>Breakfast</strong>
+                <div class="input">
+                    <label for="breakfast-calories-{{index}}">Repas  </label>
+                    <select   class="form-control"formControlName="repas">
+                        <option value="Breakfast">Breakfast</option>
+                        <option value="Lunch">Lunch</option>
+                        <option value="Dinner">Dinner</option>
+                    </select>
                 </div>
+
                 <div class="form-group">                   
                     <label for="breakfast-calories-{{index}}">Nombre de calories  </label>
                     <input type="number" id="breakfast-calories-{{index}}" class="form-control" formControlName="calories" placeholder="Entrez le nombre de calories">
@@ -18,8 +27,20 @@
                     <input type="text" id="breakfast-meal-{{index}}" class="form-control" formControlName="meal" placeholder="Entrez le nom du plat">
                 </div>
                 <button class="btn btn-primary" (click)="saveProgram()">Add Menu</button>
-                <div class="meal-label">
-                    <strong>Lunch</strong>
+                <div class="input">
+                    <label for="breakfast-calories-{{index}}">Day  </label>
+                    <select  class="form-control" formControlName="day">
+                        <option *ngFor="let day of daysOfWeek" [value]="day">{{ day }}</option>
+                    </select>
+                </div>
+
+                <div class="input">
+                    <label for="breakfast-calories-{{index}}">Repas  </label>
+                    <select   class="form-control"formControlName="repas">
+                        <option value="Breakfast">Breakfast</option>
+                        <option value="Lunch">Lunch</option>
+                        <option value="Dinner">Dinner</option>
+                    </select>
                 </div>
                 <div class="form-group">                  
                     <label for="lunch-calories-{{index}}">Nombre de calories </label>
@@ -30,9 +51,22 @@
                     <input type="text" id="lunch-meal-{{index}}" class="form-control" formControlName="meal" placeholder="Entrez le nom du plat">
                 </div>
                 <button class="btn btn-primary" (click)="saveProgram()">Add Menu</button>
-                <div class="meal-label">
-                    <strong>Dinner</strong>
-                </div>            
+                <div class="input">
+                    <label for="breakfast-calories-{{index}}">Day  </label>
+                    <select  class="form-control" formControlName="day">
+                        <option *ngFor="let day of daysOfWeek" [value]="day">{{ day }}</option>
+                    </select>
+                </div>
+
+                <div class="input">
+                    <label for="breakfast-calories-{{index}}">Repas  </label>
+                    <select   class="form-control"formControlName="repas">
+                        <option value="Breakfast">Breakfast</option>
+                        <option value="Lunch">Lunch</option>
+                        <option value="Dinner">Dinner</option>
+                    </select>
+                </div>
+           
                 <div class="form-group">                    
                     <label for="dinner-calories-{{index}}">Nombre de calories</label>
                     <input type="number" id="dinner-calories-{{index}}" class="form-control" formControlName="calories" placeholder="Entrez le nombre de calories">

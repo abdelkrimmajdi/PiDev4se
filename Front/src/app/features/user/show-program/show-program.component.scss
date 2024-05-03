@@ -1,0 +1,8 @@
+.wrapper {
+    background-image: url('/assets/FrontOffice/img/healthy-eating-on-budget.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh; /* Ensures the wrapper covers the entire viewport height */
+    display: flex; /* Allows content to stack vertically */
+    flex-direction: column; /* Stacks content from top to bottom */
+  }

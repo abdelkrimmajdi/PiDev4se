@@ -9,4 +9,4 @@ import java.util.List;
 @Repository
 public interface NutrisionisteProgramRepository extends JpaRepository<NutrisionistProgram,Long> {
     List<NutrisionistProgram> findByUserId(Long userId);
-}
+    List<NutrisionistProgram> findByUserprogramId(Long userprogramId);}

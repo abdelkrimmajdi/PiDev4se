@@ -17,6 +17,8 @@ public class Menu {
     private Long IdMenu;
     private int Calories;
     private String Meal;
+    private String day;
+    private String repas;
     @JsonIgnore
     @ManyToOne
     private NutrisionistProgram nutrisionistprogram;

@@ -1,5 +1,6 @@
 package com.example.vitanova.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -85,9 +86,11 @@ public class User implements UserDetails {
     private Set<Post> Posts;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<Physiotherapist> Physiotherapists;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<NutrisionistProgram> NutrisionistPrograms;
-
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userprogram")
+    private Set<NutrisionistProgram> UserPrograms;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<Reclamation> Reclamations;
     @OneToMany(mappedBy = "user")
