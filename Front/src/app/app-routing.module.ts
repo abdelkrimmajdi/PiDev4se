@@ -60,6 +60,8 @@ import { MenuComponent } from './features/Nutrionniste/menu/menu.component';
 import { AddMenuComponent } from './features/Nutrionniste/add-menu/add-menu.component';
 import { GetNutrionnistComponent } from './features/user/get-nutrionnist/get-nutrionnist.component';
 import { ShowProgramComponent } from './features/user/show-program/show-program.component';
+import { ShowProgramMenuComponent } from './features/user/show-program-menu/show-program-menu.component';
+import { MyProgramComponent } from './features/user/my-program/my-program.component';
 
 
 
@@ -228,6 +230,7 @@ path:"",
         path: "GetMentors",
         component: GetallMentorComponent
       },
+   
     
     ]
   },{
@@ -239,7 +242,20 @@ path:"",
         path: "edit",
         component: EditProfileComponent,
        
-      }
+      }, {
+        path: "NutritionistMenu",
+        component: ShowProgramMenuComponent
+      },  {
+        path: "NutritionistProgram",
+        component: ShowProgramComponent
+      },  {
+        path: "Nutritionists",
+        component: GetNutrionnistComponent
+      },   {
+        path: "MyProgram",
+        component: MyProgramComponent
+      },
+     
       
     
     ]
@@ -267,7 +283,7 @@ path:"",
         {
           path: "AddMenu",
           component:AddMenuComponent,
-          }
+          },
       
     
     ]
@@ -354,15 +370,9 @@ path:"",
     path: "GetMentorsDetails/:id",
     component: MentorDetailComponent
   },
-  {
-    path: "Nutritionists",
-    component: GetNutrionnistComponent
-  },
+
   
-  {
-    path: "NutritionistProgram",
-    component: ShowProgramComponent
-  },
+
   { path: '**', component:Error404ComponentComponent }
 
 

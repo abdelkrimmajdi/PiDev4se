@@ -77,6 +77,9 @@ import { MenuComponent } from './features/Nutrionniste/menu/menu.component';
 
 import { GetNutrionnistComponent } from './features/user/get-nutrionnist/get-nutrionnist.component';
 import { ShowProgramComponent } from './features/user/show-program/show-program.component';
+import { ShowProgramMenuComponent } from './features/user/show-program-menu/show-program-menu.component';
+import { StripeComponent } from './features/user/stripe/stripe.component';
+import { MyProgramComponent } from './features/user/my-program/my-program.component';
 
 
 
@@ -144,7 +147,11 @@ AllReclamationsComponent,
       MenuComponent,
    
       GetNutrionnistComponent,
-          ShowProgramComponent
+          ShowProgramComponent,
+          ShowProgramMenuComponent,
+          StripeComponent,
+          MyProgramComponent,
+          
 
   
  

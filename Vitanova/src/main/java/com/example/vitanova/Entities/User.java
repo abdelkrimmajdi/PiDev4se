@@ -89,7 +89,8 @@ public class User implements UserDetails {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<NutrisionistProgram> NutrisionistPrograms;
-
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userprogram")
+    private Set<NutrisionistProgram> UserPrograms;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<Reclamation> Reclamations;
     @OneToMany(mappedBy = "user")

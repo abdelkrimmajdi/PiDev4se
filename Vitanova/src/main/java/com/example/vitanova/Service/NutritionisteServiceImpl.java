@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class NutritionisteServiceImpl implements NutritionisteService{
@@ -27,7 +28,9 @@ public class NutritionisteServiceImpl implements NutritionisteService{
     public NutrisionistProgram saveNutrisionistProgram(NutrisionistProgram nutrisionistProgram) {
         return repository.save(nutrisionistProgram);
     }
-
+    public  List<NutrisionistProgram> getUserProgramById(Long id) {
+        return repository.findByUserprogramId(id);
+    }
     public void deleteNutrisionistProgram(Long id) {
         repository.deleteById(id);
     }
@@ -44,5 +47,23 @@ public class NutritionisteServiceImpl implements NutritionisteService{
             throw new RuntimeException("Utilisateur non trouvé avec l'ID: " + userId);
         }
     }
+        public NutrisionistProgram affectNutritionistProgramsToUser(Long programId, Long userId) {
+            Optional<User> userOptional = userRepository.findById(userId);
+            Optional<NutrisionistProgram> nutrisionistProgramOptional = repository.findById(programId);
 
-}
+            if (userOptional.isPresent() && nutrisionistProgramOptional.isPresent()) {
+                User user = userOptional.get();
+                NutrisionistProgram program = nutrisionistProgramOptional.get();
+                program.setUserprogram(user);
+                NutrisionistProgram savedProgram = repository.save(program);
+                return savedProgram;
+            } else {
+                throw new RuntimeException("User Not Found");
+            }
+        }
+
+    }
+
+
+
+

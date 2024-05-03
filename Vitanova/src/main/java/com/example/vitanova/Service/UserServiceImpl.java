@@ -1,9 +1,6 @@
 package com.example.vitanova.Service;
 
-import com.example.vitanova.Entities.MentorProgram;
-import com.example.vitanova.Entities.Role;
-import com.example.vitanova.Entities.User;
-import com.example.vitanova.Entities.VerificationToken;
+import com.example.vitanova.Entities.*;
 import com.example.vitanova.Repositorie.UserRepository;
 import com.example.vitanova.Repositorie.VerificationTokenRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +15,7 @@ import org.webjars.NotFoundException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -25,6 +23,7 @@ public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;
     @Autowired
     private VerificationTokenRepository verificationTokenRepository;
+
 
 
 
@@ -102,5 +101,6 @@ public class UserServiceImpl implements UserService{
     public List<User> getAllNutritionists() {
         return userRepository.findAllNutritionists();
     }
+
 
 }

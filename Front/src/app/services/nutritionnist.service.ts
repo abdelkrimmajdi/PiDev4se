@@ -32,6 +32,14 @@ export class NutritionnistService {
   getAllNutritionnists(): Observable<any> { 
     return this.http.get(`http://localhost:8081/api/v1/user/nutritionists`);
   }
+  affectNutritionistProgramsToUser(userId: number, programId: number): Observable<any> {
+    const url = `http://localhost:8081/api/v1/user/nutritionist-programs?userId=${userId}&programId=${programId}`;
+    return this.http.post<any>(url, null);
  
+  }
+  getProgramsByUserId(userId: number): Observable<NutrionnistProgram[]> {
+    return this.http.get<NutrionnistProgram[]>(`http://localhost:8081/api/v1/user/user/${userId}/nutrisionistPrograms`);
+  }
+  
 
 }

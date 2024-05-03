@@ -23,6 +23,9 @@ public class NutrisionistProgram {
     @ManyToOne
     @JsonIgnore
     User user;
+    @ManyToOne
+    @JsonIgnore
+    User userprogram;
 
     @OneToMany
     private List<Menu>menus;
