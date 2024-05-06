@@ -1,46 +1,48 @@
-
-
-
-
 <div class="wrapper">
   <hr>
   <hr>
   <hr>
   <hr>
   <hr>
-    <div class="container bootstrap snippets bootdey">
-      <div class="row">
-        <div class="col-lg-12 offset-lg-2">
-          <div class="main-box no-header clearfix">
-            <div class="main-box-body clearfix">
-              <div class="row mb-3">
-                <div class="col-md-4 mb-3" *ngFor="let Menu of pagedMenu">
-                    <div class="card">
-                        <div class="card-details">
-                    <h5 class="text-title">Day: {{Menu.day}}</h5>
-                    <p class="text-body">Meal: {{Menu.repas}}</p>
-                    <p class="text-body">Meal: {{Menu.meal}}</p>
-                    <p class="text-body">Calories: {{Menu.calories}}</p>
+  <div class="container bootstrap snippets bootdey" #menuContainer>
+    <div class="row">
+      <div class="col-lg-12 offset-lg-2">
+        <div class="main-box no-header clearfix">
+          <div class="main-box-body clearfix">
+            <div class="row mb-3">
+              <div class="col-md-4 mb-3" *ngFor="let menu of pagedMenu">
+                <div class="card">
+                  <div class="card-details">
+                    <h5 class="text-title">Day: {{menu.day}}</h5>
+                    <p class="text-body">Meal: {{menu.repas}}</p>
+                    <p class="text-body">Meal: {{menu.meal}}</p>
+                    <p class="text-body">Calories: {{menu.calories}}</p>
+                  
+                    
                   </div>
+
                 </div>
+                <button class="btn btn-primary btn-sm" (click)="generateQRCode(menu.meal)">Generate QR Code</button>
               </div>
+              
             </div>
           </div>
         </div>
       </div>
     </div>
-  
-    <div class="container">
-      <ul class="pagination justify-content-center">
-        <li class="page-item" *ngFor="let pageNumber of pageNumbers" [class.active]="pageNumber === currentPage">
-          <a class="page-link" (click)="changePage(pageNumber)">{{pageNumber}}</a>
-        </li>
-      </ul>
-    </div>
   </div>
- 
-    
-  
-
-
-
+  <div class="container text-center mt-4">
+    <button class="btn btn-primary" (click)="generatePDF()">Generate the PDF
+    </button>
+  </div>
+  <hr>
+  <hr>
+  <hr>
+  <div class="container">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" *ngFor="let pageNumber of pageNumbers" [class.active]="pageNumber === currentPage">
+        <a class="page-link" (click)="changePage(pageNumber)">{{pageNumber}}</a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+
+
+<div class="wrapper">
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <div>
+        <form>
+    <h2>Calculate Food Calories</h2>
+
+
+    <div>
+        <label for="foodNames">Noms des aliments (séparés par des virgules):</label>
+        <input type="text" id="foodNames" [(ngModel)]="foodNames">
+       
+    </div>
+    <button type="submit"(click)="getCaloriess()">Calculer les calories</button>
+
+
+</form>
+</div>

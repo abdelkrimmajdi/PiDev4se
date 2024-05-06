@@ -30,7 +30,7 @@
                             <td >{{Program.duration}}</td>
                           
                                 <td style="width: 20%;">
-                                    <a class="table-link text-danger"(click)="selectProgram(Program.idNutrisionistProgram)"(click)="affectNutritionistProgramsToUser()">
+                                    <a class="table-link text-danger" (click)="selectProgram(Program.idNutrisionistProgram); openPaymentModal(Program)">
                                         <span class="fa-stack">
                                             <i class="fa fa-square fa-stack-2x"></i>
                                             <i class="fa fa-plus fa-stack-1x fa-inverse"></i> 
@@ -44,6 +44,67 @@
     </div>
 </div>
 </div>
+
+<!-- Modal de détails de paiement -->
+<div id="paymentModal" class="modal" *ngIf="selectedsub">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Payment Details</h5>
+          <button type="button" class="close" (click)="closePaymentModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="subForm" (ngSubmit)="paySubscription()">
+            <div class="form-group">
+              <label for="cardNumber">Card Number:</label>
+              <input type="text" id="cardNumber" class="form-control" formControlName="cardNumber" placeholder="1234 1234 1234 1234 " (input)="formatCardNumber($event)" required>
+              <div *ngIf="subForm.get('cardNumber')?.hasError('invalidLength')" class="invalid-feedback">
+                Card number must be exactly 16 digits.
+              </div>
+              <div *ngIf="isInvalidControl('cardNumber')" class="invalid-feedback">
+                Please provide a valid card number.
+              </div>
+            </div>
+  
+  
+            <div class="form-row">
+              <div class="form-group">
+                <label for="expirationDate">Expiration Date:</label>
+                <input type="text" id="expirationDate" class="form-control" formControlName="expirationDate" placeholder="MM/YYYY" required>
+                <div *ngIf="isInvalidControl('expirationDate')" class="invalid-feedback">
+                  Please provide a valid expiration date (MM/YYYY).
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="securityCode">Security Code:</label>
+                <div class="input-group">
+                  <input type="{{ securityCodeVisible ? 'text' : 'password' }}" id="securityCode" class="form-control" formControlName="securityCode" maxlength="4" placeholder="**" required>
+                  <div class="input-group-append">
+                    <label class="input-group-text" (click)="toggleSecurityVisibility()" style="cursor: pointer;">
+                      <span>👁️‍🗨️</span>
+                    </label>
+                  </div>
+                </div>
+                <div *ngIf="isInvalidControl('securityCode')" class="invalid-feedback">
+                  Please provide a valid security code (4 digits).
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closePaymentModal()">Close</button>
+          <button type="button" class="btn btn-success"
+            (click)="paySubscription()"
+            [disabled]="subForm.invalid">
+            Pay {{ 100}} DT
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
