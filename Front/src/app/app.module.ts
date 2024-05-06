@@ -80,6 +80,16 @@ import { ShowProgramComponent } from './features/user/show-program/show-program.
 import { ShowProgramMenuComponent } from './features/user/show-program-menu/show-program-menu.component';
 import { StripeComponent } from './features/user/stripe/stripe.component';
 import { MyProgramComponent } from './features/user/my-program/my-program.component';
+import { CaloriesComponent } from './features/user/calories/calories.component';
+import { RendezVousComponent } from './features/user/rendez-vous/rendez-vous.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { FullCalendarModule } from '@fullcalendar/angular';
+
 
 
 
@@ -151,7 +161,10 @@ AllReclamationsComponent,
           ShowProgramMenuComponent,
           StripeComponent,
           MyProgramComponent,
-          
+          CaloriesComponent,
+          RendezVousComponent,
+           
+      
 
   
  
@@ -168,10 +181,20 @@ AllReclamationsComponent,
  
     MatTooltipModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule ,   
+    MatInputModule,
+    MatNativeDateModule,
+    MatIconModule,
+    MatDatepickerModule
+    ,
+  BrowserAnimationsModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+    FullCalendarModule
+    
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule {
   

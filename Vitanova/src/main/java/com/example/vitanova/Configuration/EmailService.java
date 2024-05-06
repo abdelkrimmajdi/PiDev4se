@@ -28,7 +28,7 @@ public class EmailService implements EmailSender {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("vitavibesesprit@gmail.com");
         message.setTo(mail.getTo());
-        message.setSubject("Réinitialiser le mot de passe");
+        message.setSubject("Update Your Password");
         message.setText(mail.getContent());
         mailSender.send(message);
     }
@@ -37,6 +37,14 @@ public class EmailService implements EmailSender {
         message.setFrom("vitavibesesprit@gmail.com");
         message.setTo(mail.getTo());
         message.setSubject("Update of your program");
+        message.setText(mail.getContent());
+        mailSender.send(message);
+    }
+    public void sendemail(final Mail mail) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("vitavibesesprit@gmail.com");
+        message.setTo(mail.getTo());
+        message.setSubject("New Appoinment");
         message.setText(mail.getContent());
         mailSender.send(message);
     }

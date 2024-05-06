@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { NutrionnistProgram } from '../model/NutrionnistProgram';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { RendezVous } from '../model/Rendez';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,16 @@ export class NutritionnistService {
   getProgramsByUserId(userId: number): Observable<NutrionnistProgram[]> {
     return this.http.get<NutrionnistProgram[]>(`http://localhost:8081/api/v1/user/user/${userId}/nutrisionistPrograms`);
   }
-  
+ 
+  CreateRendezVous(rendezvous: RendezVous,userId: number, nutritionistId: number): Observable<RendezVous> {
 
+    return this.http.post<RendezVous>(`http://localhost:8081/api/v1/user/rendezvous/save?userId=${userId}&nutritionistId=${nutritionistId}`,rendezvous);
+ 
+  }
+  availableHours(dateTime: string, nutritionistId: number): Observable<string[]> {
+    return this.http.get<string[]>(`http://localhost:8081/api/v1/user/availableHours?dateTime=${dateTime}&nutritionistId=${nutritionistId}`);
+  }
+  getRendezVous( id: number): Observable<string[]> {
+    return this.http.get<string[]>(`http://localhost:8081/nutritionist?&id=${id}`);
+  }
 }

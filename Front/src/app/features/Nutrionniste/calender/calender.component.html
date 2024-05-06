@@ -1,0 +1,26 @@
+<!-- calender.component.html -->
+
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <h2>Rendez-vous</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Heure</th>
+              <th>Titre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let appointment of calendarOptions.events">
+              <td>{{ appointment.start}}</td>
+              <td>{{ appointment.start }}</td>
+              <td>{{ appointment.title }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

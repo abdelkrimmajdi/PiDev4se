@@ -62,6 +62,9 @@ import { GetNutrionnistComponent } from './features/user/get-nutrionnist/get-nut
 import { ShowProgramComponent } from './features/user/show-program/show-program.component';
 import { ShowProgramMenuComponent } from './features/user/show-program-menu/show-program-menu.component';
 import { MyProgramComponent } from './features/user/my-program/my-program.component';
+import { CaloriesComponent } from './features/user/calories/calories.component';
+import { RendezVousComponent } from './features/user/rendez-vous/rendez-vous.component';
+import { CalenderComponent } from './features/Nutrionniste/calender/calender.component';
 
 
 
@@ -254,7 +257,11 @@ path:"",
       },   {
         path: "MyProgram",
         component: MyProgramComponent
-      },
+      },{path: "CalculCalories",
+      component: CaloriesComponent
+    },{path: "Appointment",
+    component: RendezVousComponent
+  },
      
       
     
@@ -284,7 +291,10 @@ path:"",
           path: "AddMenu",
           component:AddMenuComponent,
           },
-      
+          {
+            path: "GetAppoinment",
+            component:CalenderComponent,
+            },
     
     ]
   },
@@ -370,7 +380,10 @@ path:"",
     path: "GetMentorsDetails/:id",
     component: MentorDetailComponent
   },
-
+  {
+    path: "GetAppionment",
+    component: CalenderComponent
+  },
   
 
   { path: '**', component:Error404ComponentComponent }
