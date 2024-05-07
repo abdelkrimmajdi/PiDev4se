@@ -1,9 +1,6 @@
 package com.example.vitanova.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
@@ -21,6 +18,10 @@ public class PersonalObjectif {
     private String Title;
     private String Description;
     private int priorite;
+    @Temporal(TemporalType.DATE)
     private Date EndDate;
     private State statut;
+
+    @ManyToOne
+    private Journal journal;
 }

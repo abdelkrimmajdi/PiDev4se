@@ -33,7 +33,17 @@ export class UpdateeventComponent implements OnInit {
   }
 
   Onsubmit()
-  { this.eventservice.updateEvent(this.id,this.event).subscribe ( data => { this.getAllEvents();}, error => console.log(error));
+  {    if (this.event.datedebut > this.event.datefin) {
+    alert("Begin Date cannot be later than End Date.");
+    return;
+}
+
+// Vérification de la validité du nombre de places
+if (this.event.nbplace < this.event.nbplacemin) {
+    alert("Number of Places cannot be less than Minimum Number of Places.");
+    return;
+}
+    this.eventservice.updateEvent(this.id,this.event).subscribe ( data => { this.getAllEvents();}, error => console.log(error));
 }
   getAllEvents() {
     setTimeout(() => {

@@ -37,8 +37,8 @@
         </div>
         <!-- Add other form fields based on your Product model -->
         <div>
-            <input type="file" (change)="onFileSelected($event)" style="display: none;" #fileInput />
-            <button (click)="fileInput.click()" >Choisir une image</button>
+            <label for="img">Image URL:</label>
+            <input id="img" type="text" (input)="onFileSelected($event)" #fileInput />
           </div>
           <div *ngIf="selectedImage">
             <img [src]="selectedImage" alt="Selected Image">

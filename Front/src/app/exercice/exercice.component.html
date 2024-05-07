@@ -31,6 +31,11 @@
             padding: 8px;
             border: 1px solid #ddd;
         }
+
+        .exercise-image {
+            max-width: 200px;
+            height: auto; /* To maintain aspect ratio */
+        }
     </style>
 </head>
 <body>
@@ -71,7 +76,8 @@
                 <td>{{e.durationExer}}</td>
                 <td>{{e.intensity}}</td>
                 <td>{{e.muscle}}</td>
-                <td><img src="{{e.picture}}" alt="Exercise Image" class="exercise-image"></td>
+                <!--<td><img [src]="getImageUrl(e.picture)" alt="Exercise Image" class="exercise-image"></td>-->
+                <td><img [src]="'/assets/img exercices/' + e.picture" alt="Exercise Image" class="exercise-image"></td>
                 <td>
                     <button [routerLink]="['/admin/exerciceUpdate',e.idExer]" class="btn btn-primary" style="margin-right: 10px">UPD</button>
                     <button class="btn btn-danger" (click)="deleteExercice(e.idExer)">dlt</button>

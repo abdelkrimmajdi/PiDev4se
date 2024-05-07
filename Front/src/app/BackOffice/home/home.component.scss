@@ -1,0 +1,40 @@
+$primary-color: #3498db;
+$secondary-color: #2980b9;
+$accent-color: #2ecc71;
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Empêche le défilement vertical */
+    background-image: url('/assets/FrontOffice/img/XX.avif');
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+    background-size: cover; /* Couvre toute la zone */
+    background-position: center; 
+
+}
+
+.container {
+    position: absolute;
+    top: 60%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    max-width: 4000px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Roboto;
+
+    h1 {
+        color: $primary-color;
+        font-size: 50px;    font-family: Roboto;
+
+    }
+
+    p {
+        color: $secondary-color;
+        margin-bottom: 20px;
+    }
+}

@@ -1,10 +1,13 @@
-import { State } from "../model/State.enum";
+
+export enum State{
+    Done =0 , Undone=1
+}
 export class PersonalObjectif{
-    IdPerOb!: number;
-    Title!: string;
-    Description!: string;
-    priority!: number;
-    EndDate!: Date;
-    Statut!: State
+    idPerOb!: number;
+    title!: string;
+    description!: string;
+    priorite!: number;
+    endDate!: Date;
+    statut!: State
 
 }

@@ -1,0 +1,191 @@
+<style>
+    body {
+      background-image: url('/assets/FrontOffice/img/slider-1.jpg');
+      background-repeat: no-repeat; /* Empêche la répétition de l'image */
+      background-size: cover; /* Ajuste la taille de l'image pour couvrir tout l'arrière-plan */
+      /* Autres styles de fond si nécessaire */
+    }
+    .j-table {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+  
+        .j-table th,
+        .j-table td {
+            vertical-align: middle !important;
+        }
+  
+        .j-link {
+            color: #007bff;
+            text-decoration: none;
+        }
+  
+        .j-link:hover {
+            text-decoration: underline;
+        }
+  </style>
+  <body>
+  <app-header-front></app-header-front>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+  <hr>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="table-responsive j-table">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th><span>#</span></th>
+                <th><span>Title</span></th>
+                <th><span>Description</span></th>
+                <th><span>Priority</span></th>
+                <th class="text-center"><span>End Date</span></th>
+                <th><span>Status</span></th>
+                <th>&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let po of pos; let i = index">
+                <td>
+                  <p class="text-sm font-weight-bold mb-0">{{ i + 1 }}</p>
+                </td>
+                <td>
+                  <a href="#" class="po-link">{{ po.title }}</a>
+                </td>
+                <td>
+                  <a href="#">{{ po.description }}</a>
+                </td>
+                <td>
+                  <a href="#">{{ po.priorite }}</a>
+                </td>
+                <td>
+                  <!-- Display formatted endDate (yyyy-mm-dd) using Angular date pipe -->
+                  <a href="#">{{ po.endDate | date: 'yyyy-MM-dd' }}</a>
+                </td>
+                <td>
+                  <a href="#">{{ po.statut }}</a>
+                </td>
+                <td style="width: 20%;">
+                  <a class="table-link text-info" [routerLink]="['/UpdatePo', po.idPerOb]">
+                    <span class="fa-stack">
+                      <i class="fa fa-square fa-stack-2x"></i>
+                      <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                    </span>
+                  </a>
+                  <a class="table-link danger" (click)="deletePersonalObjectif(po.idPerOb)">
+                    <span class="fa-stack">
+                      <i class="fa fa-square fa-stack-2x"></i>
+                      <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                    </span>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <a routerLink="/addPo" class="btn btn-sm btn-primary mx-2">Create Personal Objectifs</a>  
+     <button class="btn btn-primary" (click)="onShowChartClick()">Show Chart</button>
+  <div class="mt-4">
+    <canvas #myChart width="1" height="1"></canvas>
+  </div>
+    
+  </div>
+  
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  
+  <hr>
+  </body>
+  
+  <footer><app-footer-front></app-footer-front></footer>  

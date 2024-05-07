@@ -1,12 +1,13 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Menu } from 'src/app/model/Menu';
-import { MenuserviceService } from 'src/app/services/menuservice.service';
-import { SelectProgramService } from 'src/app/services/select-program.service';
+
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import * as QRCode from 'qrcode';
 import Swal from 'sweetalert2';
+import { MenuserviceService } from 'src/app/services/menuservice.service';
+import { SelectProgramService } from 'src/app/services/select-program.service';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class ShowProgramMenuComponent {
   pageNumbers: number[] = [];
   @ViewChild('menuContainer') menuContainer!: ElementRef;
 
-  constructor(private router: Router, private service: MenuserviceService, private selectedProgramService: SelectProgramService) { }
+  constructor(private router: Router, private service : MenuserviceService, private selectedProgramService: SelectProgramService) { }
 
   ngOnInit(): void {
     this.loadPrograms();

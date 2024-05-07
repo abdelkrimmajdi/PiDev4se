@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <!-- Tableau des utilisateurs -->
+        <div class="card">
+          <div class="table-responsive">
+            <form [formGroup]="UpdateForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter name">
+                </div>
+                <div class="alert alert-danger" *ngIf="this.UpdateForm.controls['reflexion'].invalid  &&this.UpdateForm.controls['reflexion'].touched">
+                    <p *ngIf="this.UpdateForm.controls['reflexion'].hasError('required')">reflexion required</p>
+                    <p *ngIf="this.UpdateForm.controls['reflexion'].hasError('minlength')">reflexion min Length 4 </p>
+                </div>          
+                <button type="submit" class="btn btn-primary" [disabled]="UpdateForm.invalid" (click)="save()">Submit</button>
+                <button type="submit" class="btn btn-primary" (click)=" reset() ">reset</button>
+            </form>

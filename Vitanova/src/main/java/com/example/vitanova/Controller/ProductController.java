@@ -1,6 +1,8 @@
 package com.example.vitanova.Controller;
 
+import com.example.vitanova.Configuration.EmailService;
 import com.example.vitanova.Entities.Category;
+import com.example.vitanova.Entities.Mail;
 import com.example.vitanova.Entities.Product;
 import com.example.vitanova.Service.ProductService;
 
@@ -17,6 +19,7 @@ public class ProductController {
 
     @Autowired
     private ProductService ProductService;
+
 
     @GetMapping
     public List<Product> getAllProducts() {
@@ -72,5 +75,18 @@ public class ProductController {
         }
     }
 
+
+
+    private final EmailService emailService;
+
+    @Autowired
+    public ProductController(EmailService emailService) {
+        this.emailService = emailService;
+    }
+
+    @PostMapping("/sendemail/market")
+    public void sendEmailMarket(@RequestBody Mail mail) {
+        emailService.sendemailMarket(mail);
+    }
 
 }

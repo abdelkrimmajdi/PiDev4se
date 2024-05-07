@@ -15,8 +15,8 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long IdRoom;
-    private String userName1;
-    private String userName2;
+    private String firstFirstName;
+    private String secondFirstName;
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Message> Messages;
     @ManyToMany(mappedBy="rooms", cascade = CascadeType.ALL)

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Favoris</title>
+  <!-- Lien vers Bootstrap 5 CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+  <!-- Icônes Bootstrap -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+  <style>
+    /* Styles pour l'espacement vertical */
+    .spacer {
+      margin-top: 1rem;
+    }
+    body {
+      background-image: url('https://cdn.shopify.com/s/files/1/0257/6718/2416/files/Pastel_Birthday_background.jpg?v=1595051319');
+      background-size: cover; /* Pour couvrir l'ensemble du viewport */
+      background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+      background-attachment: fixed; /* Pour garder l'image en place lors du défilement */
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+<div class="container my-5">
+  <div class="text-center" *ngIf="isLoading">
+    <!-- Animation de chargement avec indication de progression -->
+    <div class="spinner-grow text-primary" role="status">
+      <span class="visually-hidden">Chargement...</span>
+    </div>
+    <p class="mt-3">Chargement des favoris...</p>
+  </div>
+
+  <!-- Section des favoris avec un bouton de retour au-dessus -->
+  <div *ngIf="!isLoading">
+    <!-- Bouton "Back" au-dessus du tableau des favoris -->
+    <div class="d-flex justify-content-start spacer">
+      <button class="btn btn-secondary" onclick="history.back()">
+        <i class="bi bi-arrow-left"></i> Retour
+      </button>
+    </div>
+
+    <!-- Carte contenant la liste des favoris -->
+    <div class="card mt-3" *ngIf="favorites.length > 0">
+      <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+        <h2 class="m-0">USER BEST MEALS </h2>
+        <i class="bi bi-star-fill"></i>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let favorite of favorites">
+          <i class="bi bi-egg-fried me-2"></i> {{ favorite.meal.nameMeal }}
+          <i class="bi bi-egg-fried me-2"></i>  {{ favorite.meal.priceMeal }} TND
+ 
+        </li>
+      </ul>
+    </div>
+
+    <!-- Avertissement en cas d'absence de favoris -->
+    <div class="alert alert-warning text-center mt-3" *ngIf="favorites.length === 0">
+      <i class="bi bi-exclamation-triangle-fill me-2"></i> Aucun favori trouvé.
+    </div>
+  </div>
+</div>
+
+<!-- Lien vers Bootstrap 5 JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>

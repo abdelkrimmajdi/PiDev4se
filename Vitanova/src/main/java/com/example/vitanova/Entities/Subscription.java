@@ -19,8 +19,13 @@ public class Subscription {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long IdSub;
     private String SabName;
+    private String descSub;
+    private int priceSub;
     private Date  StartDateSub;
     private Date EndDateSub;
     private int DureeSub;
-
+    private boolean workoutSub;
+    private boolean mentalSub;
+    private boolean physioSub;
+    private boolean nutriSub;
 }

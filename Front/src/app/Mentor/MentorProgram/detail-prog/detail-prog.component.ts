@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MentorProgramService } from 'src/app/services/mentor-program.service';
 import { MentorProgram } from 'src/app/model/MentorProgram';
 import { MentorExercice } from 'src/app/model/MentorExercice';
 import { jsPDF } from 'jspdf';
+import { MentorProgramService } from 'src/app/services/mentor-program.service';
 
 @Component({
   selector: 'app-detail-prog',

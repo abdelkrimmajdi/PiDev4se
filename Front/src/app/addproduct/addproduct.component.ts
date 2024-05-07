@@ -34,21 +34,15 @@ export class AddproductComponent {
   selectedImage: any;
  
   onFileSelected(event: any) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.selectedImage = e.target.result;
+    console.log(event.target.value)
+    if (event.target.value) {
+        this.selectedImage = event.target.value;
+        console.log(this.selectedImage);
         this.productForm.patchValue({
-          imageProd: e.target.result.split(',')[1]
+          imageProd: this.selectedImage,
         });
       };
-      reader.readAsDataURL(file);
+    console.log(this.productForm.value)
     }
-  }
-
-  
-
-
 
 }

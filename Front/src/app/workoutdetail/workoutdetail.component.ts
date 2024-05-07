@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WorkoutSession } from '../models/workoutSession';
 import { ActivatedRoute, Router } from '@angular/router';
-import { WorkoutService } from '../services/workout.service';
+import { WorkoutService } from '../Services/workout.service';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import { Exercice } from '../models/exercice';
 import { ExerciceService } from '../services/exercice.service';

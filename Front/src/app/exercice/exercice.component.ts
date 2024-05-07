@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Exercice } from '../models/exercice';
+import { FormBuilder } from '@angular/forms';
 import { ExerciceService } from '../services/exercice.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-exercice',
@@ -74,6 +74,11 @@ export class ExerciceComponent implements OnInit {
         return 0; // No sorting for other types
       }
     });
+  }
+
+  getImageUrl(fileName: string): string {
+    // Assuming 'fileName' contains the file path returned by the backend
+    return `file://${fileName}`;
   }
   
 }

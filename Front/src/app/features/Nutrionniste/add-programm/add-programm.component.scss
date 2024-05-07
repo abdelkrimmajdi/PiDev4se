@@ -1,8 +1,16 @@
+/* CSS pour les éléments input.select */
 .input.select {
-    background-color: black; /* Ajoutez la couleur de fond verte */
-    color:black; /* Couleur du texte */
-    padding: 10px; /* Espace intérieur */
-    border-radius: 5px; /* Bordure arrondie */
-    border: none; /* Supprimer la bordure par défaut */
-    outline: none; /* Supprimer l'effet de focus */
-  }
+  background-color: black; /* Ajoutez la couleur de fond verte */
+  color: black; /* Couleur du texte */
+  padding: 10px; /* Espace intérieur */
+  border-radius: 5px; /* Bordure arrondie */
+  border: none; /* Supprimer la bordure par défaut */
+  outline: none; /* Supprimer l'effet de focus */
+}
+
+/* CSS pour l'arrière-plan du formulaire */
+.container {
+  background-color: #f2f2f2; /* Couleur de fond grise */
+  padding: 20px; /* Ajouter un espace intérieur pour le contenu */
+  border-radius: 10px; /* Bordure arrondie */
+}

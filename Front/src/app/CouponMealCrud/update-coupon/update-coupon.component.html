@@ -1,0 +1,176 @@
+<!-- update-coupon.component.html -->
+<div class="container">
+  <form (ngSubmit)="updateCoupon()" [formGroup]="couponForm">
+    <div class="input-row">
+      <div class="input-wrapper">
+        <label for="name">Name Coupon</label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          required
+        />
+      </div>
+
+      <div class="input-wrapper">
+        <label for="discountPercentage">Discount %</label>
+        <input
+          type="number"
+          id="discountPercentage"
+          min="0"
+          max="100"
+          formControlName="discountPercentage"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="input-row">
+      <div class="input-wrapper">
+        <label for="minTotalPrice">Price Minimum :</label>
+        <input
+          type="number"
+          id="minTotalPrice"
+          min="0"
+          formControlName="minTotalPrice"
+          required
+        />
+      </div>
+
+      <div class="input-wrapper">
+        <label for="maxTotalPrice">Price Maximum :</label>
+        <input
+          type="number"
+          id="maxTotalPrice"
+          min="0"
+          formControlName="maxTotalPrice"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="input-wrapper">
+      <label for="expiryDate">expiryDate</label>
+      <input
+        type="date"
+        id="expiryDate"
+        formControlName="expiryDate"
+        required
+      />
+    </div>
+
+    <div *ngIf="errorMessage" style="color: red;">
+      {{ errorMessage }}
+    </div>
+
+    <button type="submit" class="btn">Update Coupon</button>
+  </form>
+</div>
+
+<!-- update-coupon.component.css -->
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Centre verticalement */
+  margin-right: 50px; /* Décalage vers la droite */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px; /* Limite la largeur du formulaire */
+}
+
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.input-wrapper label {
+  margin-bottom: 0.5rem;
+}
+
+.input-wrapper input {
+  background-color: #eee;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  width: 100%; 
+  border-radius: 1rem;
+  color: lightcoral;
+  box-shadow: 0 0.4rem #dfd9d9;
+}
+
+.input-wrapper input:focus {
+  outline-color: lightcoral;
+}
+
+.btn {
+  padding: 1em 1.5em;
+  font-size: 17px;
+  background: transparent;
+  border: none;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  transition: 0.5s ease;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: #ffc506;
+  transition: 0.5s ease;
+}
+
+.btn:hover {
+  color: red;
+}
+
+.btn:hover::before {
+  width: 100%;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0;
+  width: 100%;
+  background-color: #ffc506;
+  transition: 0.4s ease;
+}
+
+.btn:hover::after {
+  height: 100%;
+  transition-delay: 0.4s;
+}
+
+</style>

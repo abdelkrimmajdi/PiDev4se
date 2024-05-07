@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Physiotherapist</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h2>Update Physiotherapist</h2>
+    <!-- Formulaire de modification du physiothérapeute -->
+    <form (submit)="updatePhysiotherapist()">
+      <div>
+        <label for="phyname">Full Name :</label>
+        <input type="text" id="phyname" name="phyname" [(ngModel)]="physiotherapistData.phyname" required>
+      </div>
+      <div>
+        <label for="phyname">City :</label>
+        <input type="text" id="ville" name="ville" [(ngModel)]="physiotherapistData.ville" required>
+      </div>
+      <div>
+        <label for="adresse">Latitude :</label>
+        <input type="text" id="latitude" name="latitude" [(ngModel)]="physiotherapistData.latitude" required>
+      </div>
+      <div>
+        <label for="adresse">Longitude :</label>
+        <input type="text" id="longitude" name="longitude" [(ngModel)]="physiotherapistData.longitude" required>
+      </div>
+      <!-- Ajoutez d'autres champs pour les attributs supplémentaires du physiothérapeute si nécessaire -->
+      <button type="submit"><i class="fas fa-send"></i>Confirm</button>
+    </form>
+  </div>
+</body>
+</html>

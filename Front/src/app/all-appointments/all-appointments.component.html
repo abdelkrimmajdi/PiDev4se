@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointments List</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.css" rel="stylesheet">
+  </head>
+<body>
+    <div class="container">
+        <div class="search-container">
+          <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher...">
+        </div>
+      </div>
+  <div class="container">
+    <h1 class="center-text chart-title"><img src="/assets/FrontOffice/img/logo.png" alt="Logo" width="100px">Appointments List </h1>
+    <div class="content">
+      <table class="appointments-table">
+        <thead>
+          <tr>
+            <th class="table-header">ID</th>
+            <th class="table-header">Day</th>
+            <th class="table-header">Time</th>
+            <th class="table-header">Physiotherapist Id</th>
+            <th class="table-header">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appointment of filteredAppointments">
+            <td>{{ appointment.id }}</td>
+            <td>{{ appointment.dayApp }}</td>
+            <td>{{ appointment.timeApp }}</td>
+            <td>{{ appointment.physiotherapistId }}</td>
+            <td>
+              <button class="action-btn delete-btn" (click)="deleteAppointment(appointment.id)"><i class="fas fa-trash"></i></button>
+              <button class="action-btn edit-btn" (click)="editAppointment(appointment.id)"><i class="fas fa-edit"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h2 class="center-text chart-title">Number of appointments per physiotherapist</h2>
+      <canvas #physiotherapistChartCanvas id="physiotherapistChartCanvas"></canvas>
+  
+    </div>
+  </div>
+</body>
+</html>

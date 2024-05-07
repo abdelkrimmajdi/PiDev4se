@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>CART MEAL </title>
+    
+    <!-- Inclure Bootstrap pour les styles -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- Style personnalisé -->
+    <style>
+        body {
+            background-image: url('assets/restaurant/images/backff.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.85);
+        }
+
+        .container {
+            max-width: 600px; /* Limite la largeur du conteneur */
+        }
+
+        .form-control-sm {
+            width: 60px; /* Taille compacte pour les champs de quantité */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Conteneur principal centré -->
+    <div class="container">
+        <!-- Section du total du panier -->
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h2 class="mb-0">CART</h2>
+                <i class="fas fa-shopping-cart fa-lg"></i>
+            </div>
+            <div class="card-body">
+                <!-- Affichage du prix total -->
+                <p class="lead">
+                  Total : <strong>{{ totalPrice | currency: 'TND' }}</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- Section des articles du panier -->
+        <div class="card mt-3 shadow-sm border-0">
+            <div class="card-header bg-light">
+                <h3 class="mb-0">CART ITEM</h3>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>name meal</th>
+                            <th>price unit</th>
+                            <th>quantity</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Itération sur les détails du panier -->
+                        <tr *ngFor="let detail of cartDetails">
+                            <!-- Nom du repas -->
+                            <td class="text-primary">{{ detail.mealName }}</td>
+
+                            <!-- Prix du repas -->
+                            <td>{{ detail.mealPrice | currency: 'TND' }}</td>
+
+                            <!-- Quantité -->
+                            <td>
+                                <input
+                                    type="number"
+                                    class="form-control-sm form-control"
+                                    [(ngModel)]="detail.quantity"
+                                    min="1"
+                                />
+                            </td>
+
+                            <td>
+                                <button
+                                    (click)="removeMealByName(detail.mealName)"
+                                    class="btn btn-outline-danger btn-sm"
+                                >
+                                    <!-- Icône de suppression -->
+                                    <i class="fas fa-trash"></i>
+                            
+                                    <!-- Texte supplémentaire -->
+                                    Delete  <!-- Texte ajouté au bouton -->
+                            
+                                    <!-- Image ajoutée au bouton -->
+                                    <img
+                                        src="https://t4.ftcdn.net/jpg/03/46/38/39/360_F_346383913_JQecl2DhpHy2YakDz1t3h0Tk3Ov8hikq.jpg"
+                                        alt="Image"
+                                        style="width: 16px; height: 16px; margin-left: 5px;"
+                                    />
+                                </button>
+                            </td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Bouton pour appliquer les changements -->
+                <button
+                    class="btn btn-outline-primary mt-3"
+                    (click)="applyChanges()"
+                >
+                apply Changes
+                </button>
+            </div>
+        </div>
+
+        <!-- Section pour les coupons -->
+        <div class="card mt-3 shadow-sm border-0">
+            <div class="card-body">
+                <!-- Champ pour entrer le nom du coupon -->
+                <div class="form-group">
+                    <label pour="couponName">name coupon:</label>
+                    <input
+                        type="text"
+                        id="couponName"
+                        class="form-control"
+                        [(ngModel)]="couponName"
+                        placeholder="Coupon NAME"
+                    />
+                </div>
+  
+                <!-- Bouton pour appliquer le coupon -->
+                <button
+                    class="btn btn-outline-success"
+                    (click)="applyCoupon()"
+                >
+                   USE IT NOW
+                </button>
+                
+                <!-- Bouton pour revenir au restaurant -->
+                <button
+                    class="btn btn-outline-info"
+                    (click)="tooltipClicked()"
+                >
+                    BACK TO RESTAURANT
+                </button>
+            </div>
+        </div>
+    </div>
+<app-coupon-notification></app-coupon-notification>
+    <!-- Scripts requis pour Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

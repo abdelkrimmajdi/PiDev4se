@@ -1,4 +1,4 @@
 export class Journal{
-    IdJo!: number;
+    idJo!: number;
     reflexion!: string;
 }

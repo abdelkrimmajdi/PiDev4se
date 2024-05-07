@@ -69,7 +69,7 @@ passwordMatchValidator(formGroup: FormGroup) {
         ...this.updateForm.value
       };
 
-      this.userService.updateAdmin(updatedUser).subscribe((res: any) => {
+      this.userService.updateUser(updatedUser).subscribe((res: any) => {
 
         Swal.fire({
           icon: 'success',
@@ -109,7 +109,7 @@ passwordMatchValidator(formGroup: FormGroup) {
             return;
         }
 
-        this.userService.updatePassword(this.userconnect.id, this.updatePasswordForm.value.password).subscribe((res: any) => {
+        this.userService.updatePasswordUser(this.userconnect.id, this.updatePasswordForm.value.password).subscribe((res: any) => {
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',

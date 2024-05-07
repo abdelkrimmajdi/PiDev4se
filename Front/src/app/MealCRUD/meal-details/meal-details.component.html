@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meal Details</title>
+<style>
+/* General styles */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.meal-details-container {
+  background-color: #EDDCD9; /* Same as form_area */
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px; /* Center align horizontally */
+  margin: 0 auto;
+}
+
+.title {
+  color: #00bfff; /* Couleur du titre */
+  font-weight: 600; /* Épaisseur de la police */
+  font-size: 28px; /* Taille de la police */
+  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+}
+
+.title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  background-color: #00bfff; /* Couleur de l'icône */
+  border-radius: 50%;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  background-color: #00bfff; /* Couleur de l'icône */
+  border-radius: 50%;
+  animation: pulse 1s linear infinite;
+}
+
+.sub_title {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #DE5499;
+  background-color: #fff;
+  padding: 5px 10px;
+  border: 2px solid #264143;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.detail {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.btn {
+  padding: 15px 30px;
+  margin-top: 20px;
+  font-size: 16px;
+  background-color: #DE5499;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #D42E74;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+</style>
+<script>
+function goBack() {
+  // Mettez ici le code pour revenir en arrière
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="meal-details-container">
+    <p class="title">Meal Details</p>
+    <div *ngIf="meal">
+      <div class="form_group">
+        <div class="sub_title">Name</div>
+        <p class="detail">{{ meal.nameMeal }}</p>
+      </div>
+      <div class="form_group">
+        <div class="sub_title">Price</div>
+        <p class="detail">{{ meal.priceMeal }}</p>
+      </div>
+      <div class="form_group">
+        <div class="sub_title">Category</div>
+        <p class="detail">{{ meal.categoryMeal }}</p>
+      </div>
+      <div class="form_group">
+        <div class="sub_title">Image</div>
+        <p class="detail">{{ meal.imageName }}</p>
+      </div>
+    </div>
+    <div *ngIf="!meal">Loading...</div>
+    
+    <button type="button" class="btn" (click)="tooltipClicked()">Back</button>
+  </div>
+</div>
+</body>
+</html>

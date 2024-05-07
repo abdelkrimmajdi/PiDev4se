@@ -1,7 +1,9 @@
 export class Message{
-    IdMess!: number;
+    idMess!: number;
     senderEmail!: string;
-    replayMessage!: string;
-    dateMessage!: Date;
+    replyMessage!: string;
+    time!: Date;
+    chat: any;
+    
 
 }

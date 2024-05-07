@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
-import { MentorProgramService } from 'src/app/services/mentor-program.service';
 import { User } from 'src/app/model/user.model';
 import { MentorProgram } from 'src/app/model/MentorProgram';
+import { UserService } from 'src/app/services/user.service';
+import { MentorProgramService } from 'src/app/services/mentor-program.service';
 
 @Component({
   selector: 'app-assign-pto-u',

@@ -1,0 +1,41 @@
+.map-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 30px;
+  }
+  
+  .map-frame {
+    border: 2px solid black;
+    height: 100%;
+  }
+  
+  #map {
+    height: 100%;
+  }
+  .copyButton {
+    background-color: #4CAF50; /* Couleur de fond verte */
+    border: none;
+    color: white; /* Couleur du texte en blanc */
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .copyButton:hover {
+    background-color: #45a049; /* Couleur de fond verte plus foncée lorsqu'on survole */
+  }
+  
+  .copyButton:disabled {
+    background-color: #cccccc; /* Couleur de fond grise lorsque le bouton est désactivé */
+    cursor: not-allowed; /* Curseur inactif lorsque le bouton est désactivé */
+  }
+  

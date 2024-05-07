@@ -89,6 +89,51 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { AppointmentComponent } from './features/Nutrionniste/appointment/appointment.component';
+import { SubscriptionPaymentComponent } from './subscription-payment/subscription-payment.component';
+import { SubscriptionComponent } from './subscription/subscription.component';
+import { SubscriptionaddComponent } from './subscriptionadd/subscriptionadd.component';
+import { SubscriptiondetailComponent } from './subscriptiondetail/subscriptiondetail.component';
+import { SubscriptionfrontComponent } from './subscriptionfront/subscriptionfront.component';
+import { WorkoutFrontComponent } from './workout-front/workout-front.component';
+import { DeliveryComponent } from './delivery/delivery.component';
+import { PaymentComponent } from './payment/payment.component';
+import { PaypalComponent } from './paypal/paypal.component';
+import { DeliverymanagementComponent } from './deliverymanagement/deliverymanagement.component';
+import { CreateAppointmentComponent } from './create-appointment/create-appointment.component';
+import { AllAppointmentsComponent } from './all-appointments/all-appointments.component';
+import { UpdateAppointmentComponent } from './update-appointment/update-appointment.component';
+import { MapComponent } from './map/map.component';
+import { CreatePhysiotherapistComponent } from './create-physiotherapist/create-physiotherapist.component';
+import { AllPhysiotherapistsComponent } from './all-physiotherapists/all-physiotherapists.component';
+import { UpdatePhysiotherapistComponent } from './update-physiotherapist/update-physiotherapist.component';
+import { AddJournalComponent } from './Journal/journal/add-journal/add-journal.component';
+import { UpdJournalComponent } from './Journal/journal/upd-journal/upd-journal.component';
+import { AddPoComponent } from './Journal/persob/add-po/add-po.component';
+import { AssignPoComponent } from './Journal/persob/assign-po/assign-po.component';
+import { UpdPoComponent } from './Journal/persob/upd-po/upd-po.component';
+import { JournalComponent } from './Journal/journal/journal.component';
+import { PoComponent } from './Journal/persob/po.component';
+import { DetailJournalComponent } from './Journal/journal/detail-journal/detail-journal.component';
+import { RoomComponent } from './Room/room/room.component';
+import { MainComponent } from './Room/main/main.component';
+import { AddRoomComponent } from './Room/room/add-room/add-room.component';
+import { DetailRoomComponent } from './Room/room/detail-room/detail-room.component';
+import { GetAllComponent } from './MealCRUD/get-all/get-all.component';
+import { CREATEMEALComponent } from './MealCRUD/createmeal/createmeal.component';
+import { UpdateMealComponent } from './MealCRUD/updatemeal/updatemeal.component';
+import { MealDetailsComponent } from './MealCRUD/meal-details/meal-details.component';
+import { MealListComponent } from './meal-list/meal-list.component';
+import { CartTotalComponent } from './cart-total/cart-total.component';
+import { CreateCouponComponent } from './CouponMealCrud/create-coupon/create-coupon.component';
+import { ListCouponsComponent } from './CouponMealCrud/list-coupons/list-coupons.component';
+import { UpdateCouponComponent } from './CouponMealCrud/update-coupon/update-coupon.component';
+import { CouponNotificationComponent } from './coupon-notification/coupon-notification.component';
+import { CouponDetailsComponent } from './coupon-details/coupon-details.component';
+import { CommonModule } from '@angular/common';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { GetallprogramComponent } from './Umentor/getallprogram/getallprogram.component';
+import { UserFavoritesComponent } from './user-favorites/user-favorites.component';
 
 
 
@@ -163,6 +208,57 @@ AllReclamationsComponent,
           MyProgramComponent,
           CaloriesComponent,
           RendezVousComponent,
+    AppointmentComponent,
+    ExerciceComponent,
+    ExerciceaddComponent,
+    ExercicedetailComponent,
+    ExercicefrontComponent,
+    WorkoutComponent,
+    WorkoutaddComponent,
+    WorkoutdetailComponent,
+    SubscriptionComponent,
+    SubscriptionaddComponent,
+    SubscriptiondetailComponent,
+    SubscriptionfrontComponent,
+    SubscriptionPaymentComponent,
+    WorkoutFrontComponent,
+    DeliveryComponent,
+    PaymentComponent,
+    PaypalComponent,
+    DeliverymanagementComponent,
+    CreateAppointmentComponent,
+    AllAppointmentsComponent,
+    UpdateAppointmentComponent,
+    MapComponent,
+    CreatePhysiotherapistComponent,
+    AllPhysiotherapistsComponent,
+    UpdatePhysiotherapistComponent,
+    JournalComponent,
+      AddJournalComponent,
+      UpdJournalComponent,
+      PoComponent,
+      UpdPoComponent,
+      AddPoComponent,
+      AssignPoComponent, 
+      DetailJournalComponent,
+      RoomComponent,
+      AddRoomComponent,
+      DetailRoomComponent,
+    MainComponent,
+    GetAllComponent,
+    CREATEMEALComponent,
+    UpdateMealComponent,
+    MealDetailsComponent,
+    MealListComponent,
+CartTotalComponent,
+CreateCouponComponent,
+    ListCouponsComponent,
+UpdateCouponComponent,
+CouponNotificationComponent,
+CouponDetailsComponent,
+    GetallprogramComponent,
+UserFavoritesComponent
+
            
       
 
@@ -187,6 +283,13 @@ AllReclamationsComponent,
     MatIconModule,
     MatDatepickerModule
     ,
+    CommonModule,                                                                                                                                                                         
+    MatTooltipModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule,
+
   BrowserAnimationsModule,
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
     FullCalendarModule

@@ -1,0 +1,148 @@
+<div class="container">
+  <!-- Filter Section -->
+  <div class="filter-container">
+    <div class="input-wrapper">
+      <!-- Search by Name -->
+      <input 
+        type="text"
+        class="input"
+        [(ngModel)]="searchName"
+        (input)="filterCoupons()"
+        placeholder="Search by name "
+      />
+      <!-- Search by Discount Percentage -->
+      <input 
+        type="number"
+        class="input"
+        [(ngModel)]="searchDiscount"
+        (input)="filterCoupons()"
+        placeholder="Minimum Reduce %"
+      />
+    </div>
+  </div>
+
+  <!-- Table of Coupons -->
+  <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name Coupon</th>
+          <th>Discount% </th>
+          <th>Price Minimum</th>
+          <th>Price maximum</th>
+          <th>expiryDate</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let coupon of filteredCoupons">
+          <td>{{ coupon.name }}</td>
+          <td>{{ coupon.discountPercentage }}%</td>
+          <td>{{ coupon.minTotalPrice }}</td>
+          <td>{{ coupon.maxTotalPrice }}</td>
+          <td>{{ coupon.expiryDate | date }}</td>
+          <td>
+            <!-- Actions -->
+            <button 
+              class="btn btn-warning"
+              [routerLink]="['/admin/update-coupon', coupon.id]"
+            >
+              Update
+            </button>
+            <button 
+              class="btn btn-danger"
+              (click)="deleteCoupon(coupon.id)"
+            >
+              Delete
+            </button>
+            <button 
+              class="btn btn-info"
+              (click)="navigateToCouponDetails(coupon.id)"
+            >
+              Details
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Create Coupon Button, centered -->
+  <div class="create-coupon-center">
+    <button 
+      class="btn btn-danger"
+      (click)="creatCoupon()"
+    >
+      Create Coupon
+    </button>
+  </div>
+</div>
+<style>
+  .container {
+  padding: 20px;
+  max-width: 1200px; /* Centers the content horizontally */
+  margin: 0 auto;
+}
+
+.filter-container {
+  text-align: center;
+}
+
+.input-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center; /* Center the table horizontally */
+}
+
+.table {
+  width: 80%; /* Reduced to fit better in the centered layout */
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #f2f2f2;
+}
+
+.table tr:hover {
+  background-color: #f0f0f0;
+}
+
+.create-coupon-center {
+  text-align: center; /* Centers the content horizontally */
+  margin-top: 20px; /* Provides spacing between the table and the button */
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+</style>

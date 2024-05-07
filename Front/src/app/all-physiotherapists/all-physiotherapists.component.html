@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physiotherapists List</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <style>
+    body { margin-left: 300px; margin-right: 50px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="search-container">
+      <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher...">
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div *ngIf="filteredPhysiotherapists.length > 0; else noPhysiotherapists">
+      <h2 class="center-text"><img src="/assets/FrontOffice/img/phy.jpg" alt="Logo" width="100px">Physiotherapists List</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>City</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Action</th>
+            <!-- Ajoutez d'autres en-têtes de colonnes si nécessaire -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let physiotherapist of filterPhysiotherapists()">
+            <td>{{ physiotherapist.idPhy }}</td>
+            <td>{{ physiotherapist.phyname }}</td>
+            <td>{{physiotherapist.ville}}</td>
+            <td>{{physiotherapist.latitude}}</td>
+            <td>{{physiotherapist.longitude}}</td>
+
+            <td>
+              <button class="button btn-danger" (click)="deletePhysiotherapist(physiotherapist.idPhy)"><i class="fas fa-trash"></i> Delete</button>
+              <button class="button btn-primary" (click)="editPhysiotherapist(physiotherapist.idPhy)"><i class="fas fa-edit"></i> Update</button>
+            </td>
+            <!-- Ajoutez d'autres cellules de données pour d'autres propriétés de physiothérapeute -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #noPhysiotherapists>
+      <p>Aucun physiothérapeute trouvé.</p>
+    </ng-template>
+  </div>
+  <div *ngIf="showDashboard">
+    <h2 class="center-text">Number of physiotherapists per city</h2>
+    <canvas #cityChartCanvas id="cityChartCanvas"></canvas>
+  </div>
+</body>
+</html>

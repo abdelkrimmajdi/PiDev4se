@@ -5,8 +5,15 @@ import com.example.vitanova.Service.ExerciceServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +23,8 @@ import java.util.Optional;
 public class ExerciceController {
     @Autowired
     private ExerciceServiceImpl exerciceService;
+
+    private final Path fileStorageLocation = Paths.get("C:\\Users\\majdiabdelkrim\\Desktop\\Pi\\PiDev4se\\Front\\src\\assets\\img exercices");
 
     @GetMapping
     public List<Exercice> getAllExercices() {
@@ -51,4 +60,28 @@ public class ExerciceController {
         return exerciceService.findByName(name);
     }
 
+    @PostMapping("/{id}/uploadImage")
+    public ResponseEntity<String> uploadImage(@PathVariable Long id, @RequestParam("file") MultipartFile file) {
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        try {
+            if (!Files.exists(fileStorageLocation)) {
+                Files.createDirectories(fileStorageLocation);
+            }
+            Path targetLocation = this.fileStorageLocation.resolve(fileName);
+            Files.copy(file.getInputStream(), targetLocation);
+
+            String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                    .path("/downloadFile/")
+                    .path(fileName)
+                    .toUriString();
+
+            Exercice exercice = exerciceService.getExerciceById(id).orElseThrow(() -> new RuntimeException("Exercice not found"));
+            exercice.setPicture(fileDownloadUri);
+            exerciceService.createExercice(exercice);
+
+            return ResponseEntity.ok().body(targetLocation.toString());
+        } catch (IOException ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Could not store file " + fileName + ". Please try again!");
+        }
+    }
 }

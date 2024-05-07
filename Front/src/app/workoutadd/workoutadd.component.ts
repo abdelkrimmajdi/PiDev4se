@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ExerciceService } from '../services/exercice.service';
-import { WorkoutService } from '../services/workout.service';
+import { WorkoutService } from '../Services/workout.service';
 import { Exercice } from '../models/exercice';
 import { WorkoutSession } from '../models/workoutSession';
 

@@ -23,6 +23,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
 
+import static com.example.vitanova.Entities.Role.ADMIN;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration
@@ -42,7 +43,8 @@ public class SecurityConfiguration {
                         req
                                 //.requestMatchers("/auth/**").permitAll() // Autoriser les requêtes à /auth/**
                                 .requestMatchers("/**").permitAll() // Autoriser les requêtes à /auth/**
-                                //.requestMatchers("/**").hasAnyRole(Role.ADMIN.name(), Role.ETUDIANT.name())
+
+                                .requestMatchers("/api/v1/admin/getall").hasAuthority("ADMIN")
                                 .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))

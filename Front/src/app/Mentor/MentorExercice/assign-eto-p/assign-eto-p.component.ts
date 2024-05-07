@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MentorExercice } from 'src/app/model/MentorExercice';
+
+import { MentorProgram } from 'src/app/model/MentorProgram';
 import { MentorExerciceService } from 'src/app/services/mentor-exercice.service';
 import { MentorProgramService } from 'src/app/services/mentor-program.service';
-import { MentorExercice } from 'src/app/model/MentorExercice';
-import { MentorProgram } from 'src/app/model/MentorProgram';
 
 @Component({
   selector: 'app-assign-eto-p',

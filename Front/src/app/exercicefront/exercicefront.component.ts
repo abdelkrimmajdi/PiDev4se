@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Exercice } from '../models/exercice';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ExerciceService } from '../services/exercice.service';
 
 @Component({
@@ -8,11 +9,12 @@ import { ExerciceService } from '../services/exercice.service';
   styleUrls: ['./exercicefront.component.scss']
 })
 export class ExercicefrontComponent implements OnInit {
+  selectedExercise: any;
   exercises: Exercice[] = [];
   filteredExercises: Exercice[] = [];
   selectedMuscle: string = '';
 
-  constructor(private exerciceService: ExerciceService) {}
+  constructor(private exerciceService: ExerciceService, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
     this.loadExercises();
@@ -56,6 +58,14 @@ export class ExercicefrontComponent implements OnInit {
   resetFilter() {
     this.selectedMuscle = '';
     this.filteredExercises = [];
+  }
+
+  showExerciseDetails(exercise: any) {
+    this.selectedExercise = exercise;
+  }
+
+  getSafeUrl(): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.selectedExercise.videoExer);
   }
 
 }

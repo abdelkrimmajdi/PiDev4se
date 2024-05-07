@@ -8,4 +8,5 @@ export class Exercice{
     intensity!: Intensity;
     muscle!: string;
     picture!: string;
+    videoExer!:string;
   }

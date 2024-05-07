@@ -6,7 +6,7 @@ import { MentorExerciceService } from 'src/app/services/mentor-exercice.service'
 
 @Component({
   selector: 'app-mentor-exercice',
-  templateUrl: './mentor-exercice.component.html',
+  templateUrl: './mentor-exercice.component.html', 
   styleUrls: ['./mentor-exercice.component.scss']
 })
 export class MentorExerciceComponent implements OnInit {

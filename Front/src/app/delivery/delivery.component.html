@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Address Form</title>
+
+<style>
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+p {
+  color: red;
+}
+
+label {
+  display: block;
+  margin-top: 20px;
+  color: #666;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box; /* Makes sure the padding doesn't affect the total width */
+}
+
+input[type="submit"] {
+  background-color: #5cb85c;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+input[type="submit"]:hover {
+  background-color: #4cae4c;
+}
+
+/* Handling the asterisk color */
+label::after {
+  content: "*";
+  color: red;
+  display: inline;
+}
+
+/* Not displaying the asterisk after labels without the required attribute */
+label:not([for="company"]):not([for="vat"])::after {
+  content: none;
+}
+
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px 15px;
+  margin-top: 20px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+}
+
+button#back {
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #f0f0f0;
+}
+
+/* Specifically for the next button to mimic the black border */
+button#next {
+  border: 2px solid #000;
+  background-color: #fff;
+  float: right; /* To align it to the right */
+}
+.no-footer .footer {
+  display: none;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.error {
+  color: red;
+  font-size: 0.8rem;
+}
+
+.conteneur {
+    float: left; 
+    margin-left: 20px; 
+    margin-right: 20px;
+}
+
+.conteneur input[type="email"] {
+    height: 30px; 
+    width: 400px; 
+    
+}
+</style>
+
+
+</head>
+<body>
+  <div class="conteneur">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <h2>Votre Adresse</h2>
+      <p>* are required fields</p>
+      
+      <label for="name">Nom*</label>
+      <input type="text" id="name" formControlName="name" required>
+      <div *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched" class="error-message">
+        <div *ngIf="userForm.get('name')?.errors?.['required']"> Name is required.</div>
+        <div *ngIf="userForm.get('name')?.errors?.['minlength']"> Name must be at least 3 characters.</div>
+      </div>
+  
+      
+      <label for="email">Email*</label>
+      <input type="email" id="email" formControlName="email" required>
+      <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched" class="error-message">
+        <div *ngIf="userForm.get('email')?.errors?.['required']">Email is required.</div>
+        <div *ngIf="userForm.get('email')?.errors?.['email']">Invalid email format.</div>
+      </div>
+  
+      <label for="phone">Téléphone*</label>
+      <input type="tel" id="phone" formControlName="phone" required>
+      <div *ngIf="userForm.get('phone')?.invalid && userForm.get('phone')?.touched" class="error-message">
+        <div *ngIf="userForm.get('phone')?.errors?.['required']">Phone Number is required.</div>
+        <div *ngIf="userForm.get('phone')?.errors?.['pattern']">Invalid phone number format.</div>
+      </div>
+  
+      <label for="adresse">Rue et Numéro*</label>
+      <input type="text" id="adresse" formControlName="adresse" required>
+  
+      <label for="city">Ville*</label>
+      <input type="text" id="city" formControlName="city" required>
+      <div *ngIf="userForm.get('city')?.invalid && userForm.get('city')?.touched" class="error-message">
+        <div *ngIf="userForm.get('city')?.errors?.['required']"> City is required.</div>
+      </div>
+  
+      <label for="country">Pays*</label>
+      <select id="country" formControlName="country" required>
+        <option value="">Pays...</option>
+        <option value="us">United States</option>
+        <option value="tu">Tunis</option>
+        <option value="ma">Maroc</option>
+        <option value="ag">Algeria</option>
+        <option value="eg">Egypt</option>
+        <option value="de">Germany</option>
+        <option value="fr">France</option>
+        <option value="lib">Libya</option>
+        <option value="It">Italie</option>
+        <option value="su">Switzerland</option>
+      </select>
+  
+      <label for="same-address">
+        <input type="checkbox" id="same-address" name="same-address" checked>
+        Livrer à la même adresse
+      </label>
+  
+      <button type="button" id="back" routerLink="/market">Retour</button>
+      <button type="submit" id="next">Suivant</button>
+    </form>
+  </div>
+  
+</body>
+</html>

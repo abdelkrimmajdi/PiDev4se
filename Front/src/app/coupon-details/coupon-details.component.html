@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Détails du Coupon</title>
+<style>
+/* Tooltip CSS */
+.tooltip-container {
+  color: #ffffff;
+  --background: #00a36d;
+  position: relative;
+  background: var(--background);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 17px;
+  padding: 0.7em 1.8em;
+  border-radius: 50px;
+}
+
+.tooltip {
+  background-color: #00a36d;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.3em 0.6em;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  border-radius: 50px;
+}
+
+.tooltip::before {
+  background-color: #00a36d;
+  position: absolute;
+  content: "";
+  height: 0.6em;
+  width: 0.6em;
+  bottom: -0.2em;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+}
+
+.tooltip-container:hover .tooltip,
+.tooltip-container.active .tooltip {
+  top: -100%;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Form CSS */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  height: 100vh; /* Full viewport height */
+}
+
+.coupon-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #EDDCD9;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+}
+
+/* Title with animation and iconography */
+.title {
+  color: #00bfff; /* Title color */
+  font-weight: 600; /* Font weight */
+  font-size: 28px; /* Font size */
+  margin-bottom: 20px; /* Spacing below title */
+  position: relative;
+  padding-left: 30px;
+}
+
+.title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  background-color: #00bfff;
+  border-radius: 50%;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  background-color: #00bfff;
+  border-radius: 50%;
+  animation: pulse 1s linear infinite;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* Coupon details */
+.detail {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Button style */
+.btn {
+  padding: 15px 30px;
+  margin-top: 20px;
+  font-size: 16px;
+  background-color: #DE5499;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #D42E74;
+}
+
+</style>
+<script>
+function goBack() {
+  console.log("Retour à la liste");
+}
+
+function tooltipClicked() {
+  goBack(); 
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="coupon-details">
+    <div class="title">Coupon Details</div>
+    
+    <p class="detail">name Coupon : <strong>{{ coupon?.name }}</strong></p>
+    <p class="detail"> discount Percentage  : <strong>{{ coupon?.discountPercentage }}%</strong></p>
+    <p class="detail">Price Total Minimum   : {{ coupon?.minTotalPrice }} TND</p>
+    <p class= "detail">Price Total Maximum   : {{ coupon?.maxTotalPrice }} TND</p>
+    <p class="detail">expiryDate : {{ coupon?.expiryDate | date }}</p>
+
+    <div class="tooltip-container" (click)="tooltipClicked()">
+      <span class="tooltip">thanks!</span>
+      <span class="text">Back To List</span>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

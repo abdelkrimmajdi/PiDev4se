@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/model/user.model';
-import { UserService } from 'src/app/services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/services/auth.service';
 import { Image } from 'src/app/model/image.model';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-editprofile',
