@@ -35,7 +35,11 @@ export class UserService {
     updatePassword(idUser:number , password:string){
       return this.http.put(`http://localhost:8081/api/v1/admin/updatePassword/${idUser}/${password}`, {})
     
-    }
+  }
+  updatePasswordUser(idUser:number , password:string){
+    return this.http.put(`http://localhost:8081/api/v1/user/updatePassword/${idUser}/${password}`, {})
+  
+  }
     getOneUser(idUser: number) {
       return this.http.get<User>(`http://localhost:8081/api/v1/admin//etudiant/${idUser}`);
     }

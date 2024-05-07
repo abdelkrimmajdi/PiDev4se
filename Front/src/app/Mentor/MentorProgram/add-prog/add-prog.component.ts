@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { MentorProgramService } from 'src/app/services/mentor-program.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MentorProgramService } from 'src/app/services/mentor-program.service';
 
 @Component({
   selector: 'app-add-prog',

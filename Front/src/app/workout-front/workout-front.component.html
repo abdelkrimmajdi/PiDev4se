@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subs</title>
+  <style>
+    h1 {
+      color: white;
+    }
+
+    small,
+    span {
+      font-weight: 600;
+    }
+
+    .main-btn {
+      margin-top: 20px;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif !important;
+      background-color: black;
+      display: flex;
+      /* Centers content vertically */
+    }
+
+    section {
+      margin-top: 100px;
+      margin-right: 100px;
+      margin-left: 100px;
+      width: 100%;
+      /* Full width of the screen */
+      background-color: black;
+    }
+
+    section .my-2.font-weight-bold {
+      color: black;
+      /* Set text color to black */
+    }
+
+    section .d-block.my-3 {
+      color: black;
+      /* Set text color to black */
+      font-weight: bold;
+      /* Make text bold */
+      font-size: 1.0em;
+      /* Increase font size */
+    }
+    
+  </style>
+</head>
+
+<body>
+  <section>
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="text-secondary text-uppercase">Welcome to</span>
+        <h1 class="text-capitalize font-weight-bold">Your Workout <span class="headline">Plan</span></h1>
+      </div>
+      <div *ngFor="let e of workouts"
+        class="my-5 py-4 px-5 bg-light d-sm-flex align-items-center justify-content-between">
+        <div class="text-center">
+          <span>To Do The
+          </span>
+          <h1 class="my-2 font-weight-bold">{{ e.date | date: 'dd/MM/yyyy' }}</h1>
+          <small class="text-uppercase text-secondary"></small>
+        </div>
+        <div class="text-center text-uppercase text-secondary">
+          <small class="d-block">Workout of</small>
+          <h1 class="my-2 font-weight-bold">{{e.duration}}</h1>
+          <small class="d-block">Minutes</small>
+        </div>
+        <div class="text-center">
+            <a (click)="generateWorkoutPDF(e)" class="btn btn-primary" style="color: white;">Get My PDF</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

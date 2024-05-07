@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulaire Meal</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center; /* Centre horizontalement */
+      align-items: center; /* Centre verticalement */
+      height: 100vh; /* Prend toute la hauteur de la page */
+      background-color: #f0f0f0; /* Couleur de fond pour contraste */
+    }
+
+    form {
+      display: flex;
+      flex-direction: column; /* Aligner les éléments verticalement */
+      align-items: center; /* Centrer horizontalement */
+      gap: 2em; /* Augmenter l'espace entre les éléments */
+      padding: 2em; /* Ajouter de l'espace autour du formulaire */
+      background-color: #fff; /* Couleur de fond du formulaire */
+      border-radius: 0.5em; /* Coins arrondis */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre pour effet 3D */
+    }
+
+    .inputbox {
+      position: relative;
+      width: 220px; /* Ajustement de la largeur */
+    }
+
+    .inputbox input,
+    .inputbox select {
+      position: relative;
+      width: 100%;
+      padding: 20px 10px 10px;
+      background: transparent;
+      outline: none;
+      box-shadow: none;
+      border: none;
+      color: #23242a;
+      font-size: 1em;
+      letter-spacing: 0.05em;
+      transition: 0.5s;
+      z-index: 10;
+    }
+
+    .inputbox span {
+      position: absolute;
+      left: 0;
+      padding: 20px 10px 10px;
+      font-size: 1em;
+      color: #8f8f8f;
+      letter-spacing: 0.05em;
+      transition: 0.5s;
+      pointer-events: none;
+    }
+
+    .inputbox input:focus ~ span,
+    .inputbox input:valid ~ span,
+    .inputbox select:focus ~ span,
+    .inputbox select:valid ~ span {
+      color: #45f3ff;
+      transform: translateX(-10px) translateY(-34px);
+      font-size: 0.75em;
+    }
+
+    .inputbox i {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background: #45f3ff;
+      border-radius: 4px;
+      transition: 0.5s;
+      pointer-events: none;
+      z-index: 9;
+    }
+
+    .inputbox input:focus ~ i,
+    .inputbox input:valid ~ i,
+    .inputbox select:focus ~ i,
+    .inputbox select:valid ~ i {
+      height: 44px;
+    }
+
+    button {
+      border: 2px solid #24b4fb;
+      background-color: #24b4fb;
+      border-radius: 0.9em;
+      padding: 1em 1.5em; /* Ajouter plus de padding pour le bouton */
+      transition: all ease-in-out 0.2s;
+      font-size: 16px;
+      margin-top: 1em; /* Ajouter de l'espace au-dessus du bouton */
+    }
+
+    button span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    button span svg {
+      margin-right: 0.5em; /* Espace entre l'icône et le texte */
+    }
+
+    button:hover {
+      background-color: #0071e2;
+      border-color: #0071e2; /* Changer aussi la couleur de la bordure */
+    }
+  </style>
+</head>
+<body>
+  <form (ngSubmit)="addMeal()">
+    <div class="inputbox">
+      <input required type="text" [(ngModel)]="meal.nameMeal" name="name" id="name" />
+      <span>Name Meal</span>
+      <i></i>
+    </div>
+  
+    <div class="inputbox">
+      <input required type="number" [(ngModel)]="meal.priceMeal" name="price" id="price" />
+      <span>Price</span>
+      <i></i>
+    </div>
+  
+    <!-- Afficher le message d'erreur si nécessaire -->
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  
+    <div class="inputbox">
+      <select required [(ngModel)]="meal.categoryMeal" name="category" id="category">
+        <option value="ENTREE">Entrée</option>
+        <option value="PLAT_PRINCIPAL">Plat principal</option>
+        <option value="DESSERT">Dessert</option>
+        <option value="BOISSON">Boisson</option>
+      </select>
+      <span>category Meal</span>
+      <i></i>
+    </div>
+    <div class="inputbox">
+      <input type="file" (change)="onImageSelected($event)" />
+      <span>Select image</span>
+      <i></i>
+    </div>
+    <!-- Nouveau bouton stylisé avec une icône et du texte -->
+    <button type="submit">
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"></path>
+          <path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path>
+        </svg>
+        Create
+      </span>
+    </button>
+
+  </form>
+</body>
+</html>

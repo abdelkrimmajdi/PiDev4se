@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create A Physiotherapist</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h2>Create A Physiotherapist</h2>
+    <form (ngSubmit)="createPhysiotherapist()" #physiotherapistForm="ngForm">
+      <div>
+        <label for="phyname">Full Name :</label>
+        <input type="text" id="phyname" name="phyname" [(ngModel)]="physiotherapistData.phyname" required>
+        <div *ngIf="physiotherapistData.phyname && physiotherapistData.phyname.length < minLength && physiotherapistForm.controls['phyname'].valid" class="error-message">
+          The Full Name must contain at least {{ minLength }} characters.
+        </div>
+      </div>
+      <div>
+        <div>
+        <label for="ville">City :</label>
+        <input type="text" id="ville" name="ville" [(ngModel)]="physiotherapistData.ville" required>
+        <div *ngIf="physiotherapistData.ville && physiotherapistData.ville.length < miinLength && physiotherapistForm.controls['ville'].valid" class="error-message">
+          The City must contain at least {{ miinLength }} characters.
+        </div>
+      </div>
+        <label for="latitude">Latitude :</label>
+        <input type="text" id="latitude" name="latitude" [(ngModel)]="physiotherapistData.latitude" required> <div>
+          <label for="longitude">Longitude :</label>
+          <input type="text" id="longitude" name="longitude" [(ngModel)]="physiotherapistData.longitude" required>
+        </div>
+      </div>
+      <!-- Ajoutez d'autres champs pour les attributs supplémentaires du physiothérapeute si nécessaire -->
+      <button type="submit" class="shared-button center-button"><i class="fas fa-send"></i>Create Physiotherapist</button>
+    </form>
+    
+    <button class="shared-button center-button" (click)="map()"><i class="fas fa-reply"></i> Go To Map</button><button class="shared-button center-button" (click)="phy()"><i class="fas fa-reply"></i> Go To Physiotherapists List</button></div>
+</body>
+</html>

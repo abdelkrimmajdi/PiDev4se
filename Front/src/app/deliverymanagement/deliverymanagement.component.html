@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Backoffice Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px; /* Ajout de marges pour aérer le contenu */
+            margin-left: 300px; 
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            width: 10%; /* Largeur des cellules d'en-tête */
+        }
+        td {
+            width: 10%; /* Largeur des cellules de données */
+            vertical-align: top; /* Alignement vertical du contenu des cellules */
+        }
+        input[type="text"],
+        select,
+        input[type="date"] {
+            width: calc(100% - 16px); /* Largeur ajustée pour tenir compte du padding et de la bordure */
+            padding: 6px 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="row justify-content-end mb-3">
+        <div class="col-auto">
+          <input type="number" class="form-control" placeholder="Search by ID..." [(ngModel)]="searchTerm">
+        </div>
+        <div class="col-auto">
+          <button class="btn btn-primary" (click)="searchProduct()">Search</button>
+        </div>
+      </div>
+      
+<h2>Delivery Management</h2>
+
+<form>
+    <table>
+        <tr>
+            <th>Order ID</th>
+            <th>Customer Name</th>
+            <th>Email</th>
+            <th>Telephone</th>
+            <th>Delivery Address</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>total</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        <tr *ngFor="let delivery of deliveries">
+            <td>{{ delivery.idDelivery }}</td>
+            <td>{{ delivery.name }}</td>
+            <td>{{ delivery.email }}</td>
+            <td>{{ delivery.phone }}</td>
+            <td>{{ delivery.adresse }}</td>
+            <td>{{ delivery.city }}</td>
+            <td>{{ delivery.country }}</td>
+            <td>{{ delivery.total }}</td>
+            <td>
+                <select name="status" required>
+                    <option value="pending">Pending</option>
+                    <option value="in_transit">In Transit</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+            </td>
+            <td><button type="submit" (click)="deleteDelivery(delivery.idDelivery)">Delete</button></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

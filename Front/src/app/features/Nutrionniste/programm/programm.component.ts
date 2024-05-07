@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { NutrionnistProgram } from 'src/app/model/NutrionnistProgram';
 import { User } from 'src/app/model/user.model';
@@ -13,27 +14,14 @@ export class ProgrammComponent  {
   listProgram: NutrionnistProgram[] = [];
   userconnect: User = JSON.parse(localStorage.getItem("userconnect")!);
   programss: NutrionnistProgram[] = [];
-
+  searchName: string = '';
+  searchDuration: number = 0;
+  filteredPrograms: NutrionnistProgram[] = [];
 
   constructor(private ServiceNut: NutritionnistService, private selectedProgramService: SelectProgramService) { }
   
   ngOnInit(): void {
     this.loadPrograms(); 
-
-    
-    
-  }
-  delete(id: number) {
-    this.ServiceNut.deleteProgramm(id).subscribe(() => this.getAllProgramm());
-  }
-  selectProgram(programId: number) {
-    this.selectedProgramService.selectedProgramId = programId;
-    console.log('Selected program ID:', programId);
-  }
-
-  selectProgramduration(duration: number) {
-    this.selectedProgramService.duration = duration;
-    console.log('Selected program ID:', duration);
   }
   getAllProgramm() {
     this.ServiceNut.getAllProgramm().subscribe(
@@ -48,12 +36,48 @@ export class ProgrammComponent  {
       }
   );
   }
+ 
+  delete(id: number) {
+    this.ServiceNut.deleteProgramm(id).subscribe(() => this.getAllProgramm());
+  }
+
+  selectProgram(programId: number) {
+    this.selectedProgramService.selectedProgramId = programId;
+    console.log('Selected program ID:', programId);
+  }
+
+  selectProgramduration(duration: number) {
+    this.selectedProgramService.duration = duration;
+    console.log('Selected program ID:', duration);
+  }
+
+  applyFilters() {
+    let filteredPrograms = this.listProgram;
+  
+    // Filtrer par nom de programme
+    if (this.searchText.trim() !== '') {
+      filteredPrograms = filteredPrograms.filter(program =>
+        program.nameProg.toLowerCase().includes(this.searchText.toLowerCase())
+      );
+    }
+  
+  
+    
+
+    // Tri par durée
+  
+  
+    this.filteredPrograms = filteredPrograms;
+  }
+  sortByDuration() {
+    this.filteredPrograms.sort((a, b) => a.duration - b.duration);
+  }
+
   loadPrograms() {
-    const userId = this.userconnect.id; 
-    this.ServiceNut.getNutrisionistProgramsByUserId(userId).subscribe(
-      (data: NutrionnistProgram[]) =>  {
+    this.ServiceNut.getAllProgramm().subscribe(
+      (data: NutrionnistProgram[]) => {
         this.listProgram = data;
-     
+        this.applyFilters(); // Appliquer les filtres une fois les programmes chargés
       },
       error => {
         console.log('Error fetching programs:', error);
@@ -61,6 +85,28 @@ export class ProgrammComponent  {
     );
   }
 
+  sortByProgramName() {
+    this.filteredPrograms.sort((a, b) => a.nameProg.localeCompare(b.nameProg));
+  }
+
   
+  search() {
+    // Appliquer les filtres lorsque l'utilisateur saisit dans les champs de recherche
+    this.applyFilters();
+  }
+  searchText: string = '';
  
+  filterUsers() {
+    let filteredUsers = this.listProgram;
+
+    if (this.searchText.trim() !== '') {
+        filteredUsers = filteredUsers.filter(program => {
+            return program.duration.toString().toLowerCase().includes(this.searchText.toLowerCase()) ||
+                program.nameProg.toLowerCase().includes(this.searchText.toLowerCase());
+        });
+    }
+
+    return filteredUsers;
+}
+
 }

@@ -1,70 +1,71 @@
 <!-- demande.component.html -->
 <div style="margin: 20px auto; width: 80%;">
-  <h2 style="text-align: center;">Liste des demandes</h2>
-  <style>
-      .demande-table {
-          width: 100%;
-          border-collapse: collapse;
-          font-size: 14px; /* Réduire la taille de la police */
-      }
-
-      .demande-table th, .demande-table td {
-          border: 1px solid #ddd;
-          padding: 8px;
-          text-align: left;
-      }
-
-      .demande-table th {
-          background-color: #f2f2f2;
-      }
-
-      .demande-table tr:nth-child(even) {
-          background-color: #f2f2f2;
-      }
-
-      .demande-actions {
-          display: flex;
-          justify-content: space-around;
-      }
-
-      .btn-accept, .btn-refuse {
-          padding: 6px 12px;
-          cursor: pointer;
-      }
-
-      .btn-accept {
-          background-color: #4CAF50;
-          color: white;
-          border: none;
-      }
-
-      .btn-refuse {
-          background-color: #f44336;
-          color: white;
-          border: none;
-      }
-  </style>
-  <table class="demande-table">
-      <thead>
-          <tr>
-              <th>ID</th>
-              <th>Nom de l'utilisateur</th>
-              <th>Nom de l'événement</th>
-              <th>État</th>
-              <th>Actions</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let demande of demandes">
-              <td>{{ demande.id }}</td>
-              <td>{{ demande.userName }}</td>
-              <td>{{ demande.eventName }}</td>
-              <td>{{ demande.etat }}</td>
-              <td class="demande-actions">
-                  <button class="btn-accept" (click)="acc(demande.id)">Accepter</button>
-                  <button class="btn-refuse" (click)="ref(demande.id)">Refuser</button>
-              </td>
-          </tr>
-      </tbody>
-  </table>
-</div>
+    <h2 style="text-align: center;">Liste des demandes</h2>
+    <style>
+        .demande-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px; /* Réduire la taille de la police */
+        }
+  
+        .demande-table th, .demande-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+  
+        .demande-table th {
+            background-color: #f2f2f2;
+        }
+  
+        .demande-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+  
+        .demande-actions {
+            display: flex;
+            justify-content: space-around;
+        }
+  
+        .btn-accept, .btn-refuse {
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+  
+        .btn-accept {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+  
+        .btn-refuse {
+            background-color: #f44336;
+            color: white;
+            border: none;
+        }
+    </style>
+    <table class="demande-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom de l'utilisateur</th>
+                <th>Nom de l'événement</th>
+                <th>État</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let demande of demandes">
+                <td>{{ demande.id }}</td>
+                <td>{{ demande.userName }}</td>
+                <td>{{ demande.eventName }}</td>
+                <td>{{ demande.etat }}</td>
+                <td class="demande-actions">
+                    <button class="btn-accept" (click)="acc(demande.id)">Accepter</button>
+                    <button class="btn-refuse" (click)="ref(demande.id)">Refuser</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+  

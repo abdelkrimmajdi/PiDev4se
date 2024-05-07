@@ -1,0 +1,41 @@
+<div class="container">
+    <h2>Update Appointment</h2>
+    <form [formGroup]="UpdateAppointmentForm" (ngSubmit)="updateAppointment()">
+      <div>
+        <label for="dayApp">Day :</label>
+        <select formControlName="dayApp" id="dayApp" required>
+          <option value="MONDAY">Monday</option>
+          <option value="TUESDAY">Tuesday</option>
+          <option value="WEDNESDAY">Wednesday</option>
+          <option value="THURSDAY">Thursday</option>
+          <option value="FRIDAY">Friday</option>
+        </select>
+      </div>
+      <div>
+        <label for="timeApp">Time :</label>
+        <select formControlName="timeApp" id="timeApp" required>
+          <option value="TIME_09_00">9:00</option>
+          <option value="TIME_09_30">09:30</option>
+          <option value="TIME_10_00">10:00</option>
+          <option value="TIME_10_30">10:30</option>
+          <option value="TIME_11_00">11:00</option>
+          <option value="TIME_11_30">11:30</option>
+          <option value="TIME_14_00">14:00</option>
+          <option value="TIME_14_30">14:30</option>
+          <option value="TIME_15_00">15:00</option>
+          <option value="TIME_15_30">15:30</option>
+          <option value="TIME_16_00">16:00</option>
+          <option value="TIME_16_30">16:30</option>
+          <option value="TIME_17_00">17:00</option>
+        </select>
+      </div>
+      <div>
+        <label for="physiotherapistId">Physiotherapist :</label>
+        <select formControlName="physiotherapistId" required>
+          <option *ngFor="let physiotherapist of Physiotherapists" [value]="physiotherapist.idPhy">{{ physiotherapist.idPhy }}</option>
+        </select>
+      </div>
+      <button type="submit"> <i class="fas fa-save"></i>Save Changes</button>
+    </form>
+  </div>
+  

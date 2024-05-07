@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        h1 {
+            margin-left: 275px; /* Add an empty space on the left side of the title */
+            margin-right: 5px;
+        }
+
+        .table-container {
+            padding-left: 275px; /* Add an empty space on the left side of the table */
+            padding-right: 5px;
+        }
+
+        .search-input-container {
+            padding-left: 275px;
+            padding-right: 5px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center; /* Center the content of the table */
+        }
+
+        .table th {
+            text-align: center; /* Center the content of the table header */
+        }
+
+        .table th, .table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<h1 class="card-title fw-semibold" style="text-align: center;">Subscriptions</h1>
+<div class="search-input-container">
+    <input type="text" [(ngModel)]="search" (ngModelChange)="searchSubscriptions()" placeholder="Search Subscriptions" class="form-control mb-3">
+</div>
+<div class="table-container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th (click)="sort('sabName')">
+                    sabName 
+                    <span *ngIf="sortColumn === 'sabName'" class="sort-indicator">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+                </th>
+                <th (click)="sort('descSub')">
+                    descSub 
+                    <span *ngIf="sortColumn === 'descSub'" class="sort-indicator">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+                </th>
+                <th (click)="sort('dureeSub')">
+                    dureeSub 
+                    <span *ngIf="sortColumn === 'dureeSub'" class="sort-indicator">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+                </th>
+                <th (click)="sort('priceSub')">
+                    priceSub 
+                    <span *ngIf="sortColumn === 'priceSub'" class="sort-indicator">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+                </th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of filteredSubscriptions">
+                <td>{{e.sabName}}</td>
+                <td>{{e.descSub}}</td>
+                <td>{{e.dureeSub}}</td>
+                <td>{{e.priceSub}}</td>
+                <td>
+                    <button [routerLink]="['/admin/subUpdate',e.idSub]" class="btn btn-primary" style="margin-right: 10px">UPD</button>
+                    <button class="btn btn-danger" (click)="deleteSubscription(e.idSub)">dlt</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>    
+    <a [routerLink]="['/admin/subAdd']" class="btn btn-primary">Add</a>
+</div>
+
+</body>
+</html>

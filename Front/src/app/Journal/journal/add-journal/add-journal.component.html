@@ -1,0 +1,86 @@
+<style>
+  body {
+    background-image: url('/assets/FrontOffice/img/slider-1.jpg');
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+    background-size: cover; /* Ajuste la taille de l'image pour couvrir tout l'arrière-plan */
+    /* Autres styles de fond si nécessaire */
+  }
+  .j-table {
+          background-color: #fff;
+          border-radius: 10px;
+          overflow: hidden;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .j-table th,
+      .j-table td {
+          vertical-align: middle !important;
+      }
+
+      .j-link {
+          color: #007bff;
+          text-decoration: none;
+      }
+
+      .j-link:hover {
+          text-decoration: underline;
+      }
+</style>
+<body>
+<app-header-front></app-header-front>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<hr>
+  
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <!-- Tableau des utilisateurs -->
+        <div class="card">
+          <div class="table-responsive">
+            <form [formGroup]="AddForm">
+                <div class="form-group">
+                    <label for="reflexion">Reflexion</label>
+                    <input type="text" class="form-control" id="reflexion" formControlName="reflexion" placeholder="Enter reflexion">
+                </div>
+                <div class="alert alert-danger" *ngIf="this.AddForm.controls['reflexion'].invalid  &&this.AddForm.controls['reflexion'].touched">
+                    <p *ngIf="this.AddForm.controls['reflexion'].hasError('required')">reflexion required</p>
+                    <p *ngIf="this.AddForm.controls['reflexion'].hasError('minlength')">reflexion min Length 4 </p>
+                </div>          
+                <button type="submit" class="btn btn-primary" [disabled]="AddForm.invalid" (click)="save()">Submit</button>              
+                <button type="submit" class="btn btn-primary" (click)=" reset() ">reset</button>
+            </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+</body>
+
+<footer><app-footer-front></app-footer-front></footer>  

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5; /* Assuming a light grey background */
+}
+
+.payment-form {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.payment-form fieldset {
+  border: none;
+  margin-bottom: 20px;
+}
+
+.payment-form legend {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.payment-form label {
+  display: block;
+  margin: 10px 0;
+}
+
+.payment-form input[type="radio"] {
+  margin-right: 10px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.back-button, .pay-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-button {
+  background-color: #007BFF;
+  color: white;
+  border: 1px solid #0056b3;
+}
+
+.pay-button {
+  background-color: #28a745;
+  color: white;
+  border: 1px solid #1e7e34;
+}
+
+/* Additional styles for responsiveness */
+@media (max-width: 600px) {
+  .buttons {
+    flex-direction: column;
+  }
+  
+  .back-button, .pay-button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+</style>
+
+
+</head>
+<body>
+
+<div class="payment-form" >
+  <form (ngSubmit)="submitPayment()" #paymentForm="ngForm">
+    <fieldset>
+      <legend>Payer avec</legend>
+      
+      <label for="payment-cash">
+        <input type="radio" id="payment-cash" name="payment-method" value="cash" [(ngModel)]="paymentMethod">
+        Comptant à la livraison
+      </label>
+      
+      <label for="payment-bank">
+        <input type="radio" id="payment-bank" name="payment-method" value="bank" checked [(ngModel)]="paymentMethod">
+        Payment en ligne
+      </label>
+      
+      <!-- Discount code input field -->
+      <label for="discount-code">Code de réduction :</label>
+      <input type="text" id="discount-code" name="discountCode" [(ngModel)]="discountCode">
+    </fieldset>
+    
+    <div class="buttons">
+      <button type="button" class="back-button">Revenir au Panier</button>
+      <button class="pay-button" (click)="submitPayment()">Payer maintenant</button>
+    </div>
+  </form>
+</div>
+
+
+
+</body>
+</html>

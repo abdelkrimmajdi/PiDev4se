@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ResponseService } from '../services/response.service';
-import { ReclamationService } from '../services/reclamation.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ReclamationService } from '../services/reclamation.service';
+import { ResponseService } from '../services/response.service';
 
 @Component({
   selector: 'app-create-response',

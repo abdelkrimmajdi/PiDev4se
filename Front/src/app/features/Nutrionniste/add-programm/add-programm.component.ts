@@ -7,7 +7,7 @@ import { NutritionnistService } from 'src/app/services/nutritionnist.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-add-programm',
+  selector: 'app-add-programm', 
   templateUrl: './add-programm.component.html',
   styleUrls: ['./add-programm.component.scss']
 })
@@ -29,8 +29,8 @@ export class AddProgrammComponent {
           Swal.fire({
          
             icon: 'success',
-            title: 'Programme ajouté avec succès',
-            text: 'Programme ajouté avec succès',
+            title: 'Program successfully added',
+            text: 'Program successfully added',
             showConfirmButton: false,
             timer: 1500
           });

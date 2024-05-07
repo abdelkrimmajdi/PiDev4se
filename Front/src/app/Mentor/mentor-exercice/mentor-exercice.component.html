@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-md-8">
@@ -32,7 +33,7 @@
             <th mat-header-cell *matHeaderCellDef> Actions </th>
             <td mat-cell *matCellDef="let exercise">
               <button type="button" class="btn btn-sm btn-danger" (click)="supp(exercise.idExercice)">Delete</button>
-              <button type="button" class="btn btn-sm btn-danger" [routerLink]="['/UpdateExo', exercise.idExercice]">Update</button>
+              <button type="button" class="btn btn-sm btn-danger" [routerLink]="['/admin/UpdateExo', exercise.idExercice]">Update</button>
             </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -40,8 +41,8 @@
         </table>
       </div>
       <div class="col-md-8 text-center mt-3">
-        <a routerLink="/AddMentorExo" class="btn btn-sm btn-primary mx-2">Create Exercise</a>
-        <a routerLink="/assignEtoP" class="btn btn-sm btn-primary mx-2">Assign Exercise</a>
+        <a routerLink="/admin/AddMentorExo" class="btn btn-sm btn-primary mx-2">Create Exercise</a>
+        <a routerLink="/admin/assignEtoP" class="btn btn-sm btn-primary mx-2">Assign Exercise</a>
       </div>
     </div>
 </div>

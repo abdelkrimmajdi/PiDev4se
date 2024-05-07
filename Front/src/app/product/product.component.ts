@@ -82,6 +82,7 @@ export class ProductComponent {
 
 
 }
+
 sortColumn: keyof product | null = null; // Initialize to an empty string
   sortDirection: 'asc' | 'desc' = 'asc'; // Initialize to ascending by default
 

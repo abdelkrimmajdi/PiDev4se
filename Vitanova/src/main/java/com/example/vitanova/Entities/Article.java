@@ -10,7 +10,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Article {
+public class  Article {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

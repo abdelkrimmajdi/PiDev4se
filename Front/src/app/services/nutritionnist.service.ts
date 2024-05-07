@@ -50,7 +50,7 @@ export class NutritionnistService {
   availableHours(dateTime: string, nutritionistId: number): Observable<string[]> {
     return this.http.get<string[]>(`http://localhost:8081/api/v1/user/availableHours?dateTime=${dateTime}&nutritionistId=${nutritionistId}`);
   }
-  getRendezVous( id: number): Observable<string[]> {
-    return this.http.get<string[]>(`http://localhost:8081/nutritionist?&id=${id}`);
+  getRendezVous( id: number): Observable<RendezVous[]> {
+    return this.http.get<RendezVous[]>(`http://localhost:8081/nutritionist?&id=${id}`);
   }
 }

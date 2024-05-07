@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            padding-left: 280px;
+            padding-right: 10px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateY(0); }
+            25%, 75% { transform: translateY(-5px); }
+            50% { transform: translateY(5px); }
+        }
+
+        .error-input {
+  animation-name: shake; /* Apply the shake animation */
+  animation-duration: 0.5s; /* Duration of the animation */
+  animation-timing-function: ease-in-out; /* Smooth easing for animation */
+}
+
+.error-input:focus {
+  animation-name: none; /* Stop the animation when input is focused */
+}
+    </style>
+</head>
+
+<body>
+    <h2 class="card-title fw-semibold" style="text-align: center;">Update Subscription</h2>
+    <form [formGroup]="subscriptionForm" (ngSubmit)="save()">
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" formControlName="sabName" class="form-control" [ngClass]="{'error-input': subscriptionForm.get('sabName')?.invalid && (subscriptionForm.get('sabName')?.dirty || subscriptionForm.get('sabName')?.touched)}">
+            <div *ngIf="subscriptionForm.get('sabName')?.hasError('required') && subscriptionForm.get('sabName')?.touched"
+                class="error-message">
+                Name is required.
+            </div>
+            <div *ngIf="subscriptionForm.get('sabName')?.hasError('maxlength')" class="error-message">
+                Maximum length exceeded.
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Description:</label>
+            <input type="text" formControlName="descSub" class="form-control" [ngClass]="{'error-input': subscriptionForm.get('descSub')?.invalid && (subscriptionForm.get('descSub')?.dirty || subscriptionForm.get('descSub')?.touched)}">
+            <div *ngIf="subscriptionForm.get('descSub')?.hasError('required') && subscriptionForm.get('descSub')?.touched"
+                class="error-message">
+                Description is required.
+            </div>
+            <div *ngIf="subscriptionForm.get('descSub')?.hasError('maxlength')" class="error-message">
+                Maximum length exceeded.
+            </div>
+        </div>
+        <label >Services:</label>
+        <div class="form-group" style="margin-left: 50px;">
+            <label>
+                <input type="checkbox" formControlName="workoutSub">
+                Workout
+            </label>
+        </div>
+        
+
+        <div class="form-group" style="margin-left: 50px;">
+            <label>
+                <input type="checkbox" formControlName="mentalSub">
+                Mental Health
+            </label>
+        </div>
+
+        <div class="form-group" style="margin-left: 50px;">
+            <label>
+                <input type="checkbox" formControlName="physioSub">
+                Physiotherapy
+            </label>
+        </div>
+
+        <div class="form-group" style="margin-left: 50px;">
+            <label>
+                <input type="checkbox" formControlName="nutriSub">
+                Nutritionist
+            </label>
+        </div>
+
+        <div *ngIf="subscriptionForm.errors?.['notChecked'] && (
+            (subscriptionForm.get('workoutSub')?.touched ?? false) ||
+            (subscriptionForm.get('mentalSub')?.touched ?? false) ||
+            (subscriptionForm.get('physioSub')?.touched ?? false) ||
+            (subscriptionForm.get('nutriSub')?.touched ?? false)
+          )" class="alert alert-danger">
+            At least one subscription must be selected.
+        </div>
+        
+        <div class="form-group">
+            <label>Duration:</label>
+            <input type="number" formControlName="dureeSub" class="form-control" [ngClass]="{'error-input': subscriptionForm.get('dureeSub')?.invalid && (subscriptionForm.get('dureeSub')?.dirty || subscriptionForm.get('dureeSub')?.touched)}">
+            <div *ngIf="subscriptionForm.get('dureeSub')?.hasError('required') && subscriptionForm.get('dureeSub')?.touched"
+                class="error-message">
+                Duration is required.
+            </div>
+            <div *ngIf="subscriptionForm.get('dureeSub')?.hasError('min')" class="error-message">
+                Minimum value is 1.
+            </div>
+            <div *ngIf="subscriptionForm.get('dureeSub')?.hasError('max')" class="error-message">
+                Maximum value is 120.
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Price:</label>
+            <input type="number" formControlName="priceSub" class="form-control" [ngClass]="{'error-input': subscriptionForm.get('priceSub')?.invalid && (subscriptionForm.get('priceSub')?.dirty || subscriptionForm.get('priceSub')?.touched)}">
+            <div *ngIf="subscriptionForm.get('priceSub')?.hasError('required') && subscriptionForm.get('priceSub')?.touched"
+                class="error-message">
+                Duration is required.
+            </div>
+            <div *ngIf="subscriptionForm.get('priceSub')?.hasError('min')" class="error-message">
+                Minimum value is 1.
+            </div>
+            <div *ngIf="subscriptionForm.get('priceSub')?.hasError('max')" class="error-message">
+                Maximum value is 365.
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-right: 10px">Update</button>
+        <button type="button" (click)="reset()" class="btn btn-secondary">Reset</button>
+    </form>
+</body>
+
+</html>

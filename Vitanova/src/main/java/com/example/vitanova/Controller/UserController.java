@@ -77,5 +77,9 @@ public class UserController {
     public List<String> getAvailableHours(@RequestParam String dateTime, @RequestParam Long nutritionistId) {
         return rendezVousService.getAvailableHoursForDateAndNutritionist(dateTime, nutritionistId);
     }
+    @PutMapping("/updatePassword/{idUser}/{password}")
+    public User updatePassword(@PathVariable Long idUser, @PathVariable String  password) {
+        return userService.updatePassword(idUser, password);
+    }
 }
 

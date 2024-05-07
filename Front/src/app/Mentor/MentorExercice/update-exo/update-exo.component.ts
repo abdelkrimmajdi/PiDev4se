@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MentorExerciceService } from 'src/app/services/mentor-exercice.service';
 import { MentorExercice } from 'src/app/model/MentorExercice';
+import { MentorExerciceService } from 'src/app/services/mentor-exercice.service';
 
 @Component({
   selector: 'app-update-exo',

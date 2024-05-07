@@ -1,0 +1,27 @@
+.bootstrap {
+    background-color: #f8f9fa; /* Fond gris */
+    padding: 20px; /* Espacement */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre */
+}
+/* Style du conteneur de recherche */
+.search-container {
+    margin-bottom: 20px;
+}
+
+/* Style des champs de recherche */
+.search-container input {
+    margin-right: 10px;
+}
+
+/* Style du bouton de recherche */
+.search-container button {
+    margin-top: -1px;
+}
+
+/* Style visuel amélioré du tableau */
+.user-list th {
+    font-weight: bold;
+}
+
+/* Ajoutez d'autres styles selon vos préférences pour améliorer l'esthétique */

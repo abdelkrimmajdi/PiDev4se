@@ -1,6 +1,8 @@
 export class Room{
-    IdRoom!: number;
-    userName1!: string;
-    userName2!: string;
+    idRoom!: number;
+    firstFirstName!: string;
+    secondFirstName!: string;
 
+
+    
 }

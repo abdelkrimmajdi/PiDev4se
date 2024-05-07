@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Exercice } from '../models/exercice';
@@ -34,6 +34,18 @@ export class ExerciceService {
 
   getExercicesByName(name: string): Observable<Exercice[]> {
     return this.http.get<Exercice[]>(this.baseUrl+'/name/'+name);
+  }
+
+  uploadImage(file: File, id: number): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+  
+    const req = new HttpRequest('POST', `${this.baseUrl}/${id}/uploadImage`, formData, {
+      reportProgress: true,
+      responseType: 'text'
+    });
+  
+    return this.http.request(req);
   }
   
 }

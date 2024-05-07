@@ -34,7 +34,7 @@ public class cartService implements CartServiceImpl{
           Optional <Product> optionalProduct = productRepository.findById(cart.getProduct().getIdProduct());
             if(optionalProduct.isPresent()) {
                 Product product = optionalProduct.get();
-                product.setCart(cart);
+
                 productRepository.save(product);
             }
         }
@@ -49,7 +49,7 @@ public class cartService implements CartServiceImpl{
                 Optional<Product> optionalProduct = productRepository.findById(cart.getProduct().getIdProduct());
                 if (optionalProduct.isPresent()) {
                     Product product = optionalProduct.get();
-                    product.setCart(null);
+
                     productRepository.save(product);
                 }
             }

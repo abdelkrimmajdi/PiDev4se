@@ -5,7 +5,7 @@
         h2 { margin-left: 280px;text-align: center; }
         form { margin-left: 280px; width: 300px; }
         .form-group { margin-bottom: 10px; }
-        .error-message { color: red; }
+        .alert alert-danger { color: red; }
         @keyframes shake {
             0%, 100% { transform: translateY(0); }
             25%, 75% { transform: translateY(-5px); }
@@ -30,7 +30,7 @@
             <label>Date: </label>
             <input type="date" formControlName="date" class="form-control" [ngClass]="{'error-input': workoutForm.get('date')?.invalid && (workoutForm.get('date')?.dirty || workoutForm.get('date')?.touched)}">
             <!-- Display error message for date validation -->
-            <div *ngIf="workoutForm.controls['date'].invalid && (workoutForm.controls['date'].dirty || workoutForm.controls['date'].touched)" class="error-message">
+            <div *ngIf="workoutForm.controls['date'].invalid && (workoutForm.controls['date'].dirty || workoutForm.controls['date'].touched)" class="alert alert-danger">
                 <span *ngIf="workoutForm.controls['date'].errors?.['required']">Date is required.</span>
                 <span *ngIf="workoutForm.controls['date'].errors?.['futureDate']">Date must be in the future.</span>
             </div>
@@ -41,7 +41,7 @@
                 <input type="checkbox" [formControlName]="i">{{exercisesList[i].nameExer}}
             </div>
             <!-- Display error message for exercises validation -->
-            <div *ngIf="exercises.errors?.['minSelectedExercises'] && (exercises.dirty || exercises.touched)" class="error-message">
+            <div *ngIf="exercises.errors?.['minSelectedExercises'] && (exercises.dirty || exercises.touched)" class="alert alert-danger">
                 Select at least one exercise.
             </div>
         </div>

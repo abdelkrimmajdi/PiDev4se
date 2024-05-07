@@ -48,7 +48,14 @@ public class EmailService implements EmailSender {
         message.setText(mail.getContent());
         mailSender.send(message);
     }
-
+    public void sendemailMarket(final Mail mail) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("vitavibesesprit@gmail.com");
+        message.setTo(mail.getTo());
+        message.setSubject("livraison effectué");
+        message.setText(mail.getContent());
+        mailSender.send(message);
+    }
 
     public void sendEmail(String toEmail, String email) {
 

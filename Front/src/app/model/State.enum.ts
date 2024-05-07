@@ -1,3 +1,3 @@
 export enum State{
-    Done =0 , Undone=1
+    Done =0 , UnDone=1
 }

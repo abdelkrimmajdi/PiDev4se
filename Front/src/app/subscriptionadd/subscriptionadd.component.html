@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            padding-left: 280px;
+            padding-right: 10px;
+        }
+
+        .alert alert-danger {
+            color: red;
+            font-size: 12px;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            25%,
+            75% {
+                transform: translateY(-5px);
+            }
+
+            50% {
+                transform: translateY(5px);
+            }
+        }
+
+        .error-input {
+            animation-name: shake;
+            /* Apply the shake animation */
+            animation-duration: 0.5s;
+            /* Duration of the animation */
+            animation-timing-function: ease-in-out;
+            /* Smooth easing for animation */
+        }
+
+        .error-input:focus {
+            animation-name: none;
+            /* Stop the animation when input is focused */
+        }
+
+        .notification-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            /* Position notification on the left */
+            z-index: 1000;
+        }
+
+        .notification {
+            padding: 16px;
+            /* Decreased padding for the message area */
+            margin-bottom: 10px;
+            border-radius: 12px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 20px;
+            background-color: #28a745;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            overflow-wrap: break-word;
+            display: flex;
+            /* Use flexbox for layout */
+            align-items: center;
+            /* Vertically center content */
+        }
+
+        .notification-message {
+            flex: 1;
+            /* Take up remaining space */
+            margin-left: 10px;
+            /* Add spacing between icon and message */
+        }
+    </style>
+</head>
+
+<body>
+    <h2 class="card-title fw-semibold" style="text-align: center;">Add Subscription</h2>
+    <form [formGroup]="subscriptionForm" (ngSubmit)="save()">
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" formControlName="sabName" class="form-control"
+                [ngClass]="{'error-input': subscriptionForm.get('sabName')?.invalid && (subscriptionForm.get('sabName')?.dirty || subscriptionForm.get('sabName')?.touched)}">
+            <div *ngIf="subscriptionForm.get('sabName')?.hasError('required') && subscriptionForm.get('sabName')?.touched"
+                class="alert alert-danger">
+                Name is required.
+            </div>
+            <div *ngIf="subscriptionForm.get('sabName')?.hasError('maxlength')" class="alert alert-danger">
+                Maximum length exceeded (15).
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Description:</label>
+            <input type="text" formControlName="descSub" class="form-control"
+                [ngClass]="{'error-input': subscriptionForm.get('descSub')?.invalid && (subscriptionForm.get('descSub')?.dirty || subscriptionForm.get('descSub')?.touched)}">
+            <div *ngIf="subscriptionForm.get('descSub')?.hasError('required') && subscriptionForm.get('descSub')?.touched"
+                class="alert alert-danger">
+                Description is required.
+            </div>
+            <div *ngIf="subscriptionForm.get('descSub')?.hasError('maxlength')" class="alert alert-danger">
+                Maximum length exceeded(50).
+            </div>
+        </div>
+        <label >Services:</label>
+        <div class="form-group" style="margin-left: 50px;">
+            <label>
+                <input type="checkbox" formControlName="workoutSub">
+                Workout
+            </label>
+        </div>
+        
+
+        <div class="form-group" style="margin-left: 50px;">
+            <label>
+                <input type="checkbox" formControlName="mentalSub">
+                Mental Health
+            </label>
+        </div>
+
+        <div class="form-group" style="margin-left: 50px;">
+            <label>
+                <input type="checkbox" formControlName="physioSub">
+                Physiotherapy
+            </label>
+        </div>
+
+        <div class="form-group" style="margin-left: 50px;">
+            <label>
+                <input type="checkbox" formControlName="nutriSub">
+                Nutritionist
+            </label>
+        </div>
+
+        <div *ngIf="subscriptionForm.errors?.['notChecked'] && (
+            (subscriptionForm.get('workoutSub')?.touched ?? false) ||
+            (subscriptionForm.get('mentalSub')?.touched ?? false) ||
+            (subscriptionForm.get('physioSub')?.touched ?? false) ||
+            (subscriptionForm.get('nutriSub')?.touched ?? false)
+          )" class="alert alert-danger">
+            At least one subscription must be selected.
+        </div>
+
+        <div class="form-group">
+            <label>Duration:</label>
+            <input type="number" formControlName="dureeSub" class="form-control"
+                [ngClass]="{'error-input': subscriptionForm.get('dureeSub')?.invalid && (subscriptionForm.get('dureeSub')?.dirty || subscriptionForm.get('dureeSub')?.touched)}">
+            <div *ngIf="subscriptionForm.get('dureeSub')?.hasError('required') && subscriptionForm.get('dureeSub')?.touched"
+                class="alert alert-danger">
+                Duration is required.
+            </div>
+            <div *ngIf="subscriptionForm.get('dureeSub')?.hasError('min')" class="alert alert-danger">
+                Minimum value is 1.
+            </div>
+            <div *ngIf="subscriptionForm.get('dureeSub')?.hasError('max')" class="alert alert-danger">
+                Maximum value is 12.
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Price:</label>
+            <input type="text" formControlName="priceSub" class="form-control"
+                [ngClass]="{'error-input': subscriptionForm.get('priceSub')?.invalid && (subscriptionForm.get('priceSub')?.dirty || subscriptionForm.get('priceSub')?.touched)}">
+            <div *ngIf="subscriptionForm.get('priceSub')?.hasError('required') && subscriptionForm.get('priceSub')?.touched"
+                class="alert alert-danger">
+                Price is required.
+            </div>
+            <div *ngIf="subscriptionForm.get('priceSub')?.hasError('pattern')" class="alert alert-danger">
+                "Please enter a valid price, consisting of numbers separated by a dot(.) with up to three decimal places."
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-right: 10px">Add</button>
+        <button type="button" (click)="reset()" class="btn btn-secondary">Reset</button>
+    </form>
+</body>
+
+</html>

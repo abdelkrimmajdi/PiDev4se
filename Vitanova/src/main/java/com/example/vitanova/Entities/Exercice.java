@@ -22,5 +22,6 @@ public class Exercice {
     private Intensity intensity;
     private String Muscle;
     private String picture;
+    private String VideoExer;
 
 }

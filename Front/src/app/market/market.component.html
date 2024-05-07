@@ -101,14 +101,12 @@
         <div class="col-lg-2 col-md-3 col-12">
           <div class="right-bar">
             <!-- Search Form -->
-            <div class="sinlge-bar">
-              <a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-            </div>
+            
             <div class="sinlge-bar">
               <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
             </div>
             <div class="sinlge-bar shopping">
-              <a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
+              <a class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
               <!-- Shopping Item -->
               <div class="shopping-item">
                 <div class="dropdown-cart-header">
@@ -117,7 +115,7 @@
                 <ul class="shopping-list" *ngFor="let cart of carts">
                   <li>
                     <a (click)="deletecard(cart)" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                    <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
+                    <a class="cart-img" href="#"><img src="{{cart.product?.imageProd}}" alt="#"></a>
                     <h4>{{cart.product?.nameProd}}</h4>
                     <p class="quantity">{{cart.quantity}}x - <span class="amount">{{cart.price}}</span></p>
                   </li>
@@ -128,7 +126,7 @@
                     <span>Total</span>
                     <span class="total-amount">{{total}}</span>
                   </div>
-                  <a href="#" class="btn animate" routerLink="/acceuil" >Checkout</a>
+                  <a href="#" class="btn animate" routerLink="/delivery" >COMMANDER</a>
                 </div>
               </div>
               <!--/ End Shopping Item -->
@@ -165,7 +163,7 @@
                 <div class="navbar-collapse">
                   <div class="nav-inner">
                     <ul class="nav main-menu menu navbar-nav">
-                      <li class="active"><a style="background-color: rgb(247, 52, 113);" routerLink="/acceuil">Home</a></li>
+                      <li class="active"><a style="background-color: rgb(247, 52, 113);" routerLink="">Home</a></li>
                       <li><a href="#">Product</a></li>
 
                       <li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
@@ -176,7 +174,7 @@
                         </ul>
                       </li>
 
-                      <li><a href="#">Contact Us</a></li>
+                      <li><a href="#" routerLink="/createReclamation">Contact Us</a></li>
                     </ul>
                   </div>
                 </div>
@@ -189,7 +187,35 @@
     </div>
   </div>
   <!--/ End Header Inner -->
+  
 </header>
+<!-- Add this HTML code where you want to place the chatbot interface -->
+
+<div class="chatbot-container">
+  <div class="chatbot-header">
+      Chatbot
+  </div>
+  <div class="chatbot-body" id="chatbotBody">
+      <!-- Iterate over messages -->
+      <ng-container *ngFor="let message of messages">
+          <div class="chat-message" *ngIf="message.sender === 'bot'">
+              <div class="message-text">{{ message.message }}</div>
+          </div>
+          <div class="chat-message user-message" *ngIf="message.sender === 'user'">
+              <div class="message-text">{{ message.message }}</div>
+          </div>
+      </ng-container>
+  </div>
+  <div class="chatbot-input">
+      <input type="text" placeholder="Type your message..." [(ngModel)]="userMessage">
+      <button (click)="sendChatBot()" [disabled]="loading">Send</button>
+  </div>
+</div>
+
+
+
+
+
 <!--/ End Header -->
 <!-- Slider Area -->
 <section class="hero-slider">
@@ -267,7 +293,7 @@
     <div class="row">
       <div class="col-12">
         <div class="section-title">
-          <h2>Trending Item</h2>
+          <h2>Products</h2>
         </div>
       </div>
     </div>
@@ -321,36 +347,7 @@
 
 
 <!-- Start Midium Banner  -->
-<section class="midium-banner">
-  <div class="container">
-    <div class="row">
-      <!-- Single Banner  -->
-      <div class="col-lg-6 col-md-6 col-12">
-        <div class="single-banner">
-          <img src="https://via.placeholder.com/600x370" alt="#">
-          <div class="content">
-            <p>Man's Collectons</p>
-            <h3>Man's items <br>Up to<span> 50%</span></h3>
-            <a href="#">Shop Now</a>
-          </div>
-        </div>
-      </div>
-      <!-- /End Single Banner  -->
-      <!-- Single Banner  -->
-      <div class="col-lg-6 col-md-6 col-12">
-        <div class="single-banner">
-          <img src="https://via.placeholder.com/600x370" alt="#">
-          <div class="content">
-            <p>shoes women</p>
-            <h3>mid season <br> up to <span>70%</span></h3>
-            <a href="#" class="btn">Shop Now</a>
-          </div>
-        </div>
-      </div>
-      <!-- /End Single Banner  -->
-    </div>
-  </div>
-</section>
+
 <!-- End Midium Banner -->
 <!-- Start Most Popular -->
 
@@ -409,26 +406,7 @@
 </section>
 <!-- End Shop Services Area -->
 <!-- Start Shop Newsletter  -->
-<section class="shop-newsletter section">
-  <div class="container">
-    <div class="inner-top">
-      <div class="row">
-        <div class="col-lg-8 offset-lg-2 col-12">
-          <!-- Start Newsletter Inner -->
-          <div class="inner">
-            <h4>Newsletter</h4>
-            <p> Subscribe to our newsletter and get <span>10%</span> off your first purchase</p>
-            <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
-              <input name="EMAIL" placeholder="Your email address" required="" type="email">
-              <button class="btn">Subscribe</button>
-            </form>
-          </div>
-          <!-- End Newsletter Inner -->
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+
 <!-- End Shop Newsletter -->
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">

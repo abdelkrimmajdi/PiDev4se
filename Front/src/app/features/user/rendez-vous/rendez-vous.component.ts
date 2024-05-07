@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NutritionnistService } from 'src/app/services/nutritionnist.service';
 import { User } from 'src/app/model/user.model';
 import { CustomValidators } from 'src/app/model/validator';  
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-rendez-vous',
@@ -23,21 +25,43 @@ export class RendezVousComponent implements OnInit {
     nutritionistId: new FormControl('', Validators.required)
   });
   
-  createRendezVous(): void {
-    if (this.rendezVousForm.valid) {
-      const formData = this.rendezVousForm.value;
-      console.log(formData);
-     
-      this.Service.CreateRendezVous(formData as any, this.userconnect.id, formData.nutritionistId as any).subscribe(response => {
 
-        console.log('Rendez-vous créé avec succès:', response);
-        this.rendezVousForm.reset();
-      }, error => {
-        console.error('Erreur lors de la création du rendez-vous:', error);
-      });
-    } else {
-      console.error('Le formulaire est invalide.');
-    }
+  createRendezVous(): void {
+      if (this.rendezVousForm.valid) {
+          const formData = this.rendezVousForm.value;
+          console.log(formData);
+  
+          this.Service.CreateRendezVous(formData as any, this.userconnect.id, formData.nutritionistId as any).subscribe(response => {
+              console.log('Rendez-vous créé avec succès:', response);
+              this.rendezVousForm.reset();
+              // Utilisation de SweetAlert pour afficher un message de succès
+              Swal.fire({
+                  icon: 'success',
+                  title: 'Appointment created successfully',
+                  text: 'Appointment has been successfully created',
+                  showConfirmButton: false,
+                  timer: 1500
+              });
+          }, error => {
+              console.error('Erreur lors de la création du rendez-vous:', error);
+              // Utilisation de SweetAlert pour afficher un message d'erreur
+              Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'An error occurred',
+                  footer: 'Please try again'
+              });
+          });
+      } else {
+          console.error('Le formulaire est invalide.');
+          // Utilisation de SweetAlert pour avertir l'utilisateur que le formulaire est invalide
+          Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Invalid form data',
+              footer: 'Please fill in all required fields'
+          });
+      }
   }
   
   ngOnInit(): void {

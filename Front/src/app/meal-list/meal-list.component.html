@@ -1,0 +1,362 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+    <head>
+        <!-- meta data -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!--font-family-->
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+        
+        <!-- title of site -->
+        <title>Furniture</title>
+
+        <!-- For favicon png -->
+		<link rel="shortcut icon" type="image/icon" href="/assets/restaurant/logo/favicon.png"/>
+       
+        <!--font-awesome.min.css-->
+        <link rel="stylesheet" href="/assets/restaurant/css/font-awesome.min.css">
+
+        <!--linear icon css-->
+		<link rel="stylesheet" href="/assets/restaurant/css/linearicons.css">
+
+		<!--animate.css-->
+        <link rel="stylesheet" href="/assets/restaurant/css/animate.css">
+
+        <!--owl.carousel.css-->
+        <link rel="stylesheet" href="/assets/restaurant/css/owl.carousel.min.css">
+		<link rel="stylesheet" href="/assets/restaurant/css/owl.theme.default.min.css">
+		
+        <!--bootstrap.min.css-->
+        <link rel="stylesheet" href="/assets/restaurant/css/bootstrap.min.css">
+		
+		<!-- bootsnav -->
+		<link rel="stylesheet" href="/assets/restaurant/css/bootsnav.css" >	
+        
+        <!--style.css-->
+        <link rel="stylesheet" href="/assets/restaurant/css/style.css">
+        
+        <!--responsive.css-->
+        <link rel="stylesheet" href="/assets/restaurant/css/responsive.css">
+        
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		
+        <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+	
+	<body>
+    
+		
+		<!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+		<!--new-arrivals start -->
+<!-- shop section -->
+<section class="shop_section layout_padding">
+  <div class="container">
+      <div class="heading_container heading_center">
+          <h2>𝒯𝒶𝓈𝓉𝑒 𝓉𝒽𝑒 𝒥𝑜𝓎 𝒾𝓃 𝐸𝓋𝑒𝓇𝓎 𝐵𝒾𝓉𝑒</h2>
+          
+          <!-- Aligner les boutons côte à côte et réduire leur taille -->
+          <div class="d-flex justify-content-center">
+              <!-- Bouton Favoris avec texte ajusté -->
+              <a href="/user-favorites" class="btn btn-sm btn-primary me-3">
+                  <i class="bi bi-heart-fill"></i> Favoris
+              </a>
+
+              <!-- Bouton MY CART -->
+              <a href="/cart" class="cta-sm d-flex align-items-center">
+                <img 
+                  src="/assets/restaurant/images/cartitem.png" 
+                  alt="Cart" 
+                  style="width: 30px; height: 30px; margin-right: 10px;"  
+                />
+                <span class="span">Cart</span>
+            </a>
+          </div>
+      </div>
+    <!-- Champs de recherche -->
+    <div class="row">
+      <!-- Recherche par nom -->
+      <div class="col-12">
+        <input 
+          type="text" 
+          [(ngModel)]="searchTerm" 
+          (input)="filterMeals()" 
+          placeholder="Search Name Meal" 
+          class="form-control" 
+          style="margin-bottom: 20px;"
+        />
+      </div>
+
+      <!-- Recherche par catégorie -->
+      <div class="col-12">
+        <select 
+          [(ngModel)]="selectedCategory" 
+          (change)="filterMeals()" 
+          class="form-control" 
+          style="margin-bottom: 20px;"
+        >
+          <option value="">Category Meal</option>
+          <option *ngFor="let category of uniqueCategories" [value]="category">
+            {{ category }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Recherche par prix minimum -->
+      <div class="col-6">
+        <input 
+          type="number" 
+          [(ngModel)]="minPrice" 
+          (input)="filterMeals()" 
+          placeholder="Price minimum" 
+          class="form-control"
+        />
+      </div>
+
+      <!-- Recherche par prix maximum -->
+      <div class="col-6">
+        <input 
+          type="number" 
+          [(ngModel)]="maxPrice" 
+          (input)="filterMeals()" 
+          placeholder="Price maximum" 
+          class="form-control"
+        />
+      </div>
+    </div>
+
+    <!-- Afficher les repas filtrés -->
+    <div class="row" style="margin-top: 20px;">
+      <div *ngFor="let item of filteredMeals" class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card">
+          <!-- Image du produit -->
+          <div class="card-img">
+            <img 
+              [src]="'/assets/restaurant/' + item.meal.imageName" 
+              alt="{{ item.meal.nameMeal }}" 
+              style="width: 100%; height: 100%; border-radius: 0.5rem;"
+            />
+          </div>
+          
+          <!-- Informations sur le produit -->
+          <div class="card-info">
+            <p class="text-title">{{ item.meal.nameMeal }}</p>
+            <p class="text-body">{{ item.meal.categoryMeal }}</p>
+          </div>
+          
+          <!-- Prix et bouton d'ajout au panier -->
+          <div class="card-footer">
+            <span class="text-title">TND {{ item.meal.priceMeal }}</span>
+            <div class="card-button" (click)="addMealToCart(item.meal, item.quantity)">
+              <svg class="svg-icon" viewBox="0 0 20 20">
+                <path d="..." />
+              </svg>
+            </div>
+            <!-- Remplacer le bouton par une image -->
+<img 
+src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" 
+alt="Ajouter aux favoris"
+(click)="addMealToFavorites(item.meal)"
+style="cursor: pointer; width: 24px; height: 24px;" 
+/>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+				
+		<!-- Include all js compiled plugins (below), or include individual files as needed -->
+
+		<script src="/assets/restaurant/js/jquery.js"></script>
+        
+        <!--modernizr.min.js-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+		
+		<!--bootstrap.min.js-->
+        <script src="/assets/restaurant/js/bootstrap.min.js"></script>
+		
+		<!-- bootsnav js -->
+		<script src="/assets/restaurant/js/bootsnav.js"></script>
+
+		<!--owl.carousel.js-->
+        <script src="/assets/restaurant/js/owl.carousel.min.js"></script>
+
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+		
+        
+        <!--Custom JS-->
+        <script src="/assets/restaurant/js/custom.js"></script>
+        
+    </body>
+	
+</html>
+<style>
+.card {
+  width: 240px; /* Augmentation de la largeur de la carte */
+  height: 340px; /* Augmentation de la hauteur de la carte */
+  padding: 1em; /* Augmentation de l'espace intérieur */
+  background: #f5f5f5;
+  position: relative;
+  overflow: visible;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.card-img {
+  background-color: #ffcaa6;
+  height: 50%; /* Augmentation de la hauteur de l'image */
+  width: 100%;
+  border-radius: 0.5rem;
+  transition: 0.3s ease;
+}
+
+.card-info {
+  padding-top: 10%;
+}
+
+
+.card-img:hover {
+  transform: translateY(-15%); /* Ajustement de la translation au survol */
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
+  background-color: #87CEEB; /* Bleu ciel */
+  transition: background-color 0.3s ease;
+}
+
+.text-title {
+  font-weight: 900;
+  font-size: 1.2em;
+  color: #333; /* Couleur du texte pour la lisibilité */
+}
+
+.card-button {
+  border: 1px solid #252525;
+  padding: 0.4em;
+  border-radius: 50px;
+  display: flex;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  background-color: #fff; /* Fond blanc pour le bouton pour contraste */
+}
+
+.card-button:hover {
+  border: 1px solid #ffcaa6;
+  background-color: #ffcaa6; /* Changer le fond du bouton au survol */
+}
+
+.svg-icon {
+  width: 20px;
+  height: 20px;
+  fill: #333; /* Couleur de l'icône pour s'harmoniser avec le reste */
+}
+body {
+  background-image: url('/assets/restaurant/images/backg.jpg'); /* Chemin vers l'image */
+  background-size: cover; /* Assure que l'image couvre toute la zone */
+  background-position: center; /* Centre l'image */
+  background-repeat: no-repeat; /* Évite la répétition de l'image */
+}
+.cta {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px; /* Agrandir la taille de la police */
+  color: white;
+  background: #6225E6;
+  transition: 1s;
+  box-shadow: 6px 6px 0 black;
+  transform: skewX(-15deg);
+  border: none;
+  padding: 15px 40px; /* Augmenter le padding */
+}
+
+.cart-image {
+  width: 25px; /* Agrandir l'image */
+  height: 25px;
+  margin-right: 10px; /* Espace entre l'image et le texte */
+}
+
+.cta:hover {
+  transition: 0.5s;
+  box-shadow: 10px 10px 0 #FBC638;
+}
+
+.cta .second {
+  transition: 0.5s;
+  margin-right: 0px;
+}
+
+.cta:hover .second {
+  transition: 0.5s;
+  margin-right: 45px;
+}
+
+.span {
+  transform: skewX(15deg);
+}
+
+.second {
+  width: 25px; /* Augmenter la largeur pour les SVG */
+  margin-left: 30px;
+  position: relative;
+  top: 12%;
+}
+
+.one, .two, .three {
+  transition: 0.5s;
+}
+
+.cta:hover .three {
+  animation: color_anim 1s infinite 0.2s;
+}
+
+.cta:hover .one {
+  animation: color_anim 1s infinite 0.6s;
+  transform: translateX(0%);
+}
+
+.cta:hover .two {
+  animation: color_anim 1s infinite 0.4s;
+  transform: translateX(0%);
+}
+
+@keyframes color_anim {
+  0% {
+    fill: white;
+  }
+
+  50% {
+    fill: #FBC638;
+  }
+
+  100% {
+    fill: white;
+  }
+}
+
+
+</style>

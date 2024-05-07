@@ -1,0 +1,158 @@
+<!-- create-coupon.component.html -->
+<div class="coupon-form-container">
+  <h2 class="form-title">Create new Coupon</h2>
+  <form [formGroup]="couponForm" (ngSubmit)="createCoupon()" class="coupon-form">
+    <!-- Champ pour le nom du coupon -->
+    <div class="form-group">
+      <label for="name" class="form-label">Name Coupon:</label>
+      <input
+        type="text"
+        formControlName="name"
+        id="name"
+        class="form-input"
+        placeholder="Entrez le nom du coupon"
+        aria-describedby="nameHelp"
+      />
+      <small id="nameHelp" class="form-text text-muted">for example , 'RÉDUCTION10'</small>
+    </div>
+
+    <!-- Champ pour le pourcentage de réduction -->
+    <div class="form-group">
+      <label for="discountPercentage" class="form-label">Discount % </label>
+      <input
+        type="number"
+        formControlName="discountPercentage"
+        id="discountPercentage"
+        class="form-input"
+        min="0"
+        max="100"
+        step="1"
+        placeholder="Entrez le pourcentage"
+      />
+    </div>
+
+    <!-- Champ pour le prix total minimum -->
+    <div class="form-group">
+      <label for="minTotalPrice" class="form-label">Price Minimum:</label>
+      <input
+        type="number"
+        formControlName="minTotalPrice"
+        id="minTotalPrice"
+        class="form-input"
+        min="0"
+        placeholder="Entrez le prix minimum"
+      />
+    </div>
+
+    <!-- Champ pour le prix total maximum -->
+    <div class="form-group">
+      <label for="maxTotalPrice" class="form-label">Price  Maximum:</label>
+      <input
+        type="number"
+        formControlName="maxTotalPrice"
+        id="maxTotalPrice"
+        class="form-input"
+        min="0"
+        placeholder="Entrez le prix maximum"
+      />
+    </div>
+
+    <!-- Champ pour la date d'expiration -->
+    <div class="form-group">
+      <label for="expiryDate" class="form-label">expiryDate:</label>
+      <input
+        type="date"
+        formControlName="expiryDate"
+        id="expiryDate"
+        class="form-input"
+      />
+    </div>
+
+    <!-- Bouton de soumission -->
+    <div class="form-actions">
+      <button
+        type="submit"
+        class="form-submit-button"
+        [disabled]="!couponForm.valid"
+      >
+        Create
+      </button>
+    </div>
+  </form>
+</div>
+<style>
+  /* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+/* Form Container */
+.coupon-form-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.form-title {
+  text-align: center;
+  color: #333333;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Label */
+.form-label {
+  display: block;
+  font-weight: bold;
+  color: #333333;
+}
+
+/* Input */
+.form-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  color: #333333;
+}
+
+/* Small Text for Hints */
+.form-text {
+  font-size: 12px;
+  color: #888888;
+}
+
+/* Form Actions */
+.form-actions {
+  text-align: center;
+}
+
+/* Submit Button */
+.form-submit-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.form-submit-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+</style>

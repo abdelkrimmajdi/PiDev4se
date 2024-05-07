@@ -14,20 +14,35 @@
         }
 
         @keyframes shake {
-            0%, 100% { transform: translateY(0); }
-            25%, 75% { transform: translateY(-5px); }
-            50% { transform: translateY(5px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            25%,
+            75% {
+                transform: translateY(-5px);
+            }
+
+            50% {
+                transform: translateY(5px);
+            }
         }
 
         .error-input {
-  animation-name: shake; /* Apply the shake animation */
-  animation-duration: 0.5s; /* Duration of the animation */
-  animation-timing-function: ease-in-out; /* Smooth easing for animation */
-}
+            animation-name: shake;
+            /* Apply the shake animation */
+            animation-duration: 0.5s;
+            /* Duration of the animation */
+            animation-timing-function: ease-in-out;
+            /* Smooth easing for animation */
+        }
 
-.error-input:focus {
-  animation-name: none; /* Stop the animation when input is focused */
-}
+        .error-input:focus {
+            animation-name: none;
+            /* Stop the animation when input is focused */
+        }
     </style>
 </head>
 
@@ -36,18 +51,20 @@
     <form [formGroup]="exerciceForm" (ngSubmit)="save()">
         <div class="form-group">
             <label>Name:</label>
-            <input type="text" formControlName="nameExer" class="form-control" [ngClass]="{'error-input': exerciceForm.get('nameExer')?.invalid && (exerciceForm.get('nameExer')?.dirty || exerciceForm.get('nameExer')?.touched)}">
+            <input type="text" formControlName="nameExer" class="form-control"
+                [ngClass]="{'error-input': exerciceForm.get('nameExer')?.invalid && (exerciceForm.get('nameExer')?.dirty || exerciceForm.get('nameExer')?.touched)}">
             <div *ngIf="exerciceForm.get('nameExer')?.hasError('required') && exerciceForm.get('nameExer')?.touched"
                 class="error-message">
                 Name is required.
             </div>
-            <div *ngIf="exerciceForm.get('nameExer')?.hasError('maxlength')" class="error-message">
+            <div *ngIf="exerciceForm.get('nameExer')?.hasError('maxlength')" class="alert alert-danger">
                 Maximum length exceeded.
             </div>
         </div>
         <div class="form-group">
             <label>Description:</label>
-            <input type="text" formControlName="descriptionExe" class="form-control" [ngClass]="{'error-input': exerciceForm.get('descriptionExe')?.invalid && (exerciceForm.get('descriptionExe')?.dirty || exerciceForm.get('descriptionExe')?.touched)}">
+            <input type="text" formControlName="descriptionExe" class="form-control"
+                [ngClass]="{'error-input': exerciceForm.get('descriptionExe')?.invalid && (exerciceForm.get('descriptionExe')?.dirty || exerciceForm.get('descriptionExe')?.touched)}">
             <div *ngIf="exerciceForm.get('descriptionExe')?.hasError('required') && exerciceForm.get('descriptionExe')?.touched"
                 class="error-message">
                 Description is required.
@@ -58,7 +75,8 @@
         </div>
         <div class="form-group">
             <label>Duration:</label>
-            <input type="number" formControlName="durationExer" class="form-control" [ngClass]="{'error-input': exerciceForm.get('durationExer')?.invalid && (exerciceForm.get('durationExer')?.dirty || exerciceForm.get('durationExer')?.touched)}">
+            <input type="number" formControlName="durationExer" class="form-control"
+                [ngClass]="{'error-input': exerciceForm.get('durationExer')?.invalid && (exerciceForm.get('durationExer')?.dirty || exerciceForm.get('durationExer')?.touched)}">
             <div *ngIf="exerciceForm.get('durationExer')?.hasError('required') && exerciceForm.get('durationExer')?.touched"
                 class="error-message">
                 Duration is required.
@@ -72,7 +90,8 @@
         </div>
         <div class="form-group">
             <label>Intensity:</label>
-            <select formControlName="intensity" class="form-control" [ngClass]="{'error-input': exerciceForm.get('intensity')?.invalid && (exerciceForm.get('intensity')?.dirty || exerciceForm.get('intensity')?.touched)}">
+            <select formControlName="intensity" class="form-control"
+                [ngClass]="{'error-input': exerciceForm.get('intensity')?.invalid && (exerciceForm.get('intensity')?.dirty || exerciceForm.get('intensity')?.touched)}">
                 <option *ngFor="let intensity of Intensitys" [value]="intensity">{{ intensity }}</option>
             </select>
             <div *ngIf="exerciceForm.get('intensity')?.hasError('required') && exerciceForm.get('intensity')?.touched"
@@ -82,24 +101,33 @@
         </div>
         <div class="form-group">
             <label>Muscle:</label>
-            <input type="text" formControlName="muscle" class="form-control" [ngClass]="{'error-input': exerciceForm.get('muscle')?.invalid && (exerciceForm.get('muscle')?.dirty || exerciceForm.get('muscle')?.touched)}">
-            <div *ngIf="exerciceForm.get('muscle')?.hasError('required') && exerciceForm.get('muscle')?.touched"
-                class="error-message">
-                Muscle is required.
+            <div *ngFor="let muscle of muscleOptions">
+                <label>
+                    <input type="checkbox" [value]="muscle" (change)="updateSelectedMuscles($event, muscle)"> {{muscle}}
+                </label>
             </div>
-            <div *ngIf="exerciceForm.get('muscle')?.hasError('maxlength')" class="error-message">
-                Maximum length exceeded.
+        </div>
+        <div class="form-group">
+            <label>YouTube Video Link:</label>
+            <input type="text" formControlName="videoExer" class="form-control"
+                [ngClass]="{'error-input': exerciceForm.get('videoExer')?.invalid && (exerciceForm.get('videoExer')?.dirty || exerciceForm.get('videoExer')?.touched)}">
+            <div *ngIf="exerciceForm.get('videoExer')?.hasError('required') && exerciceForm.get('videoExer')?.touched"
+                class="error-message">
+                Video Link is required.
+            </div>
+            <div *ngIf="exerciceForm.get('videoExer')?.hasError('pattern')" class="error-message">
+                This is not a link to a YouTube Video.
             </div>
         </div>
         <div class="form-group">
             <label>Picture:</label>
-            <input type="text" formControlName="picture" class="form-control" [ngClass]="{'error-input': exerciceForm.get('picture')?.invalid && (exerciceForm.get('picture')?.dirty || exerciceForm.get('picture')?.touched)}">
+            <input type="file" (change)="onFileSelected($event)" class="form-control" accept="image/*">
             <div *ngIf="exerciceForm.get('picture')?.hasError('required') && exerciceForm.get('picture')?.touched"
                 class="error-message">
                 Picture is required.
             </div>
             <div *ngIf="exerciceForm.get('picture')?.hasError('pattern')" class="error-message">
-                Invalid picture URL.
+                Picture is invalid.
             </div>
         </div>
         <button type="submit" class="btn btn-primary" style="margin-right: 10px">Update</button>

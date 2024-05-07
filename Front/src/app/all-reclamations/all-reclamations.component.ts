@@ -1,11 +1,10 @@
 import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
-import { ReclamationService } from '../services/reclamation.service';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { ChartOptions } from 'chart.js';
 import Chart from 'chart.js/auto';
-import { ResponseService } from '../services/response.service';
+import { ReclamationService } from '../services/reclamation.service';
 
 @Component({
   selector: 'app-all-reclamations',

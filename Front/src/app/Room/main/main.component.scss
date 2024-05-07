@@ -1,0 +1,21 @@
+.user {
+    border: 1px solid blueviolet;
+    border-radius: 8px;
+    padding: 12px 16px; /* Increase padding for more space around content */
+    margin: 8px; /* Adjust margin for spacing between user elements */
+    background-color: cornsilk;
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: center;
+    text-align: center;
+    cursor: pointer; /* Change cursor on hover for interactivity */
+    min-width: 200px; /* Set a minimum width to prevent content from shrinking */
+    font-size: 16px; /* Increase font size for better readability */
+  }
+  
+  .user:hover {
+    border-color: red; /* Change border color on hover */
+    background-color: gainsboro;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.5); /* Add box shadow on hover */
+  }
+  

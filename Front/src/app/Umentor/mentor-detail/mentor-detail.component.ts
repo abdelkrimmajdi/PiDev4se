@@ -11,37 +11,42 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./mentor-detail.component.scss']
 })
 export class MentorDetailComponent implements OnInit {
-  id!: number ;
-  user!: User 
+  id!: number;
+  user!: User;
   programs: MentorProgram[] = [];
-  
+  loading = true;
+  error = '';
 
   constructor(
     private mentorProgramService: MentorProgramService,
     private activatedRoute: ActivatedRoute,
-    
+    private userService: UserService // Assuming you need this service
   ) { }
 
   ngOnInit(): void {
-    this.id = this.activatedRoute.snapshot.params['id'];
-    this.mentorProgramService.getMentorProgramById(this.id).subscribe(
-      (data) => {
-        // Check if data is an array and contains at least one item
-        if (Array.isArray(data) && data.length > 0) {
-          this.user = data[0]; // Access the first item in the array
-          console.log('Program Details:', this.user);
-          // Now fetch mentor exercises for this program
-          this.mentorProgramService.getMentorProgramsForUser(this.id).subscribe(
-            (p) => {
-              this.programs = p;
-              console.log('Exercises:', this.programs);
-            }
-          );
-        }
+    this.id = +this.activatedRoute.snapshot.params['id']; // Convert id to number
+    console.log(this.id);
+    this.userService.getOneUser(this.id).subscribe(
+      (userData: User) => {
+        this.user = userData;
+        this.loadMentorProgramsForUser(this.id);
+      },
+      (error) => {
+        this.error = 'Failed to fetch user details';
+        this.loading = false;
       }
     );
   }
- 
-    
-  }
 
+  loadMentorProgramsForUser(userId: number): void {
+    this.mentorProgramService.getMentorProgramsForUser(userId)
+      .subscribe(
+        mentorPrograms => {
+          this.programs = mentorPrograms;
+        },
+        error => {
+          console.error('Error fetching mentor programs:', error);
+        }
+      );
+  }
+}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,116 +13,260 @@
             padding: 0;
             display: flex;
         }
+
         svg {
-            margin-top: 100px;
+            margin-top: 25px;
             margin-left: 100px;
-            margin-right: 100px;
+            margin-right: 0px;
         }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
+
         .exercise-list {
             /* Style your exercise list here */
             background-color: #333;
             color: white;
             padding: 10px;
             border-radius: 5px;
-            padding-right: 20px; /* Adjust spacing as needed */
+            padding-right: 20px;
+            /* Adjust spacing as needed */
             margin-top: 120px;
-            margin-top: 120px;
-            width: 700px; /* Set the width of the exercise list */
-            height: 550px; /* Set the height of the exercise list */
-            overflow-y: auto; /* Add scrollbar if content overflows */
+            width: 700px;
+            /* Set the width of the exercise list */
+            height: 550px;
+            /* Set the height of the exercise list */
+            overflow-y: auto;
+            /* Add scrollbar if content overflows */
         }
-        .exercise-name {
-    font-size: 20px; /* Larger font size for exercise name */
-}
 
-.exercise-details {
-    font-size: 14px; /* Smaller font size for duration and intensity */
-    color: #666; /* Optional: customize text color */
-}
+        .exercise-name {
+            font-size: 20px;
+            /* Larger font size for exercise name */
+        }
+
+        .exercise-details {
+            font-size: 14px;
+            /* Smaller font size for duration and intensity */
+            color: #666;
+            /* Optional: customize text color */
+        }
+
+        .exercise-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .exercise-info {
+            flex: 1;
+        }
+
+        .exercise-image {
+            margin-left: 80;
+            /* Adjust margin as needed */
+            max-height: 100px;
+            width: auto;
+            /* To maintain aspect ratio */
+        }
+
+        .exercise-details-container {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 750px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+
     </style>
 </head>
+
 <body>
     <svg width="353" height="615" viewBox="0 0 353 615">
         <!-- Background Image -->
-        <image href="assets/FrontOffice/img/Muscles_front.svg.png" width="353" height="615"/>
-        
+        <image href="assets/FrontOffice/img/Muscles_front.svg.png" width="353" height="615" />
+
         <!-- Example interactive area (adjust points as needed) -->
-        <polygon id="chest" points="170,133,166,128,161,125,155,122,149,121,143,123,137,125,131,128,125,131,119,134,114,137,110,141,107,147,104,157,109,156,113,160,116,164,118,169,121,174,123,179,126,184,130,188,135,191,140,193,146,194,152,195,158,195,164,195,169,194,171,188,172,182,171,176,171,170,173,164,172,158,172,152,173,146,172,139,170,133,183,135,181,140,181,146,181,151,182,156,181,161,182,166,183,171,182,177,182,183,183,188,184,193,189,195,194,195,199,195,204,195,210,195,216,193,221,190,226,187,229,182,232,177,234,172,237,166,243,157,250,157,249,151,246,146,242,141,237,136,231,133,225,130,220,127,214,124,208,122,201,121,195,124,190,127,185,130,183,135"
-                 fill="transparent"
-                 matTooltip="Chest" 
-                (mouseover)="onHover($event)" 
-                (mouseout)="onMouseOut($event)"
-                 style="cursor: pointer;"
-                 (click)="filterExercisesByMuscle('chest')"/>
+        <polygon id="chest"
+            points="170,133,166,128,161,125,155,122,149,121,143,123,137,125,131,128,125,131,119,134,114,137,110,141,107,147,104,157,109,156,113,160,116,164,118,169,121,174,123,179,126,184,130,188,135,191,140,193,146,194,152,195,158,195,164,195,169,194,171,188,172,182,171,176,171,170,173,164,172,158,172,152,173,146,172,139,170,133,183,135,181,140,181,146,181,151,182,156,181,161,182,166,183,171,182,177,182,183,183,188,184,193,189,195,194,195,199,195,204,195,210,195,216,193,221,190,226,187,229,182,232,177,234,172,237,166,243,157,250,157,249,151,246,146,242,141,237,136,231,133,225,130,220,127,214,124,208,122,201,121,195,124,190,127,185,130,183,135"
+            fill="transparent" matTooltip="Chest" (mouseover)="onHover($event)" (mouseout)="onMouseOut($event)"
+            style="cursor: pointer;" (click)="filterExercisesByMuscle('chest')" />
 
-        <polygon id="traps" points="159,96,159,102,157,107,155,112,152,117,147,114,140,112,133,112,118,110,124,109,130,107,136,107,142,106,147,104,152,102,159,96,196,97,196,102,197,108,199,113,202,118,207,114,212,113,236,110,230,109,223,108,216,108,210,106,204,103,196,97"
-                 fill="transparent"
-                 matTooltip="Traps" 
-                (mouseover)="onHover($event)" 
-                (mouseout)="onMouseOut($event)"
-                 style="cursor: pointer;"
-                 (click)="filterExercisesByMuscle('traps')"/>
+        <polygon id="traps"
+            points="159,96,159,102,157,107,155,112,152,117,147,114,140,112,133,112,118,110,124,109,130,107,136,107,142,106,147,104,152,102,159,96,196,97,196,102,197,108,199,113,202,118,207,114,212,113,236,110,230,109,223,108,216,108,210,106,204,103,196,97"
+            fill="transparent" matTooltip="Traps" (mouseover)="onHover($event)" (mouseout)="onMouseOut($event)"
+            style="cursor: pointer;" (click)="filterExercisesByMuscle('traps')" />
 
-        <polygon id="shoulders" points="154,121,148,122,142,124,135,126,129,129,123,132,118,135,113,139,110,144,106,149,103,157,99,161,96,166,92,171,91,162,90,156,90,150,91,144,92,138,94,132,97,127,101,123,105,119,109,115,115,111,120,114,125,113,130,113,135,113,142,115,154,121,201,121,206,119,211,116,216,114,221,114,226,114,231,114,239,112,243,114,247,117,251,121,255,125,258,130,260,135,262,140,263,145,264,151,264,157,264,163,262,171,258,166,255,161,250,157,248,151,245,146,241,141,237,136,231,133,225,130,219,127,212,123,201,121"
-                 fill="transparent"
-                 matTooltip="Shoulders" 
-                (mouseover)="onHover($event)" 
-                (mouseout)="onMouseOut($event)"
-                 style="cursor: pointer;"
-                 (click)="filterExercisesByMuscle('shoulders')"/>
+        <polygon id="shoulders"
+            points="154,121,148,122,142,124,135,126,129,129,123,132,118,135,113,139,110,144,106,149,103,157,99,161,96,166,92,171,91,162,90,156,90,150,91,144,92,138,94,132,97,127,101,123,105,119,109,115,115,111,120,114,125,113,130,113,135,113,142,115,154,121,201,121,206,119,211,116,216,114,221,114,226,114,231,114,239,112,243,114,247,117,251,121,255,125,258,130,260,135,262,140,263,145,264,151,264,157,264,163,262,171,258,166,255,161,250,157,248,151,245,146,241,141,237,136,231,133,225,130,219,127,212,123,201,121"
+            fill="transparent" matTooltip="Shoulders" (mouseover)="onHover($event)" (mouseout)="onMouseOut($event)"
+            style="cursor: pointer;" (click)="filterExercisesByMuscle('shoulders')" />
 
-        <polygon id="biceps" points="78,236,82,233,87,228,91,223,96,218,99,212,101,206,104,200,106,195,108,189,110,183,112,177,113,170,113,164,111,158,105,156,100,159,97,164,92,171,89,176,87,182,85,188,84,194,84,200,83,206,83,212,82,218,81,225,78,236,276,236,270,231,264,226,259,220,256,214,253,206,250,200,247,194,245,187,243,181,242,175,240,169,240,162,243,157,248,157,253,159,256,163,258,167,262,171,264,176,266,180,268,185,269,191,269,197,270,203,271,212,271,218,272,224,276,236"
-                 fill="transparent"
-                 matTooltip="Biceps" 
-                (mouseover)="onHover($event)" 
-                (mouseout)="onMouseOut($event)"
-                 style="cursor: pointer;"
-                 (click)="filterExercisesByMuscle('biceps')"/>
+        <polygon id="biceps"
+            points="78,236,82,233,87,228,91,223,96,218,99,212,101,206,104,200,106,195,108,189,110,183,112,177,113,170,113,164,111,158,105,156,100,159,97,164,92,171,89,176,87,182,85,188,84,194,84,200,83,206,83,212,82,218,81,225,78,236,276,236,270,231,264,226,259,220,256,214,253,206,250,200,247,194,245,187,243,181,242,175,240,169,240,162,243,157,248,157,253,159,256,163,258,167,262,171,264,176,266,180,268,185,269,191,269,197,270,203,271,212,271,218,272,224,276,236"
+            fill="transparent" matTooltip="Biceps" (mouseover)="onHover($event)" (mouseout)="onMouseOut($event)"
+            style="cursor: pointer;" (click)="filterExercisesByMuscle('biceps')" />
 
-        <polygon id="forearms" points="270,195,270,201,271,207,271,213,271,219,272,224,273,229,275,234,266,228,261,223,256,216,254,210,252,204,246,194,246,201,250,214,252,220,253,225,255,229,256,234,257,240,259,246,260,251,263,256,265,261,267,266,270,271,273,276,276,281,278,286,281,290,284,295,286,301,290,305,292,310,297,307,303,307,309,300,305,289,303,281,300,272,298,263,297,256,294,248,293,240,291,233,288,227,285,220,283,213,278,206,270,195,107,194,108,200,106,205,104,210,103,215,101,222,98,229,98,235,96,241,95,247,92,252,90,257,88,262,85,267,82,272,80,278,77,283,74,288,71,293,69,298,66,303,63,308,56,307,48,304,46,298,49,290,51,283,52,277,54,271,55,264,56,257,58,251,59,245,61,239,63,233,65,226,68,220,71,214,74,209,77,203,84,195,83,201,83,207,82,213,81,219,80,225,79,230,78,235,84,230,88,226,92,221,96,217,99,212,103,205,107,194"
-                 fill="transparent"
-                 matTooltip="Forearms" 
-                (mouseover)="onHover($event)" 
-                (mouseout)="onMouseOut($event)"
-                 style="cursor: pointer;"
-                 (click)="filterExercisesByMuscle('forearms')"/>
+        <polygon id="forearms"
+            points="270,195,270,201,271,207,271,213,271,219,272,224,273,229,275,234,266,228,261,223,256,216,254,210,252,204,246,194,246,201,250,214,252,220,253,225,255,229,256,234,257,240,259,246,260,251,263,256,265,261,267,266,270,271,273,276,276,281,278,286,281,290,284,295,286,301,290,305,292,310,297,307,303,307,309,300,305,289,303,281,300,272,298,263,297,256,294,248,293,240,291,233,288,227,285,220,283,213,278,206,270,195,107,194,108,200,106,205,104,210,103,215,101,222,98,229,98,235,96,241,95,247,92,252,90,257,88,262,85,267,82,272,80,278,77,283,74,288,71,293,69,298,66,303,63,308,56,307,48,304,46,298,49,290,51,283,52,277,54,271,55,264,56,257,58,251,59,245,61,239,63,233,65,226,68,220,71,214,74,209,77,203,84,195,83,201,83,207,82,213,81,219,80,225,79,230,78,235,84,230,88,226,92,221,96,217,99,212,103,205,107,194"
+            fill="transparent" matTooltip="Forearms" (mouseover)="onHover($event)" (mouseout)="onMouseOut($event)"
+            style="cursor: pointer;" (click)="filterExercisesByMuscle('forearms')" />
 
-        <polygon id="obliques" points="116,166,119,171,122,176,124,181,127,185,131,189,136,191,141,193,145,196,145,201,145,207,145,212,146,217,147,222,147,228,147,234,146,239,145,245,145,250,145,255,145,260,147,266,149,276,142,275,136,273,130,268,125,263,121,259,119,253,120,246,123,241,125,235,126,229,122,210,120,203,118,196,116,189,114,182,116,166,237,166,239,171,240,176,240,181,238,186,237,192,236,199,233,207,230,220,229,226,228,231,229,236,232,241,234,246,235,252,234,259,230,264,225,268,219,272,213,276,206,276,208,265,209,258,209,251,208,244,207,237,207,230,206,223,207,216,208,210,209,203,209,195,215,192,220,190,225,187,228,181,232,174,237,166"
-                 fill="transparent"
-                 matTooltip="Obliques" 
-                (mouseover)="onHover($event)" 
-                (mouseout)="onMouseOut($event)"
-                 style="cursor: pointer;"
-                 (click)="filterExercisesByMuscle('obliques')"/>
+        <polygon id="obliques"
+            points="116,166,119,171,122,176,124,181,127,185,131,189,136,191,141,193,145,196,145,201,145,207,145,212,146,217,147,222,147,228,147,234,146,239,145,245,145,250,145,255,145,260,147,266,149,276,142,275,136,273,130,268,125,263,121,259,119,253,120,246,123,241,125,235,126,229,122,210,120,203,118,196,116,189,114,182,116,166,237,166,239,171,240,176,240,181,238,186,237,192,236,199,233,207,230,220,229,226,228,231,229,236,232,241,234,246,235,252,234,259,230,264,225,268,219,272,213,276,206,276,208,265,209,258,209,251,208,244,207,237,207,230,206,223,207,216,208,210,209,203,209,195,215,192,220,190,225,187,228,181,232,174,237,166"
+            fill="transparent" matTooltip="Obliques" (mouseover)="onHover($event)" (mouseout)="onMouseOut($event)"
+            style="cursor: pointer;" (click)="filterExercisesByMuscle('obliques')" />
 
-        <polygon id="abdominals" points="173,300,166,298,163,293,159,287,156,281,153,275,150,269,149,263,149,256,150,250,149,244,149,238,149,231,149,225,149,219,149,212,148,206,149,200,154,197,160,197,166,197,171,197,177,197,183,197,188,196,193,197,198,197,203,198,205,203,205,208,204,213,205,219,206,224,205,230,205,235,206,240,204,245,204,250,204,255,204,260,205,265,203,270,201,275,198,280,195,285,193,290,190,295,185,299,179,299"
-                 fill="transparent"
-                 matTooltip="Abdominals" 
-                (mouseover)="onHover($event)" 
-                (mouseout)="onMouseOut($event)"
-                 style="cursor: pointer;"
-                 (click)="filterExercisesByMuscle('abdominals')"/>
+        <polygon id="abdominals"
+            points="173,300,166,298,163,293,159,287,156,281,153,275,150,269,149,263,149,256,150,250,149,244,149,238,149,231,149,225,149,219,149,212,148,206,149,200,154,197,160,197,166,197,171,197,177,197,183,197,188,196,193,197,198,197,203,198,205,203,205,208,204,213,205,219,206,224,205,230,205,235,206,240,204,245,204,250,204,255,204,260,205,265,203,270,201,275,198,280,195,285,193,290,190,295,185,299,179,299"
+            fill="transparent" matTooltip="Abdominals" (mouseover)="onHover($event)" (mouseout)="onMouseOut($event)"
+            style="cursor: pointer;" (click)="filterExercisesByMuscle('abdominals')" />
 
-        <polygon id="quads" points="173,376,173,382,172,388,172,394,171,399,170,405,169,411,165,418,160,419,152,418,145,417,139,414,136,407,133,401,131,395,128,389,126,383,124,376,122,370,121,364,119,357,118,351,117,345,117,338,116,331,117,325,116,318,116,311,117,305,118,298,118,292,120,286,120,280,121,274,122,265,126,270,128,276,129,283,131,290,133,296,135,302,137,309,139,316,143,323,145,328,148,334,153,342,156,347,160,352,163,357,166,361,168,366,170,370,173,376,181,376,184,370,187,364,190,358,193,353,198,348,200,342,204,337,207,331,210,325,214,319,216,312,218,306,220,300,222,293,224,287,225,280,226,274,227,269,232,265,232,271,234,276,234,282,235,287,235,292,236,297,237,303,237,308,237,314,237,319,237,325,238,330,237,335,237,340,236,346,236,352,235,358,233,364,232,370,230,375,229,380,227,386,225,392,222,397,220,403,217,408,215,413,210,416,203,417,196,418,189,418,186,412,183,405,182,398,181,392,181,386,180,382,181,376"
-                 fill="transparent"
-                 matTooltip="Quads" 
-                (mouseover)="onHover($event)" 
-                (mouseout)="onMouseOut($event)"
-                 style="cursor: pointer;"
-                 (click)="filterExercisesByMuscle('quads')"/>
+        <polygon id="quads"
+            points="173,376,173,382,172,388,172,394,171,399,170,405,169,411,165,418,160,419,152,418,145,417,139,414,136,407,133,401,131,395,128,389,126,383,124,376,122,370,121,364,119,357,118,351,117,345,117,338,116,331,117,325,116,318,116,311,117,305,118,298,118,292,120,286,120,280,121,274,122,265,126,270,128,276,129,283,131,290,133,296,135,302,137,309,139,316,143,323,145,328,148,334,153,342,156,347,160,352,163,357,166,361,168,366,170,370,173,376,181,376,184,370,187,364,190,358,193,353,198,348,200,342,204,337,207,331,210,325,214,319,216,312,218,306,220,300,222,293,224,287,225,280,226,274,227,269,232,265,232,271,234,276,234,282,235,287,235,292,236,297,237,303,237,308,237,314,237,319,237,325,238,330,237,335,237,340,236,346,236,352,235,358,233,364,232,370,230,375,229,380,227,386,225,392,222,397,220,403,217,408,215,413,210,416,203,417,196,418,189,418,186,412,183,405,182,398,181,392,181,386,180,382,181,376"
+            fill="transparent" matTooltip="Quads" (mouseover)="onHover($event)" (mouseout)="onMouseOut($event)"
+            style="cursor: pointer;" (click)="filterExercisesByMuscle('quads')" />
     </svg>
-    <div class="exercise-list">
-        <!-- Display your list of exercises here -->
-        <h2 class="card-title fw-semibold" style="text-align: center;">List of Exercises</h2>
-        <ul>
-            <li *ngFor="let exercise of filteredExercises">
-                <div class="exercise-name">{{ exercise.nameExer }}</div>
-                <div class="exercise-details">
-                    <span>Duration: {{ exercise.durationExer }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>Intensity: {{ exercise.intensity }}</span>
-                </div>
-            </li>
-        </ul>
+    <div class="container">
+        <div class="exercise-list">
+            <!-- Display your list of exercises here -->
+            <h2 class="card-title fw-semibold" style="text-align: center;">List of Exercises</h2>
+            <ul>
+                <li *ngFor="let exercise of filteredExercises">
+                    <div class="exercise-container">
+                        <div class="exercise-info">
+                            <!-- Add a click event handler to the exercise name -->
+                            <div class="exercise-name" (click)="showExerciseDetails(exercise)">{{ exercise.nameExer }}
+                            </div>
+                            <div class="exercise-details">
+                                <span>Duration: {{ exercise.durationExer }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span>Intensity: {{ exercise.intensity }}</span>
+                            </div>
+                        </div>
+                        <div class="exercise-image">
+                            <img [src]="'/assets/img exercices/' + exercise.picture" alt="Exercise Image"
+                                class="exercise-image">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div *ngIf="selectedExercise" class="exercise-details-container">
+            <div class="exercise-details">
+                <h2>{{ selectedExercise.nameExer }}</h2>
+                <img [src]="'/assets/img exercices/' + selectedExercise.picture" alt="Exercise Image" class="selectedExercise-image">
+                <p>{{ selectedExercise.descriptionExe }}</p>
+                <p>Duration: {{ selectedExercise.durationExer }}</p>
+                <p>Intensity: {{ selectedExercise.intensity }}</p>
+                <p>Muscle: {{ selectedExercise.muscle }}</p>
+                <!-- Embed YouTube Video -->
+                <div class="video-container">
+                    <iframe width="800" height="450" [src]="getSafeUrl()"
+                    title="YouTube video player" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
     </div>
+            </div>
+    
+        </div>
+    </div>
+
+    <!-- Exercise details area -->
+    
+
+    <style>
+        body, html {
+            height: 100%; /* Ensure body and html take up the full height of the viewport */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            position: relative; /* Set body to relative positioning */
+        }
+    
+        footer {
+            height: 100px; /* Adjust the height of your footer */
+            background-color: #333;
+            color: white;
+            text-align: center;
+            position: absolute; /* Position the footer absolutely at the bottom */
+            bottom: 0;
+            width: 100%;
+        }
+    
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center children horizontally */
+            padding-bottom: 100px; /* Adjust bottom padding to accommodate the footer */
+        }
+    
+        .exercise-details-container {
+            display: flex; /* Enable flexbox */
+            flex-direction: column; /* Stack children vertically */
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%; /* Set width to 90% of the viewport */
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center; /* Center text horizontally */
+            font-size: 24px; /* Larger font size for text */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add box shadow for depth */
+        }
+    
+        .exercise-details-container h2 {
+            font-size: 32px; /* Larger font size for title */
+            margin-bottom: 20px; /* Add spacing below the title */
+            font-weight: bold; /* Make the title bold */
+            text-transform: uppercase; /* Transform text to uppercase */
+        }
+    
+        .exercise-details-container p {
+            font-size: 20px; /* Larger font size for description */
+            line-height: 1.5; /* Set line height for readability */
+            margin-bottom: 10px; /* Add spacing below paragraphs */
+            color: white;
+        }
+
+        .selectedExercise-image {
+            max-height: 300px;
+            width: auto;
+            /* To maintain aspect ratio */
+        }
+
+        .exercise-details-container iframe {
+    max-width: 100%; /* Ensures the iframe is not wider than its container */
+    height: auto; /* Keeps the aspect ratio intact */
+    border-radius: 10px; /* Optional: rounds the corners of the iframe */
+}
+
+.video-container {
+    position: relative;
+    width: 100%; /* Adjust width as necessary */
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    background-color: #000;
+    border-radius: 10px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+    </style>
+    
+
 </body>
+
 </html>

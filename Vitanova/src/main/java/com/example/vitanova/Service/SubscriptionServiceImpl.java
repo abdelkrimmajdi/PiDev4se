@@ -25,16 +25,9 @@ public class SubscriptionServiceImpl {
         return subscriptionRepositorie.save(subscription);
     }
 
-    public Subscription updateSubscription(Long id, Subscription subscriptionDetails) {
-        Subscription subscription = subscriptionRepositorie.findById(id)
-                .orElseThrow(() -> new RuntimeException("Subscription not found for this id :: " + id));
-
-        subscription.setSabName(subscriptionDetails.getSabName());
-        subscription.setStartDateSub(subscriptionDetails.getStartDateSub());
-        subscription.setEndDateSub(subscriptionDetails.getEndDateSub());
-        subscription.setDureeSub(subscriptionDetails.getDureeSub());
-
-        return subscriptionRepositorie.save(subscription);
+    public Subscription updateSubscription(Long id, Subscription updatedSubscription) {
+        updatedSubscription.setIdSub(id);
+        return subscriptionRepositorie.save(updatedSubscription);
     }
 
     public void deleteSubscription(Long id) {

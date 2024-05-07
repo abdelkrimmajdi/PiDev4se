@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Votre titre</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<style>
+    body {
+      background-image: url('/assets/FrontOffice/img/FF.png');
+      background-repeat: no-repeat; /* Empêche la répétition de l'image */
+      background-size: cover; /* Ajuste la taille de l'image pour couvrir tout l'arrière-plan */
+      /* Autres styles de fond si nécessaire */
+    }
+  </style>
+<body>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<div class="container">
+  <h2>Choose An Appointment</h2>
+  <form [formGroup]="AddProgramForm" (ngSubmit)="createNewAppointment()">
+    <div>
+      <label for="dayApp">Day :</label>
+      <select formControlName="dayApp" id="dayApp" required>
+        <option value="MONDAY">Monday</option>
+        <option value="TUESDAY">Tuesday</option>
+        <option value="WEDNESDAY">Wednesday</option>
+        <option value="THURSDAY">Thursday</option>
+        <option value="FRIDAY">Friday</option>
+      </select>
+    </div>
+    <div>
+      <label for="timeApp">Time :</label>
+      <select formControlName="timeApp" id="timeApp" required>
+        <option value="TIME_09_00">9:00</option>
+        <option value="TIME_09_30">09:30</option>
+        <option value="TIME_10_00">10:00</option>
+        <option value="TIME_10_30">10:30</option>
+        <option value="TIME_11_00">11:00</option>
+        <option value="TIME_11_30">11:30</option>
+        <option value="TIME_14_00">14:00</option>
+        <option value="TIME_14_30">14:30</option>
+        <option value="TIME_15_00">15:00</option>
+        <option value="TIME_15_30">15:30</option>
+        <option value="TIME_16_00">16:00</option>
+        <option value="TIME_16_30">16:30</option>
+        <option value="TIME_17_00">17:00</option>
+      </select>
+    </div>
+    <div>
+      <label for="physiotherapistId">Physiotherapist :</label>
+      <select formControlName="physiotherapistId" required>
+        <option *ngFor="let physiotherapist of Physiotherapists" [value]="physiotherapist.idPhy">{{ physiotherapist.idPhy }} - {{ physiotherapist.phyname }} ( {{ physiotherapist.ville }} )</option>
+      </select>
+    </div>
+    <button type="submit" class="shared-button center-button"> <i class="fas fa-send"></i>Confirm</button>
+</form>
+<button class="shared-button center-button" (click)="map()"><i class="fas fa-reply"></i> View Physiotherapists Locations</button>
+</div>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+</body>
+</html>

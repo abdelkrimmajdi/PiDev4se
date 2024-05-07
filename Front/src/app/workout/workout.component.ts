@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { WorkoutSession } from '../models/workoutSession';
-import { WorkoutService } from '../services/workout.service';
+import { WorkoutService } from '../Services/workout.service';
 import { FormBuilder } from '@angular/forms';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
@@ -23,7 +23,9 @@ export class WorkoutComponent {
   search!: string;
   pdfMake: any;
 
-  constructor(private workoutService: WorkoutService, private formBuilder: FormBuilder) {
+  constructor(
+    private workoutService: WorkoutService, 
+    private formBuilder: FormBuilder) {
     this.pdfMake = pdfMake;
     this.pdfMake.vfs = pdfFonts.pdfMake.vfs;
   }

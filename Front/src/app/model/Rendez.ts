@@ -5,5 +5,5 @@ export interface RendezVous {
   datetime: string;
   nutritionistId: number;
   time: string;
-
+  user: User;
   }

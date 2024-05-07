@@ -1,6 +1,6 @@
 package com.example.vitanova.Entities;
 
-import jakarta.persistence.*;
+import  jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Set;
@@ -19,6 +19,6 @@ public class Journal {
     @OneToMany(cascade = CascadeType.ALL)
     private Set<PersonalObjectif> PersonalObjectifs;
     @ManyToOne
-    User user;
+    private User user;
 
 }

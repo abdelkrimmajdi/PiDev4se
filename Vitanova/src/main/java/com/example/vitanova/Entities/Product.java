@@ -22,11 +22,8 @@ public class Product {
     private int priceProd;
     @Lob
     @Column(length = 100000)
-    private byte[] imageProd;
+    private String imageProd;
     private Category categorie;
-    @OneToOne
-    @JoinColumn(name = "cart_id", referencedColumnName = "IdCard")
-    @JsonIgnore
-    private Cart cart;
+
 
 }
